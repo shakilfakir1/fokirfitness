@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ফকির ফিটনেস অ্যান্ড ডায়েট</title>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Tiro+Bangla:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #2d6a4f;
+    --green-light: #40916c;
+    --green-pale: #b7e4c7;
+    --green-bg: #d8f3dc;
+    --gold: #e9c46a;
+    --gold-dark: #c9a227;
+    --orange: #f4a261;
+    --red: #e76f51;
+    --bg: #f0faf3;
+    --card: #ffffff;
+    --text: #1b3a2d;
+    --text-muted: #52796f;
+    --border: #cce8d5;
+    --shadow: 0 4px 24px rgba(45,106,79,0.10);
+    --radius: 18px;
+    --radius-sm: 10px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Hind Siliguri', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+  }
+  .app-wrap { max-width: 480px; margin: 0 auto; min-height: 100vh; background: var(--bg); position: relative; }
+
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, var(--green) 0%, var(--green-light) 100%);
+    color: #fff;
+    padding: 28px 20px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute; top: -30px; right: -30px;
+    width: 120px; height: 120px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 50%;
+  }
+  .header::after {
+    content: '';
+    position: absolute; bottom: -20px; left: -20px;
+    width: 80px; height: 80px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 50%;
+  }
+  .app-logo { font-size: 2.4rem; margin-bottom: 4px; }
+  .app-title { font-family: 'Tiro Bangla', serif; font-size: 1.5rem; font-weight: 700; letter-spacing: 0.5px; }
+  .app-subtitle { font-size: 0.85rem; opacity: 0.85; margin-top: 2px; }
+
+  /* Nav tabs */
+  .nav-tabs {
+    display: flex; background: var(--card);
+    border-bottom: 2px solid var(--border);
+    position: sticky; top: 0; z-index: 100;
+    box-shadow: 0 2px 8px rgba(45,106,79,0.07);
+  }
+  .nav-tab {
+    flex: 1; padding: 10px 4px; text-align: center;
+    font-size: 0.78rem; color: var(--text-muted);
+    cursor: pointer; border: none; background: none;
+    font-family: 'Hind Siliguri', sans-serif;
+    font-weight: 500; transition: all 0.2s;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+  }
+  .nav-tab.active { color: var(--green); border-bottom-color: var(--green); }
+  .nav-tab .tab-icon { font-size: 1.2rem; display: block; }
+
+  /* Pages */
+  .page { display: none; padding: 16px; }
+  .page.active { display: block; }
+
+  /* Cards */
+  .card {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 18px;
+    margin-bottom: 14px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+  }
+  .card-title {
+    font-size: 1rem; font-weight: 700;
+    color: var(--green); margin-bottom: 14px;
+    display: flex; align-items: center; gap: 8px;
+  }
+
+  /* Form elements */
+  .form-group { margin-bottom: 14px; }
+  label { display: block; font-size: 0.85rem; font-weight: 600; color: var(--text-muted); margin-bottom: 6px; }
+  input[type="number"], input[type="text"], select, textarea {
+    width: 100%; padding: 11px 14px;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-size: 0.95rem;
+    font-family: 'Hind Siliguri', sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    transition: border-color 0.2s;
+    outline: none;
+  }
+  input:focus, select:focus, textarea:focus { border-color: var(--green-light); }
+  textarea { resize: vertical; min-height: 70px; }
+
+  .radio-group { display: flex; flex-wrap: wrap; gap: 8px; }
+  .radio-btn {
+    padding: 8px 14px; border-radius: 30px;
+    border: 1.5px solid var(--border);
+    font-size: 0.82rem; font-family: 'Hind Siliguri', sans-serif;
+    cursor: pointer; background: var(--bg);
+    color: var(--text-muted); font-weight: 500;
+    transition: all 0.18s;
+  }
+  .radio-btn.selected { background: var(--green); color: #fff; border-color: var(--green); }
+
+  /* Buttons */
+  .btn {
+    width: 100%; padding: 14px;
+    border-radius: var(--radius-sm);
+    font-size: 1rem; font-weight: 700;
+    font-family: 'Hind Siliguri', sans-serif;
+    cursor: pointer; border: none;
+    transition: all 0.2s; letter-spacing: 0.3px;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--green) 0%, var(--green-light) 100%);
+    color: #fff; box-shadow: 0 4px 16px rgba(45,106,79,0.25);
+  }
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(45,106,79,0.32); }
+  .btn-secondary {
+    background: var(--bg); color: var(--green);
+    border: 1.5px solid var(--green-light);
+  }
+  .btn-gold {
+    background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+    color: #fff;
+  }
+  .btn-sm {
+    width: auto; padding: 7px 16px; font-size: 0.82rem;
+    border-radius: 20px;
+  }
+  .btn-row { display: flex; gap: 10px; margin-top: 10px; }
+  .btn-row .btn { flex: 1; }
+
+  /* Collapsible */
+  .collapse-toggle {
+    display: flex; align-items: center; justify-content: space-between;
+    cursor: pointer; padding: 12px 18px;
+    background: var(--green-bg); border-radius: var(--radius-sm);
+    margin-bottom: 10px; font-weight: 600; color: var(--green);
+    font-size: 0.9rem;
+  }
+  .collapse-toggle .arrow { transition: transform 0.25s; font-size: 1rem; }
+  .collapse-toggle.open .arrow { transform: rotate(180deg); }
+  .collapsible { display: none; }
+  .collapsible.open { display: block; }
+
+  /* BMI Badge */
+  .bmi-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 4px 12px; border-radius: 20px;
+    font-size: 0.8rem; font-weight: 700;
+  }
+  .bmi-under { background: #dbeafe; color: #1d4ed8; }
+  .bmi-normal { background: #dcfce7; color: #15803d; }
+  .bmi-over { background: #fef9c3; color: #a16207; }
+  .bmi-obese { background: #fee2e2; color: #b91c1c; }
+
+  /* Stat grid */
+  .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px; }
+  .stat-box {
+    background: var(--green-bg); border-radius: var(--radius-sm);
+    padding: 12px; text-align: center;
+  }
+  .stat-box .val { font-size: 1.35rem; font-weight: 700; color: var(--green); }
+  .stat-box .lbl { font-size: 0.72rem; color: var(--text-muted); margin-top: 2px; }
+
+  /* Macro bar */
+  .macro-bar { margin-bottom: 8px; }
+  .macro-label { display: flex; justify-content: space-between; font-size: 0.82rem; margin-bottom: 4px; }
+  .macro-track { height: 8px; background: var(--border); border-radius: 10px; overflow: hidden; }
+  .macro-fill { height: 100%; border-radius: 10px; }
+  .fill-p { background: var(--green-light); }
+  .fill-c { background: var(--gold); }
+  .fill-f { background: var(--orange); }
+
+  /* Meal card */
+  .meal-card {
+    background: var(--green-bg); border-radius: var(--radius-sm);
+    padding: 12px 14px; margin-bottom: 10px;
+    border-left: 4px solid var(--green);
+  }
+  .meal-header {
+    display: flex; justify-content: space-between;
+    align-items: center; margin-bottom: 6px;
+  }
+  .meal-name { font-weight: 700; font-size: 0.92rem; color: var(--green); }
+  .meal-cal { font-size: 0.82rem; font-weight: 700; color: var(--gold-dark); }
+  .meal-items { font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; }
+  .meal-macros { display: flex; gap: 10px; margin-top: 6px; }
+  .macro-pill {
+    font-size: 0.72rem; padding: 2px 8px;
+    border-radius: 20px; font-weight: 600;
+  }
+  .pill-p { background: #dcfce7; color: #15803d; }
+  .pill-c { background: #fef9c3; color: #a16207; }
+  .pill-f { background: #fff7ed; color: #c2410c; }
+
+  /* Water tracker */
+  .water-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+  .water-cup {
+    width: 42px; height: 42px; font-size: 1.3rem;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 10px; background: var(--bg); border: 2px solid var(--border);
+    cursor: pointer; transition: all 0.15s;
+  }
+  .water-cup.filled { background: #bfdbfe; border-color: #3b82f6; }
+
+  /* Weight tracker */
+  .weight-entry { display: flex; gap: 8px; margin-bottom: 10px; }
+  .weight-entry input { flex: 1; }
+  .weight-log { max-height: 180px; overflow-y: auto; }
+  .weight-row {
+    display: flex; justify-content: space-between;
+    padding: 7px 10px; font-size: 0.83rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .weight-row:last-child { border-bottom: none; }
+
+  /* Progress bar */
+  .progress-wrap { margin: 10px 0; }
+  .progress-bar { height: 12px; background: var(--border); border-radius: 10px; overflow: hidden; }
+  .progress-fill { height: 100%; border-radius: 10px; background: linear-gradient(90deg, var(--green), var(--green-light)); transition: width 0.6s; }
+
+  /* Contact buttons */
+  .contact-btn {
+    display: flex; align-items: center; gap: 12px;
+    width: 100%; padding: 14px 16px;
+    border-radius: var(--radius-sm); border: none;
+    font-size: 0.95rem; font-weight: 600;
+    font-family: 'Hind Siliguri', sans-serif;
+    cursor: pointer; margin-bottom: 10px;
+    text-decoration: none; color: #fff;
+    transition: opacity 0.2s;
+  }
+  .contact-btn:hover { opacity: 0.9; }
+  .contact-btn .icon { font-size: 1.5rem; }
+  .wa { background: #25D366; }
+  .yt { background: #FF0000; }
+  .tt { background: #000000; }
+
+  /* Grocery list */
+  .grocery-item {
+    display: flex; align-items: center; gap: 10px;
+    padding: 9px 0; border-bottom: 1px solid var(--border);
+    font-size: 0.88rem;
+  }
+  .grocery-item input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--green); }
+  .grocery-item.done span { text-decoration: line-through; color: var(--text-muted); }
+
+  /* Alert / tip */
+  .tip-box {
+    background: #fffbeb; border: 1px solid var(--gold);
+    border-radius: var(--radius-sm); padding: 11px 14px;
+    font-size: 0.83rem; color: #92400e;
+    margin-bottom: 12px; display: flex; gap: 8px;
+  }
+
+  /* Success screen */
+  .result-hero {
+    background: linear-gradient(135deg, var(--green) 0%, var(--green-light) 100%);
+    color: #fff; border-radius: var(--radius);
+    padding: 20px; margin-bottom: 14px; text-align: center;
+  }
+  .result-hero .big-num { font-size: 2.5rem; font-weight: 700; }
+  .result-hero .label { font-size: 0.85rem; opacity: 0.85; }
+
+  /* Loader */
+  .loader {
+    display: none; text-align: center; padding: 30px;
+    font-size: 0.9rem; color: var(--text-muted);
+  }
+  .spinner {
+    width: 36px; height: 36px; border: 3px solid var(--border);
+    border-top-color: var(--green); border-radius: 50%;
+    animation: spin 0.7s linear infinite; margin: 0 auto 12px;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .divider { height: 1px; background: var(--border); margin: 14px 0; }
+  .section-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); letter-spacing: 1px; margin-bottom: 10px; }
+
+  /* Reminder */
+  .reminder-item {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 0.88rem;
+  }
+  .toggle-switch { position: relative; width: 42px; height: 24px; }
+  .toggle-switch input { display: none; }
+  .toggle-slider {
+    position: absolute; inset: 0; background: var(--border);
+    border-radius: 24px; cursor: pointer; transition: 0.2s;
+  }
+  .toggle-switch input:checked + .toggle-slider { background: var(--green); }
+  .toggle-slider::before {
+    content: ''; position: absolute; width: 18px; height: 18px;
+    background: #fff; border-radius: 50%;
+    left: 3px; top: 3px; transition: 0.2s;
+  }
+  .toggle-switch input:checked + .toggle-slider::before { left: 21px; }
+
+  .week-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; margin-top: 10px; }
+  .week-day { text-align: center; }
+  .day-label { font-size: 0.65rem; color: var(--text-muted); margin-bottom: 4px; font-weight: 600; }
+  .day-dot {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--border); display: flex; align-items: center;
+    justify-content: center; font-size: 0.65rem; margin: 0 auto;
+    cursor: pointer; font-weight: 600; color: var(--text-muted);
+  }
+  .day-dot.done { background: var(--green); color: #fff; }
+
+  .hidden { display: none !important; }
+  .mt8 { margin-top: 8px; }
+  .mt12 { margin-top: 12px; }
+</style>
+</head>
+<body>
+<div class="app-wrap">
+  <!-- Header -->
+  <div class="header">
+    <div class="app-logo">🥗</div>
+    <div class="app-title">ফকির ফিটনেস অ্যান্ড ডায়েট</div>
+    <div class="app-subtitle">বাংলাদেশের সেরা ডায়েট প্ল্যানার</div>
+  </div>
+
+  <!-- Nav -->
+  <div class="nav-tabs">
+    <button class="nav-tab active" onclick="showPage('home')"><span class="tab-icon">🏠</span>হোম</button>
+    <button class="nav-tab" onclick="showPage('plan')"><span class="tab-icon">🍱</span>প্ল্যান</button>
+    <button class="nav-tab" onclick="showPage('tracker')"><span class="tab-icon">📊</span>ট্র্যাকার</button>
+    <button class="nav-tab" onclick="showPage('grocery')"><span class="tab-icon">🛒</span>গ্রোসারি</button>
+    <button class="nav-tab" onclick="showPage('contact')"><span class="tab-icon">📞</span>যোগাযোগ</button>
+  </div>
+
+  <!-- HOME PAGE -->
+  <div class="page active" id="page-home">
+    <div class="tip-box">💡 প্রথমে আপনার তথ্য দিন — আমরা আপনার জন্য পার্ফেক্ট ডায়েট প্ল্যান তৈরি করব!</div>
+
+    <!-- Mandatory -->
+    <div class="card">
+      <div class="card-title">📋 বাধ্যতামূলক তথ্য</div>
+      <div class="form-group">
+        <label>বয়স (বছর)</label>
+        <input type="number" id="age" placeholder="যেমন: ২৫" min="10" max="90">
+      </div>
+      <div class="form-group">
+        <label>উচ্চতা (সেন্টিমিটার)</label>
+        <input type="number" id="height" placeholder="যেমন: ১৭০" min="100" max="230">
+      </div>
+      <div class="form-group">
+        <label>ওজন (কিলোগ্রাম)</label>
+        <input type="number" id="weight" placeholder="যেমন: ৭০" min="30" max="200">
+      </div>
+      <div class="form-group">
+        <label>লিঙ্গ</label>
+        <div class="radio-group">
+          <button class="radio-btn selected" data-group="gender" data-val="male" onclick="selectRadio(this)">পুরুষ 👨</button>
+          <button class="radio-btn" data-group="gender" data-val="female" onclick="selectRadio(this)">মহিলা 👩</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Optional Toggle -->
+    <div class="collapse-toggle" onclick="toggleCollapse(this, 'optional-section')">
+      ⚙️ উন্নত কাস্টমাইজেশন (ঐচ্ছিক)
+      <span class="arrow">▼</span>
+    </div>
+    <div class="collapsible" id="optional-section">
+      <div class="card">
+        <div class="card-title">🏃 কার্যকলাপ ও জীবনধারা</div>
+        <div class="form-group">
+          <label>দৈনন্দিন কার্যকলাপ</label>
+          <div class="radio-group">
+            <button class="radio-btn selected" data-group="activity" data-val="sedentary" onclick="selectRadio(this)">নিষ্ক্রিয়</button>
+            <button class="radio-btn" data-group="activity" data-val="light" onclick="selectRadio(this)">হালকা</button>
+            <button class="radio-btn" data-group="activity" data-val="moderate" onclick="selectRadio(this)">মাঝারি</button>
+            <button class="radio-btn" data-group="activity" data-val="active" onclick="selectRadio(this)">সক্রিয়</button>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>কাজের ধরন (নিজে লিখুন)</label>
+          <textarea id="work-type" placeholder="যেমন: সারাদিন বাড়িতে থাকি, বাজার করি, হাঁটাহাঁটি করি..."></textarea>
+        </div>
+        <div class="form-group">
+          <label>জিম করেন? সপ্তাহে কত দিন</label>
+          <div class="radio-group">
+            <button class="radio-btn selected" data-group="gym" data-val="0" onclick="selectRadio(this)">না</button>
+            <button class="radio-btn" data-group="gym" data-val="2" onclick="selectRadio(this)">২ দিন</button>
+            <button class="radio-btn" data-group="gym" data-val="3" onclick="selectRadio(this)">৩ দিন</button>
+            <button class="radio-btn" data-group="gym" data-val="5" onclick="selectRadio(this)">৫+ দিন</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">🎯 লক্ষ্য ও পরিকল্পনা</div>
+        <div class="form-group">
+          <label>লক্ষ্য</label>
+          <div class="radio-group">
+            <button class="radio-btn selected" data-group="goal" data-val="maintain" onclick="selectRadio(this)">ওজন ধরে রাখা</button>
+            <button class="radio-btn" data-group="goal" data-val="loss" onclick="selectRadio(this)">ওজন কমানো</button>
+            <button class="radio-btn" data-group="goal" data-val="gain" onclick="selectRadio(this)">ওজন বাড়ানো</button>
+            <button class="radio-btn" data-group="goal" data-val="muscle" onclick="selectRadio(this)">মাংসপেশি গড়া</button>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>লক্ষ্য ওজন (কেজি, ঐচ্ছিক)</label>
+          <input type="number" id="target-weight" placeholder="যেমন: ৬৫">
+        </div>
+        <div class="form-group">
+          <label>সময়সীমা (সপ্তাহ)</label>
+          <input type="number" id="timeframe" placeholder="যেমন: ১২">
+        </div>
+        <div class="form-group">
+          <label>বাজেট</label>
+          <div class="radio-group">
+            <button class="radio-btn selected" data-group="budget" data-val="low" onclick="selectRadio(this)">কম 💰</button>
+            <button class="radio-btn" data-group="budget" data-val="medium" onclick="selectRadio(this)">মাঝারি 💰💰</button>
+            <button class="radio-btn" data-group="budget" data-val="high" onclick="selectRadio(this)">বেশি 💰💰💰</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">🍛 খাদ্যাভ্যাস</div>
+        <div class="form-group">
+          <label>খাবারের ধরন</label>
+          <div class="radio-group">
+            <button class="radio-btn selected" data-group="foodtype" data-val="rice" onclick="selectRadio(this)">ভাত প্রধান</button>
+            <button class="radio-btn" data-group="foodtype" data-val="roti" onclick="selectRadio(this)">রুটি প্রধান</button>
+            <button class="radio-btn" data-group="foodtype" data-val="mixed" onclick="selectRadio(this)">মিশ্র</button>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>খাবার সংখ্যা</label>
+          <div class="radio-group">
+            <button class="radio-btn" data-group="meals" data-val="3" onclick="selectRadio(this)">৩ বেলা</button>
+            <button class="radio-btn selected" data-group="meals" data-val="4" onclick="selectRadio(this)">৪ বেলা</button>
+            <button class="radio-btn" data-group="meals" data-val="5" onclick="selectRadio(this)">৫ বেলা</button>
+            <button class="radio-btn" data-group="meals" data-val="if" onclick="selectRadio(this)">IF ডায়েট</button>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>অপছন্দের খাবার</label>
+          <input type="text" id="disliked" placeholder="যেমন: ইলিশ, বেগুন, দুধ">
+        </div>
+        <div class="form-group">
+          <label>অ্যালার্জি / বিধিনিষেধ</label>
+          <input type="text" id="allergy" placeholder="যেমন: বাদাম, গম, সামুদ্রিক মাছ">
+        </div>
+        <div class="form-group">
+          <label>স্বাস্থ্য অবস্থা</label>
+          <div class="radio-group">
+            <button class="radio-btn selected" data-group="health" data-val="none" onclick="selectRadio(this)">কিছু নেই</button>
+            <button class="radio-btn" data-group="health" data-val="diabetes" onclick="selectRadio(this)">ডায়াবেটিস</button>
+            <button class="radio-btn" data-group="health" data-val="bp" onclick="selectRadio(this)">উচ্চ রক্তচাপ</button>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>পরিকল্পনার ধরন</label>
+          <div class="radio-group">
+            <button class="radio-btn selected" data-group="strictness" data-val="flexible" onclick="selectRadio(this)">নমনীয় 😊</button>
+            <button class="radio-btn" data-group="strictness" data-val="strict" onclick="selectRadio(this)">কড়া 💪</button>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>শরীরের লক্ষ্য</label>
+          <div class="radio-group">
+            <button class="radio-btn selected" data-group="bodyfocus" data-val="general" onclick="selectRadio(this)">সাধারণ</button>
+            <button class="radio-btn" data-group="bodyfocus" data-val="belly" onclick="selectRadio(this)">পেটের চর্বি</button>
+            <button class="radio-btn" data-group="bodyfocus" data-val="muscle" onclick="selectRadio(this)">মাংসপেশি</button>
+            <button class="radio-btn" data-group="bodyfocus" data-val="lean" onclick="selectRadio(this)">শীর্ণ শরীর</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-secondary" onclick="generateQuickPlan()">⚡ দ্রুত প্ল্যান</button>
+      <button class="btn btn-primary" onclick="generateFullPlan()">🎯 সম্পূর্ণ প্ল্যান</button>
+    </div>
+    <div id="loader" class="loader">
+      <div class="spinner"></div>
+      আপনার ডায়েট প্ল্যান তৈরি হচ্ছে...
+    </div>
+  </div>
+
+  <!-- PLAN PAGE -->
+  <div class="page" id="page-plan">
+    <div id="plan-empty" class="card" style="text-align:center;padding:30px;">
+      <div style="font-size:3rem;margin-bottom:10px;">🥗</div>
+      <div style="font-weight:700;color:var(--green);margin-bottom:8px;">এখনো কোনো প্ল্যান নেই</div>
+      <div style="font-size:0.85rem;color:var(--text-muted);">হোম পেজ থেকে আপনার তথ্য দিয়ে প্ল্যান তৈরি করুন।</div>
+    </div>
+    <div id="plan-content" class="hidden"></div>
+  </div>
+
+  <!-- TRACKER PAGE -->
+  <div class="page" id="page-tracker">
+    <!-- Water -->
+    <div class="card">
+      <div class="card-title">💧 পানি ট্র্যাকার</div>
+      <div id="water-info" style="font-size:0.85rem;color:var(--text-muted);margin-bottom:8px;">প্রতিদিনের লক্ষ্য: <strong id="water-goal">৮ গ্লাস</strong> (প্রায় ২ লিটার)</div>
+      <div class="water-grid" id="water-cups"></div>
+      <div style="margin-top:10px;font-size:0.85rem;">পান করেছেন: <strong id="water-done">০</strong> / <strong id="water-total">৮</strong> গ্লাস</div>
+      <button class="btn btn-secondary mt8" onclick="resetWater()">🔄 রিসেট</button>
+    </div>
+
+    <!-- Weight Tracker -->
+    <div class="card">
+      <div class="card-title">⚖️ ওজন ট্র্যাকার</div>
+      <div class="weight-entry">
+        <input type="number" id="new-weight" placeholder="আজকের ওজন (কেজি)">
+        <button class="btn btn-primary btn-sm" onclick="logWeight()">যোগ করুন</button>
+      </div>
+      <div id="weight-progress" class="hidden">
+        <div class="section-label">অগ্রগতি</div>
+        <div class="progress-wrap">
+          <div style="display:flex;justify-content:space-between;font-size:0.82rem;margin-bottom:4px;">
+            <span id="prog-start"></span><span id="prog-current"></span><span id="prog-target"></span>
+          </div>
+          <div class="progress-bar"><div class="progress-fill" id="prog-fill" style="width:0%"></div></div>
+        </div>
+      </div>
+      <div class="weight-log" id="weight-log">
+        <div style="text-align:center;padding:20px;font-size:0.85rem;color:var(--text-muted);">এখনো কোনো রেকর্ড নেই</div>
+      </div>
+    </div>
+
+    <!-- Weekly Progress -->
+    <div class="card">
+      <div class="card-title">📅 সাপ্তাহিক অগ্রগতি</div>
+      <div class="week-grid" id="week-grid"></div>
+      <div style="font-size:0.78rem;color:var(--text-muted);margin-top:8px;">যেদিন ডায়েট মেনে চলেছেন সেদিনে ক্লিক করুন ✅</div>
+    </div>
+
+    <!-- Meal Reminders -->
+    <div class="card">
+      <div class="card-title">⏰ খাবারের রিমাইন্ডার</div>
+      <div class="reminder-item">
+        <span>🌅 সকালের নাস্তা (৭:৩০)</span>
+        <label class="toggle-switch"><input type="checkbox" checked><span class="toggle-slider"></span></label>
+      </div>
+      <div class="reminder-item">
+        <span>☀️ দুপুরের খাবার (১:০০)</span>
+        <label class="toggle-switch"><input type="checkbox" checked><span class="toggle-slider"></span></label>
+      </div>
+      <div class="reminder-item">
+        <span>🌆 বিকেলের নাস্তা (৫:০০)</span>
+        <label class="toggle-switch"><input type="checkbox"><span class="toggle-slider"></span></label>
+      </div>
+      <div class="reminder-item">
+        <span>🌙 রাতের খাবার (৮:৩০)</span>
+        <label class="toggle-switch"><input type="checkbox" checked><span class="toggle-slider"></span></label>
+      </div>
+      <div class="tip-box mt8">⚠️ নোটিফিকেশন পেতে ব্রাউজার পারমিশন দিন।</div>
+    </div>
+  </div>
+
+  <!-- GROCERY PAGE -->
+  <div class="page" id="page-grocery">
+    <div id="grocery-empty" class="card" style="text-align:center;padding:30px;">
+      <div style="font-size:3rem;margin-bottom:10px;">🛒</div>
+      <div style="font-weight:700;color:var(--green);margin-bottom:8px;">গ্রোসারি লিস্ট নেই</div>
+      <div style="font-size:0.85rem;color:var(--text-muted);">প্ল্যান তৈরি করলে স্বয়ংক্রিয়ভাবে লিস্ট তৈরি হবে।</div>
+    </div>
+    <div id="grocery-content" class="hidden">
+      <div class="card">
+        <div class="card-title">🛒 সাপ্তাহিক বাজার তালিকা</div>
+        <div id="grocery-list"></div>
+        <button class="btn btn-secondary mt12" onclick="clearGrocery()">✅ সব সম্পন্ন</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT PAGE -->
+  <div class="page" id="page-contact">
+    <div class="card">
+      <div class="card-title">📞 আমাদের সাথে যোগাযোগ করুন</div>
+      <div style="font-size:0.85rem;color:var(--text-muted);margin-bottom:16px;">
+        ব্যক্তিগত ডায়েট পরামর্শ, কাস্টম মিল প্ল্যান বা যেকোনো স্বাস্থ্য বিষয়ক প্রশ্নের জন্য আমাদের সাথে যোগাযোগ করুন।
+      </div>
+      <a class="contact-btn wa" href="https://wa.me/8801XXXXXXXXX?text=হ্যালো%2C আমি একটি ডায়েট পরামর্শ চাই" target="_blank">
+        <span class="icon">💬</span>
+        <div><div style="font-weight:700;">WhatsApp</div><div style="font-size:0.75rem;opacity:0.85;">সরাসরি মেসেজ করুন</div></div>
+      </a>
+      <a class="contact-btn yt" href="https://youtube.com/@fakirfitness" target="_blank">
+        <span class="icon">▶️</span>
+        <div><div style="font-weight:700;">YouTube</div><div style="font-size:0.75rem;opacity:0.85;">ভিডিও দেখুন</div></div>
+      </a>
+      <a class="contact-btn tt" href="https://tiktok.com/@fakirfitness" target="_blank">
+        <span class="icon">🎵</span>
+        <div><div style="font-weight:700;">TikTok</div><div style="font-size:0.75rem;opacity:0.85;">ফলো করুন</div></div>
+      </a>
+    </div>
+    <div class="card">
+      <div class="card-title">ℹ️ অ্যাপ সম্পর্কে</div>
+      <div style="font-size:0.85rem;color:var(--text-muted);line-height:1.7;">
+        <p><strong>ফকির ফিটনেস অ্যান্ড ডায়েট</strong> — বাংলাদেশের প্রথম পূর্ণাঙ্গ অফলাইন ডায়েট প্ল্যানার।</p>
+        <br>
+        <p>🇧🇩 বাংলাদেশের খাবার ডাটাবেস ব্যবহার করে তৈরি।</p>
+        <p>📵 সম্পূর্ণ অফলাইনে কাজ করে।</p>
+        <p>🔬 বৈজ্ঞানিক পদ্ধতিতে (Mifflin-St Jeor) হিসাব করা।</p>
+        <p>🆓 সম্পূর্ণ বিনামূল্যে।</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// ===================== DATA =====================
+const foodDB = {
+  breakfast: {
+    low: [
+      { name: "ভাত + ডাল + ডিম সিদ্ধ", cal: 420, p: 18, c: 62, f: 8 },
+      { name: "রুটি (৩টা) + ডাল + সবজি ভাজি", cal: 380, p: 14, c: 58, f: 7 },
+      { name: "চিড়া + কলা + দুধ", cal: 350, p: 12, c: 60, f: 5 },
+      { name: "মুড়ি + ডিম ভাজি + চা", cal: 320, p: 14, c: 42, f: 10 },
+      { name: "ওটস + কলা + দুধ", cal: 360, p: 13, c: 58, f: 7 },
+    ],
+    medium: [
+      { name: "পরোটা (২টা) + ডিম ভাজি + চা", cal: 480, p: 18, c: 58, f: 18 },
+      { name: "ভাত + মাছের তরকারি + সবজি", cal: 520, p: 28, c: 68, f: 10 },
+      { name: "ব্রেড + ডিম অমলেট + দুধ চা", cal: 440, p: 20, c: 52, f: 15 },
+      { name: "সেমাই + দুধ + কিশমিশ", cal: 420, p: 12, c: 72, f: 8 },
+    ],
+    high: [
+      { name: "ব্রেড + স্ক্র্যাম্বলড এগ + দুধ + ফল", cal: 520, p: 25, c: 60, f: 16 },
+      { name: "ওটস + বাদাম + মধু + দই", cal: 480, p: 18, c: 65, f: 14 },
+      { name: "প্যানকেক + ডিম + দুধ", cal: 560, p: 22, c: 70, f: 18 },
+    ]
+  },
+  lunch: {
+    low: [
+      { name: "ভাত + মসুর ডাল + আলু ভর্তা + শাক", cal: 520, p: 16, c: 90, f: 6 },
+      { name: "ভাত + ডিম তরকারি + সবজি", cal: 580, p: 24, c: 88, f: 12 },
+      { name: "ভাত + ডাল + কুমড়া ভাজি + পাপড়", cal: 490, p: 14, c: 84, f: 8 },
+      { name: "ভাত + মাছের ঝোল (রুই/কাতলা) + শাক", cal: 560, p: 30, c: 78, f: 10 },
+      { name: "খিচুড়ি + ডিম ভাজি + আচার", cal: 540, p: 20, c: 82, f: 14 },
+    ],
+    medium: [
+      { name: "ভাত + মুরগির ঝোল + সবজি + ডাল", cal: 680, p: 42, c: 88, f: 16 },
+      { name: "ভাত + গরুর মাংস + শাক + ডাল", cal: 720, p: 45, c: 82, f: 22 },
+      { name: "বিরিয়ানি (ছোট) + সালাদ + রায়তা", cal: 650, p: 35, c: 85, f: 18 },
+    ],
+    high: [
+      { name: "ভাত + চিকেন গ্রিল + সালাদ + দই", cal: 680, p: 52, c: 72, f: 16 },
+      { name: "ব্রাউন রাইস + মাছ + স্টিমড সবজি", cal: 620, p: 45, c: 78, f: 12 },
+    ]
+  },
+  snack: {
+    low: [
+      { name: "কলা + চা", cal: 130, p: 2, c: 30, f: 1 },
+      { name: "মুড়ি + বাদাম", cal: 160, p: 5, c: 28, f: 5 },
+      { name: "বিস্কুট + চা", cal: 150, p: 3, c: 26, f: 4 },
+      { name: "পেয়ারা + লবণ", cal: 80, p: 1, c: 18, f: 1 },
+    ],
+    medium: [
+      { name: "দই + ফল", cal: 180, p: 8, c: 28, f: 4 },
+      { name: "সিদ্ধ ডিম + ফল", cal: 160, p: 12, c: 12, f: 6 },
+      { name: "বাদাম + খেজুর", cal: 200, p: 6, c: 22, f: 12 },
+    ],
+    high: [
+      { name: "প্রোটিন শেক + বাদাম", cal: 220, p: 25, c: 12, f: 8 },
+      { name: "দই + গ্রানোলা + ফল", cal: 250, p: 12, c: 35, f: 7 },
+    ]
+  },
+  dinner: {
+    low: [
+      { name: "ভাত (কম) + ডাল + সবজি ভাজি", cal: 420, p: 14, c: 72, f: 6 },
+      { name: "রুটি (২টা) + ডাল + সবজি", cal: 380, p: 12, c: 60, f: 7 },
+      { name: "ভাত + ডিম ভুনা + শাক", cal: 460, p: 20, c: 70, f: 12 },
+      { name: "খিচুড়ি + সবজি", cal: 400, p: 14, c: 68, f: 8 },
+    ],
+    medium: [
+      { name: "ভাত + মাছ + সবজি + ডাল", cal: 580, p: 35, c: 78, f: 14 },
+      { name: "রুটি (৩টা) + মুরগির ঝোল + সালাদ", cal: 540, p: 38, c: 62, f: 16 },
+    ],
+    high: [
+      { name: "ব্রাউন রাইস + গ্রিলড চিকেন + স্টিমড ভেজ", cal: 560, p: 48, c: 60, f: 14 },
+      { name: "রুটি + দই + সালাদ + মুরগি", cal: 520, p: 40, c: 55, f: 15 },
+    ]
+  }
+};
+
+const groceryTemplate = {
+  low: ["চাল (৫ কেজি)", "মসুর ডাল (১ কেজি)", "ডিম (১ ডজন)", "আলু (২ কেজি)", "পেঁয়াজ (১ কেজি)", "রসুন (২৫০ গ্রাম)", "টমেটো (৫০০ গ্রাম)", "শাক-সবজি (মৌসুমি)", "সরিষার তেল (৫০০ মিলি)", "কলা (১ ডজন)", "পেয়ারা (৫০০ গ্রাম)", "আদা (১০০ গ্রাম)", "হলুদ, মরিচ, জিরা"],
+  medium: ["চাল/আটা (৫ কেজি)", "মুরগি (১ কেজি)", "মাছ (১ কেজি)", "ডিম (২ ডজন)", "মিক্স সবজি (২ কেজি)", "দই (৫০০ গ্রাম)", "দুধ (১ লিটার)", "ফলমূল মিক্স", "বাদাম (২৫০ গ্রাম)", "মসলাপাতি", "ভোজ্য তেল (১ লিটার)", "পেঁয়াজ + রসুন + আদা"],
+  high: ["ব্রাউন রাইস (২ কেজি)", "আটা (২ কেজি)", "মুরগির বুকের মাংস (৫০০ গ্রাম)", "সামুদ্রিক মাছ (৫০০ গ্রাম)", "ডিম (২ ডজন)", "দই (১ কেজি)", "দুধ (২ লিটার)", "মিক্স বাদাম (৫০০ গ্রাম)", "অলিভ ওয়েল (৫০০ মিলি)", "ফলমূল প্রিমিয়াম", "স্বাস্থ্যকর স্ন্যাক্স", "ওটস (৫০০ গ্রাম)"]
+};
+
+// ===================== STATE =====================
+let state = {
+  gender: 'male', activity: 'sedentary', gym: '0',
+  goal: 'maintain', budget: 'low', foodtype: 'rice',
+  meals: '4', health: 'none', strictness: 'flexible',
+  bodyfocus: 'general', planGenerated: false,
+  waterDone: 0, waterGoal: 8,
+  weights: JSON.parse(localStorage.getItem('ff_weights') || '[]'),
+  weekDays: JSON.parse(localStorage.getItem('ff_week') || '[false,false,false,false,false,false,false]'),
+  currentCalories: 0, targetWeight: null, startWeight: null
+};
+
+// ===================== NAVIGATION =====================
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  event.currentTarget.classList.add('active');
+  if (id === 'tracker') renderTracker();
+}
+
+// ===================== RADIO BUTTONS =====================
+function selectRadio(el) {
+  const group = el.dataset.group;
+  document.querySelectorAll(`[data-group="${group}"]`).forEach(b => b.classList.remove('selected'));
+  el.classList.add('selected');
+  state[group] = el.dataset.val;
+}
+
+function toggleCollapse(toggle, targetId) {
+  toggle.classList.toggle('open');
+  document.getElementById(targetId).classList.toggle('open');
+}
+
+// ===================== CALCULATIONS =====================
+function calcBMR(weight, height, age, gender) {
+  if (gender === 'male') return 10 * weight + 6.25 * height - 5 * age + 5;
+  return 10 * weight + 6.25 * height - 5 * age - 161;
+}
+
+function activityMultiplier(activity, gym) {
+  const base = { sedentary: 1.2, light: 1.375, moderate: 1.55, active: 1.725 };
+  let mult = base[activity] || 1.375;
+  const gymDays = parseInt(gym) || 0;
+  if (gymDays >= 5) mult += 0.15;
+  else if (gymDays >= 3) mult += 0.08;
+  else if (gymDays >= 2) mult += 0.04;
+  return mult;
+}
+
+function getBMIInfo(bmi) {
+  if (bmi < 18.5) return { label: "কম ওজন", cat: "under", suggest: "gain" };
+  if (bmi < 25) return { label: "স্বাভাবিক", cat: "normal", suggest: "maintain" };
+  if (bmi < 30) return { label: "অতিরিক্ত ওজন", cat: "over", suggest: "loss" };
+  return { label: "স্থূলকায়", cat: "obese", suggest: "loss" };
+}
+
+function calAdjust(goal, health) {
+  const adj = { maintain: 0, gain: 350, muscle: 300, loss: -400 };
+  let a = adj[goal] || 0;
+  if (health === 'diabetes') a = Math.min(a, -100);
+  return a;
+}
+
+function getMacros(cal, goal) {
+  if (goal === 'muscle' || goal === 'gain') return { p: Math.round(cal * 0.30 / 4), c: Math.round(cal * 0.45 / 4), f: Math.round(cal * 0.25 / 9) };
+  if (goal === 'loss') return { p: Math.round(cal * 0.35 / 4), c: Math.round(cal * 0.40 / 4), f: Math.round(cal * 0.25 / 9) };
+  return { p: Math.round(cal * 0.25 / 4), c: Math.round(cal * 0.50 / 4), f: Math.round(cal * 0.25 / 9) };
+}
+
+// ===================== PLAN GENERATION =====================
+function getInputs() {
+  return {
+    age: parseInt(document.getElementById('age').value),
+    height: parseFloat(document.getElementById('height').value),
+    weight: parseFloat(document.getElementById('weight').value),
+    targetWeight: parseFloat(document.getElementById('target-weight').value) || null,
+    timeframe: parseInt(document.getElementById('timeframe').value) || null,
+    disliked: document.getElementById('disliked').value,
+    allergy: document.getElementById('allergy').value,
+  };
+}
+
+function validateInputs(inp) {
+  if (!inp.age || inp.age < 10 || inp.age > 90) return "সঠিক বয়স দিন (১০-৯০)";
+  if (!inp.height || inp.height < 100 || inp.height > 230) return "সঠিক উচ্চতা দিন (১০০-২৩০ সেমি)";
+  if (!inp.weight || inp.weight < 30 || inp.weight > 200) return "সঠিক ওজন দিন (৩০-২০০ কেজি)";
+  return null;
+}
+
+function pickMeal(category, budget) {
+  const pool = foodDB[category][budget] || foodDB[category]['low'];
+  return pool[Math.floor(Math.random() * pool.length)];
+}
+
+function generatePlanHTML(inp, bmi, bmiInfo, tdee, targetCal, macros, goal, budget) {
+  const meals4 = state.meals !== '3' && state.meals !== '5';
+  const showSnack = state.meals !== '3';
+
+  const bf = pickMeal('breakfast', budget);
+  const lu = pickMeal('lunch', budget);
+  const sn = showSnack ? pickMeal('snack', budget) : null;
+  const di = pickMeal('dinner', budget);
+
+  let safetyNote = '';
+  if (inp.targetWeight && inp.timeframe) {
+    const diff = Math.abs(inp.weight - inp.targetWeight);
+    const maxSafe = inp.timeframe * 1;
+    if (diff > maxSafe) safetyNote = `⚠️ নিরাপদ সীমা: ${inp.timeframe} সপ্তাহে সর্বোচ্চ ${maxSafe.toFixed(1)} কেজি পরিবর্তন সম্ভব।`;
+  }
+
+  const goalLabels = { maintain: "ওজন ধরে রাখা", loss: "ওজন কমানো", gain: "ওজন বাড়ানো", muscle: "মাংসপেশি গড়া" };
+  const budgetLabels = { low: "কম বাজেট 💰", medium: "মাঝারি বাজেট 💰💰", high: "বেশি বাজেট 💰💰💰" };
+
+  return `
+    <div class="result-hero">
+      <div class="big-num">${Math.round(targetCal)}</div>
+      <div class="label">দৈনিক ক্যালরি লক্ষ্য (kcal)</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📊 আপনার স্বাস্থ্য তথ্য</div>
+      <div class="stat-grid">
+        <div class="stat-box"><div class="val">${bmi.toFixed(1)}</div><div class="lbl">BMI</div></div>
+        <div class="stat-box"><div class="val">${Math.round(tdee)}</div><div class="lbl">TDEE (kcal)</div></div>
+        <div class="stat-box"><div class="val">${inp.weight} কেজি</div><div class="lbl">বর্তমান ওজন</div></div>
+        <div class="stat-box"><div class="val">${inp.height} সেমি</div><div class="lbl">উচ্চতা</div></div>
+      </div>
+      <div style="margin-bottom:8px;">
+        BMI অবস্থা: <span class="bmi-badge bmi-${bmiInfo.cat}">${bmiInfo.label} (${bmi.toFixed(1)})</span>
+      </div>
+      <div style="font-size:0.83rem;color:var(--text-muted);">
+        🎯 লক্ষ্য: ${goalLabels[goal]} &nbsp;|&nbsp; 💰 বাজেট: ${budgetLabels[budget]}
+      </div>
+      ${safetyNote ? `<div class="tip-box mt8">${safetyNote}</div>` : ''}
+    </div>
+
+    <div class="card">
+      <div class="card-title">🥩 ম্যাক্রোনিউট্রিয়েন্ট</div>
+      <div class="macro-bar">
+        <div class="macro-label"><span>🟢 প্রোটিন</span><span>${macros.p}গ্রাম</span></div>
+        <div class="macro-track"><div class="macro-fill fill-p" style="width:${Math.min(100,macros.p*4/targetCal*100)}%"></div></div>
+      </div>
+      <div class="macro-bar">
+        <div class="macro-label"><span>🟡 কার্বোহাইড্রেট</span><span>${macros.c}গ্রাম</span></div>
+        <div class="macro-track"><div class="macro-fill fill-c" style="width:${Math.min(100,macros.c*4/targetCal*100)}%"></div></div>
+      </div>
+      <div class="macro-bar">
+        <div class="macro-label"><span>🟠 ফ্যাট</span><span>${macros.f}গ্রাম</span></div>
+        <div class="macro-track"><div class="macro-fill fill-f" style="width:${Math.min(100,macros.f*9/targetCal*100)}%"></div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🍱 আজকের ডায়েট প্ল্যান</div>
+
+      <div class="meal-card">
+        <div class="meal-header">
+          <div class="meal-name">🌅 সকালের নাস্তা</div>
+          <div class="meal-cal">${bf.cal} kcal</div>
+        </div>
+        <div class="meal-items">${bf.name}</div>
+        <div class="meal-macros">
+          <span class="macro-pill pill-p">প্র: ${bf.p}গ্রা</span>
+          <span class="macro-pill pill-c">কা: ${bf.c}গ্রা</span>
+          <span class="macro-pill pill-f">ফ্যা: ${bf.f}গ্রা</span>
+        </div>
+      </div>
+
+      <div class="meal-card">
+        <div class="meal-header">
+          <div class="meal-name">☀️ দুপুরের খাবার</div>
+          <div class="meal-cal">${lu.cal} kcal</div>
+        </div>
+        <div class="meal-items">${lu.name}</div>
+        <div class="meal-macros">
+          <span class="macro-pill pill-p">প্র: ${lu.p}গ্রা</span>
+          <span class="macro-pill pill-c">কা: ${lu.c}গ্রা</span>
+          <span class="macro-pill pill-f">ফ্যা: ${lu.f}গ্রা</span>
+        </div>
+      </div>
+
+      ${sn ? `
+      <div class="meal-card">
+        <div class="meal-header">
+          <div class="meal-name">🌆 বিকেলের নাস্তা</div>
+          <div class="meal-cal">${sn.cal} kcal</div>
+        </div>
+        <div class="meal-items">${sn.name}</div>
+        <div class="meal-macros">
+          <span class="macro-pill pill-p">প্র: ${sn.p}গ্রা</span>
+          <span class="macro-pill pill-c">কা: ${sn.c}গ্রা</span>
+          <span class="macro-pill pill-f">ফ্যা: ${sn.f}গ্রা</span>
+        </div>
+      </div>` : ''}
+
+      <div class="meal-card">
+        <div class="meal-header">
+          <div class="meal-name">🌙 রাতের খাবার</div>
+          <div class="meal-cal">${di.cal} kcal</div>
+        </div>
+        <div class="meal-items">${di.name}</div>
+        <div class="meal-macros">
+          <span class="macro-pill pill-p">প্র: ${di.p}গ্রা</span>
+          <span class="macro-pill pill-c">কা: ${di.c}গ্রা</span>
+          <span class="macro-pill pill-f">ফ্যা: ${di.f}গ্রা</span>
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="generateFullPlan(); showPage2('plan')">🔄 নতুন মেনু</button>
+        <button class="btn btn-primary" onclick="showPage2('grocery')">🛒 বাজার তালিকা</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">💡 স্বাস্থ্য টিপস</div>
+      ${getTips(goal, bmiInfo, state.health)}
+    </div>
+  `;
+}
+
+function getTips(goal, bmiInfo, health) {
+  const tips = [];
+  if (goal === 'loss') tips.push("🥗 রাতে ভাত কম খান, সবজি ও প্রোটিন বেশি রাখুন।", "🚶 প্রতিদিন ৩০ মিনিট হাঁটুন।");
+  if (goal === 'gain') tips.push("🍛 প্রতিটি বেলায় ভালোমতো খান, কোনো বেলা বাদ দেবেন না।", "💪 ব্যায়াম করলে পেশি গড়া দ্রুত হবে।");
+  if (goal === 'muscle') tips.push("🥩 প্রতি কেজি ওজনে ১.৬-২.০ গ্রাম প্রোটিন খান।", "💪 ওজন প্রশিক্ষণ করুন সপ্তাহে ৩-৫ দিন।");
+  if (health === 'diabetes') tips.push("🩺 মিষ্টি ও সাদা ভাত কম খান। বিভক্ত খাবার খান।");
+  if (health === 'bp') tips.push("🧂 লবণ কম খান। প্রতিদিন প্রচুর পানি পান করুন।");
+  tips.push("💧 দিনে ৮-১০ গ্লাস পানি পান করুন।", "😴 রাতে ৭-৮ ঘণ্টা ঘুমান।");
+  return tips.map(t => `<div style="padding:5px 0;font-size:0.85rem;border-bottom:1px solid var(--border);">${t}</div>`).join('');
+}
+
+function generatePlan(quick) {
+  const inp = getInputs();
+  const err = validateInputs(inp);
+  if (err) { alert(err); return; }
+
+  const loader = document.getElementById('loader');
+  loader.style.display = 'block';
+
+  setTimeout(() => {
+    const bmi = inp.weight / ((inp.height / 100) ** 2);
+    const bmiInfo = getBMIInfo(bmi);
+    const goal = state.goal === 'maintain' && !quick ? state.goal : (quick ? bmiInfo.suggest : state.goal);
+    const budget = state.budget;
+
+    const bmr = calcBMR(inp.weight, inp.height, inp.age, state.gender);
+    const mult = activityMultiplier(state.activity, state.gym);
+    const tdee = bmr * mult;
+    const adj = calAdjust(goal, state.health);
+    const targetCal = Math.max(1200, tdee + adj);
+    const macros = getMacros(targetCal, goal);
+
+    state.currentCalories = targetCal;
+    state.targetWeight = inp.targetWeight;
+    state.startWeight = inp.weight;
+    if (!state.weights.length) state.weights.push({ date: today(), weight: inp.weight });
+
+    // Water goal based on weight
+    state.waterGoal = Math.round(inp.weight * 0.033 * 4);
+
+    const planHTML = generatePlanHTML(inp, bmi, bmiInfo, tdee, targetCal, macros, goal, budget);
+
+    document.getElementById('plan-empty').classList.add('hidden');
+    const planContent = document.getElementById('plan-content');
+    planContent.classList.remove('hidden');
+    planContent.innerHTML = planHTML;
+
+    // Grocery
+    generateGrocery(budget);
+
+    loader.style.display = 'none';
+    state.planGenerated = true;
+
+    // Switch to plan page
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('page-plan').classList.add('active');
+    document.querySelectorAll('.nav-tab')[1].classList.add('active');
+  }, 800);
+}
+
+function generateQuickPlan() { generatePlan(true); }
+function generateFullPlan() { generatePlan(false); }
+
+function showPage2(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  const idx = { home: 0, plan: 1, tracker: 2, grocery: 3, contact: 4 };
+  document.querySelectorAll('.nav-tab')[idx[id]].classList.add('active');
+  if (id === 'tracker') renderTracker();
+}
+
+// ===================== GROCERY =====================
+function generateGrocery(budget) {
+  const items = groceryTemplate[budget] || groceryTemplate['low'];
+  document.getElementById('grocery-empty').classList.add('hidden');
+  const gc = document.getElementById('grocery-content');
+  gc.classList.remove('hidden');
+  const gl = document.getElementById('grocery-list');
+  gl.innerHTML = items.map((item, i) => `
+    <div class="grocery-item" id="gi-${i}">
+      <input type="checkbox" onchange="toggleGrocery(${i}, this)">
+      <span>${item}</span>
+    </div>
+  `).join('');
+}
+
+function toggleGrocery(i, cb) {
+  document.getElementById('gi-' + i).classList.toggle('done', cb.checked);
+}
+function clearGrocery() {
+  document.querySelectorAll('.grocery-item input[type="checkbox"]').forEach(cb => { cb.checked = true; cb.dispatchEvent(new Event('change')); });
+}
+
+// ===================== WATER =====================
+function renderWater() {
+  const cups = document.getElementById('water-cups');
+  const goal = state.waterGoal;
+  document.getElementById('water-goal').textContent = goal + ' গ্লাস';
+  document.getElementById('water-total').textContent = goal;
+  document.getElementById('water-done').textContent = state.waterDone;
+  cups.innerHTML = '';
+  for (let i = 0; i < goal; i++) {
+    const d = document.createElement('div');
+    d.className = 'water-cup' + (i < state.waterDone ? ' filled' : '');
+    d.textContent = '💧';
+    d.onclick = () => { state.waterDone = i < state.waterDone ? i : i + 1; renderWater(); };
+    cups.appendChild(d);
+  }
+}
+function resetWater() { state.waterDone = 0; renderWater(); }
+
+// ===================== WEIGHT =====================
+function today() {
+  const d = new Date();
+  return `${d.getDate()}/${d.getMonth()+1}/${d.getFullYear()}`;
+}
+
+function logWeight() {
+  const val = parseFloat(document.getElementById('new-weight').value);
+  if (!val || val < 30 || val > 200) { alert("সঠিক ওজন দিন"); return; }
+  state.weights.unshift({ date: today(), weight: val });
+  if (state.weights.length > 30) state.weights.pop();
+  localStorage.setItem('ff_weights', JSON.stringify(state.weights));
+  document.getElementById('new-weight').value = '';
+  renderWeightLog();
+}
+
+function renderWeightLog() {
+  const log = document.getElementById('weight-log');
+  if (!state.weights.length) {
+    log.innerHTML = '<div style="text-align:center;padding:20px;font-size:0.85rem;color:var(--text-muted);">এখনো কোনো রেকর্ড নেই</div>';
+    return;
+  }
+  log.innerHTML = state.weights.map(w => `
+    <div class="weight-row">
+      <span>${w.date}</span>
+      <strong>${w.weight} কেজি</strong>
+    </div>
+  `).join('');
+
+  if (state.startWeight && state.targetWeight) {
+    const prog = document.getElementById('weight-progress');
+    prog.classList.remove('hidden');
+    const current = state.weights[0].weight;
+    const start = state.startWeight;
+    const target = state.targetWeight;
+    const total = Math.abs(target - start);
+    const done = Math.abs(current - start);
+    const pct = total > 0 ? Math.min(100, done / total * 100) : 0;
+    document.getElementById('prog-start').textContent = `শুরু: ${start}কেজি`;
+    document.getElementById('prog-current').textContent = `এখন: ${current}কেজি`;
+    document.getElementById('prog-target').textContent = `লক্ষ্য: ${target}কেজি`;
+    document.getElementById('prog-fill').style.width = pct + '%';
+  }
+}
+
+// ===================== WEEK GRID =====================
+function renderWeekGrid() {
+  const days = ['রবি', 'সোম', 'মঙ্গল', 'বুধ', 'বৃহ', 'শুক্র', 'শনি'];
+  const grid = document.getElementById('week-grid');
+  grid.innerHTML = days.map((d, i) => `
+    <div class="week-day">
+      <div class="day-label">${d}</div>
+      <div class="day-dot${state.weekDays[i] ? ' done' : ''}" onclick="toggleDay(${i})">${state.weekDays[i] ? '✅' : (i+1)}</div>
+    </div>
+  `).join('');
+}
+
+function toggleDay(i) {
+  state.weekDays[i] = !state.weekDays[i];
+  localStorage.setItem('ff_week', JSON.stringify(state.weekDays));
+  renderWeekGrid();
+}
+
+// ===================== TRACKER RENDER =====================
+function renderTracker() {
+  renderWater();
+  renderWeightLog();
+  renderWeekGrid();
+}
+
+// ===================== INIT =====================
+renderTracker();
+</script>
+</body>
+</html>
