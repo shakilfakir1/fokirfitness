@@ -1,9 +1,10 @@
 <!DOCTYPE html>
+
 <html lang="bn">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ফকির ফিটনেস অ্যান্ড ডায়েট</title>
+<title>ফকির ফিটনেস অ্যান্ড ডায়েট প্ল্যানার</title>
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#2d6a4f">
 <meta name="mobile-web-app-capable" content="yes">
@@ -23,10 +24,11 @@ body{font-family:'Hind Siliguri',sans-serif;background:var(--bg);color:var(--tex
 .logo{font-size:2rem;margin-bottom:3px}
 .ttl{font-family:'Tiro Bangla',serif;font-size:1.35rem;font-weight:700}
 .sub{font-size:.8rem;opacity:.85;margin-top:2px}
-.nav{display:flex;background:#fff;border-bottom:2px solid var(--border);position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(45,106,79,.07)}
-.ntab{flex:1;padding:8px 1px;text-align:center;font-size:.68rem;color:var(--muted);cursor:pointer;border:none;background:none;font-family:'Hind Siliguri',sans-serif;font-weight:500;transition:all .2s;border-bottom:3px solid transparent;margin-bottom:-2px}
+.nav{display:flex;background:#fff;border-bottom:2px solid var(--border);position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(45,106,79,.07);overflow-x:auto}
+.nav::-webkit-scrollbar{height:0}
+.ntab{flex:0 0 auto;padding:8px 6px;text-align:center;font-size:.6rem;color:var(--muted);cursor:pointer;border:none;background:none;font-family:'Hind Siliguri',sans-serif;font-weight:500;transition:all .2s;border-bottom:3px solid transparent;margin-bottom:-2px;min-width:52px}
 .ntab.active{color:var(--green);border-bottom-color:var(--green)}
-.ni{font-size:1rem;display:block}
+.ni{font-size:.95rem;display:block}
 .page{display:none;padding:13px}
 .page.active{display:block}
 .card{background:#fff;border-radius:var(--r);padding:15px;margin-bottom:11px;box-shadow:var(--sh);border:1px solid var(--border)}
@@ -54,29 +56,21 @@ textarea{resize:vertical;min-height:60px}
 .hft{display:flex;gap:7px;align-items:center}
 .hft>div{flex:1}
 .hcmd{font-size:.76rem;color:var(--muted);white-space:nowrap;min-width:50px}
-
-/* BMI BADGES */
 .bmi-badge{display:inline-flex;align-items:center;gap:4px;padding:4px 11px;border-radius:18px;font-size:.8rem;font-weight:700}
 .bd-red{background:#fee2e2;color:#b91c1c}
 .bd-blue{background:#dbeafe;color:#1d4ed8}
 .bd-green{background:#d1fae5;color:#065f46}
 .bd-yellow{background:#fef9c3;color:#a16207}
 .bd-orange{background:#ffedd5;color:#c2410c}
-
-/* BMI ADVICE */
 .bmi-adv{border-radius:var(--rs);padding:11px 13px;margin-bottom:9px;font-size:.84rem;font-weight:600;line-height:1.65;border:1.5px solid}
 .adv-red{background:#fff0f0;border-color:#fca5a5;color:#991b1b}
 .adv-yellow{background:#fffbeb;border-color:#fcd34d;color:#92400e}
 .adv-green{background:#f0fdf4;border-color:#86efac;color:#14532d}
 .adv-blue{background:#eff6ff;border-color:#93c5fd;color:#1e3a8a}
-
-/* STATS */
 .sg{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:11px}
 .sb{background:var(--gbg);border-radius:var(--rs);padding:10px;text-align:center}
 .sb .v{font-size:1.2rem;font-weight:700;color:var(--green)}
 .sb .l{font-size:.68rem;color:var(--muted);margin-top:2px}
-
-/* MACRO */
 .mb{margin-bottom:7px}
 .ml{display:flex;justify-content:space-between;font-size:.79rem;margin-bottom:3px}
 .mt2{height:7px;background:var(--border);border-radius:10px;overflow:hidden}
@@ -84,8 +78,6 @@ textarea{resize:vertical;min-height:60px}
 .fp{background:#40916c}
 .fc{background:#e9c46a}
 .ff{background:#f4a261}
-
-/* MEAL */
 .mc{background:var(--gbg);border-radius:var(--rs);padding:11px 12px;margin-bottom:8px;border-left:4px solid var(--green)}
 .mh{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
 .mn2{font-weight:700;font-size:.88rem;color:var(--green)}
@@ -97,32 +89,22 @@ textarea{resize:vertical;min-height:60px}
 .pp{background:#dcfce7;color:#15803d}
 .cp{background:#fef9c3;color:#a16207}
 .fp3{background:#fff7ed;color:#c2410c}
-
-/* WATER */
 .wg{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
 .wc{width:38px;height:38px;font-size:1.15rem;display:flex;align-items:center;justify-content:center;border-radius:8px;background:var(--bg);border:2px solid var(--border);cursor:pointer;transition:all .15s}
 .wc.full{background:#bfdbfe;border-color:#3b82f6}
-
-/* WEIGHT LOG */
 .we{display:flex;gap:7px;margin-bottom:8px}
 .we input{flex:1}
 .wlog{max-height:160px;overflow-y:auto}
 .wr{display:flex;justify-content:space-between;padding:6px 8px;font-size:.81rem;border-bottom:1px solid var(--border)}
 .wr:last-child{border-bottom:none}
-
-/* PROGRESS */
 .pw{margin:8px 0}
 .pb{height:10px;background:var(--border);border-radius:10px;overflow:hidden}
 .pf{height:100%;border-radius:10px;background:linear-gradient(90deg,#2d6a4f,#40916c);transition:width .6s}
-
-/* WEEK */
 .wkg{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-top:8px}
 .wkd{text-align:center}
 .dl{font-size:.61rem;color:var(--muted);margin-bottom:3px;font-weight:600}
 .dd{width:26px;height:26px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:.61rem;margin:0 auto;cursor:pointer;font-weight:600;color:var(--muted)}
 .dd.done{background:var(--green);color:#fff}
-
-/* REMINDER */
 .ri{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border);font-size:.84rem}
 .ts{position:relative;width:40px;height:22px}
 .ts input{display:none}
@@ -130,15 +112,14 @@ textarea{resize:vertical;min-height:60px}
 .ts input:checked+.tsl{background:var(--green)}
 .tsl::before{content:'';position:absolute;width:16px;height:16px;background:#fff;border-radius:50%;left:3px;top:3px;transition:.2s}
 .ts input:checked+.tsl::before{left:21px}
-
 /* CONTACT */
 .cbtn{display:flex;align-items:center;gap:10px;width:100%;padding:12px 14px;border-radius:var(--rs);border:none;font-size:.9rem;font-weight:600;font-family:'Hind Siliguri',sans-serif;cursor:pointer;margin-bottom:8px;text-decoration:none;color:#fff;transition:opacity .2s}
 .cbtn:hover{opacity:.9}
-.ci{font-size:1.3rem}
-.fb{background:#1877F2}
-.yt{background:#FF0000}
-.tt{background:#010101}
-
+.ci{font-size:1.3rem;width:28px;text-align:center}
+.fb-btn{background:#1877F2}
+.yt-btn{background:#FF0000}
+.tt-btn{background:#010101}
+.ig-btn{background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)}
 /* NUTRITION */
 .nsearch{display:flex;gap:7px;margin-bottom:11px}
 .nsearch input{flex:1}
@@ -149,23 +130,60 @@ textarea{resize:vertical;min-height:60px}
 .nb{background:#fff;border-radius:8px;padding:8px;text-align:center;border:1px solid var(--border)}
 .nb .nv{font-size:.97rem;font-weight:700;color:var(--green)}
 .nb .nk{font-size:.66rem;color:var(--muted)}
-
-/* RESULT HERO */
+.ncat-tabs{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px}
+.ncat-tab{padding:5px 10px;border-radius:18px;border:1.5px solid var(--border);font-size:.72rem;cursor:pointer;background:var(--bg);color:var(--muted);font-weight:500;transition:all .18s;font-family:'Hind Siliguri',sans-serif}
+.ncat-tab.active{background:var(--green);color:#fff;border-color:var(--green)}
+.nfood-grid{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px}
+.nfbtn{padding:5px 10px;border-radius:18px;border:1.5px solid var(--border);font-size:.74rem;cursor:pointer;background:#fff;color:var(--text);font-weight:500;transition:all .18s;font-family:'Hind Siliguri',sans-serif}
+.nfbtn:hover{background:var(--gbg);border-color:var(--green)}
+/* RESULT */
 .rh{background:linear-gradient(135deg,#2d6a4f,#40916c);color:#fff;border-radius:var(--r);padding:17px;margin-bottom:11px;text-align:center}
 .rh .bn{font-size:2.3rem;font-weight:700}
 .rh .rl{font-size:.81rem;opacity:.85}
-
-/* LOADER */
 .ldr{display:none;text-align:center;padding:26px;font-size:.86rem;color:var(--muted)}
 .sp{width:32px;height:32px;border:3px solid var(--border);border-top-color:var(--green);border-radius:50%;animation:spin .7s linear infinite;margin:0 auto 10px}
 @keyframes spin{to{transform:rotate(360deg)}}
-
 .tip{background:#fffbeb;border:1px solid #e9c46a;border-radius:var(--rs);padding:10px 12px;font-size:.79rem;color:#92400e;margin-bottom:10px;display:flex;gap:7px}
 .slbl{font-size:.71rem;font-weight:700;text-transform:uppercase;color:var(--muted);letter-spacing:1px;margin-bottom:8px}
 .hidden{display:none!important}
 .mt8{margin-top:8px}
 .mt12{margin-top:12px}
-
+/* TRACKER EXTRA */
+.trk-sum{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:11px}
+.tsb{background:linear-gradient(135deg,var(--gbg),#fff);border-radius:var(--rs);padding:11px;text-align:center;border:1px solid var(--border)}
+.tsb .tv{font-size:1.25rem;font-weight:700;color:var(--green)}
+.tsb .tl{font-size:.65rem;color:var(--muted);margin-top:2px}
+.ex-row{display:flex;gap:7px;align-items:flex-end;margin-bottom:8px;flex-wrap:wrap}
+.ex-row>div{flex:1;min-width:80px}
+.ex-log{max-height:180px;overflow-y:auto}
+.ex-item{display:flex;justify-content:space-between;align-items:center;padding:7px 9px;font-size:.81rem;border-bottom:1px solid var(--border);background:#fff}
+.ex-item:last-child{border-bottom:none}
+.cal-log{max-height:180px;overflow-y:auto}
+.cal-item{display:flex;justify-content:space-between;align-items:center;padding:6px 9px;font-size:.79rem;border-bottom:1px solid var(--border)}
+.sleep-row{display:flex;gap:10px;margin-bottom:8px}
+.sleep-row>div{flex:1}
+.steps-big{font-size:2.5rem;font-weight:700;color:var(--green);text-align:center;padding:10px 0}
+/* EXERCISE (ব্যায়াম) */
+.ex-card{background:#fff;border-radius:var(--r);margin-bottom:10px;box-shadow:var(--sh);border:1px solid var(--border);overflow:hidden;cursor:pointer}
+.ex-card-hdr{padding:14px 15px;display:flex;align-items:center;justify-content:space-between}
+.ex-card-ico{font-size:1.6rem;margin-right:10px}
+.ex-card-ttl{font-weight:700;font-size:.95rem;color:var(--green)}
+.ex-card-sub{font-size:.74rem;color:var(--muted);margin-top:2px}
+.ex-vid{padding:0 15px 15px}
+.ex-vid iframe{width:100%;border-radius:10px;border:none}
+.ex-arrow{font-size:1rem;color:var(--muted);transition:transform .25s}
+.ex-card.open .ex-arrow{transform:rotate(180deg)}
+/* WORKOUT PLAN */
+.wp-day{background:#fff;border-radius:var(--r);margin-bottom:10px;box-shadow:var(--sh);border:1px solid var(--border);overflow:hidden}
+.wp-day-hdr{padding:12px 15px;background:linear-gradient(135deg,#2d6a4f,#40916c);color:#fff;display:flex;justify-content:space-between;align-items:center}
+.wp-day-ttl{font-weight:700;font-size:.92rem}
+.wp-day-time{font-size:.76rem;opacity:.85}
+.wp-ex{padding:10px 15px}
+.wp-ex-row{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid var(--border)}
+.wp-ex-row:last-child{border-bottom:none}
+.wp-ex-name{flex:1;font-size:.84rem;font-weight:600}
+.wp-ex-info{font-size:.75rem;color:var(--muted)}
+.wp-ex-sel select{font-size:.74rem;padding:3px 6px;border-radius:6px;border:1px solid var(--border);background:var(--bg);font-family:'Hind Siliguri',sans-serif;color:var(--text)}
 /* INSTALL BANNER */
 .ibnr{display:none;position:fixed;bottom:13px;left:50%;transform:translateX(-50%);width:calc(100% - 26px);max-width:448px;background:#2d6a4f;color:#fff;border-radius:var(--r);padding:11px 13px;align-items:center;gap:9px;box-shadow:0 8px 32px rgba(45,106,79,.35);z-index:9999;animation:slideUp .4s ease}
 @keyframes slideUp{from{transform:translateX(-50%) translateY(80px);opacity:0}to{transform:translateX(-50%) translateY(0);opacity:1}}
@@ -175,40 +193,41 @@ textarea{resize:vertical;min-height:60px}
 .ibnr .isb{font-size:.72rem;opacity:.85}
 .ibnr .ibtn2{background:#fff;color:#2d6a4f;border:none;border-radius:18px;padding:6px 12px;font-weight:700;font-size:.79rem;cursor:pointer;font-family:'Hind Siliguri',sans-serif;white-space:nowrap}
 .ibnr .idis{background:transparent;border:none;color:rgba(255,255,255,.7);font-size:1.1rem;cursor:pointer;padding:3px}
+/* Budget option styles */
+.budget-card{border:2px solid var(--border);border-radius:12px;padding:11px 13px;cursor:pointer;margin-bottom:7px;transition:all .2s;background:#fff}
+.budget-card.sel{border-color:var(--green);background:var(--gbg)}
+.budget-card-ttl{font-weight:700;font-size:.88rem;color:var(--text)}
+.budget-card-sub{font-size:.74rem;color:var(--muted);margin-top:3px;line-height:1.5}
 </style>
 </head>
 <body>
 <div class="wrap">
-
 <!-- HEADER -->
 <div class="hdr">
   <div class="logo">🥗</div>
-  <div class="ttl">ফকির ফিটনেস অ্যান্ড ডায়েট</div>
-  <div class="sub">বাংলাদেশের সেরা ডায়েট প্ল্যানার</div>
+  <div class="ttl">ফকির ফিটনেস অ্যান্ড ডায়েট প্ল্যানার</div>
+  <div class="sub">আমরা একসাথে ফিট থাকবো 💪</div>
 </div>
-
-<!-- NAV — 6 tabs -->
+<!-- NAV — 8 tabs -->
 <div class="nav">
   <button class="ntab active" onclick="goPg('home',this)"><span class="ni">🏠</span>হোম</button>
   <button class="ntab" onclick="goPg('plan',this)"><span class="ni">🍱</span>প্ল্যান</button>
   <button class="ntab" onclick="goPg('nutri',this)"><span class="ni">🥦</span>পুষ্টি</button>
   <button class="ntab" onclick="goPg('tracker',this)"><span class="ni">📊</span>ট্র্যাকার</button>
+  <button class="ntab" onclick="goPg('exercise',this)"><span class="ni">🏋️</span>ব্যায়াম</button>
+  <button class="ntab" onclick="goPg('workout',this)"><span class="ni">📋</span>ওয়ার্কআউট</button>
   <button class="ntab" onclick="goPg('grocery',this)"><span class="ni">🛒</span>বাজার</button>
   <button class="ntab" onclick="goPg('contact',this)"><span class="ni">📞</span>যোগাযোগ</button>
 </div>
-
 <!-- ══ HOME ══ -->
 <div class="page active" id="page-home">
   <div class="tip">💡 নিচের তথ্যগুলো দিন — আমরা আপনার জন্য সঠিক ডায়েট প্ল্যান তৈরি করব!</div>
-
   <div class="card">
     <div class="ctit">📋 বাধ্যতামূলক তথ্য</div>
-
     <div class="fg">
       <label>বয়স (বছর)<span class="req">*</span></label>
       <input type="number" id="age" placeholder="যেমন: ২৫" min="10" max="90">
     </div>
-
     <div class="fg">
       <label>উচ্চতা<span class="req">*</span></label>
       <div class="rg" style="margin-bottom:8px">
@@ -227,18 +246,10 @@ textarea{resize:vertical;min-height:60px}
         </div>
         <div>
           <select id="hin" onchange="hCalc()">
-            <option value="0">০ ইঞ্চি</option>
-            <option value="1">১ ইঞ্চি</option>
-            <option value="2">২ ইঞ্চি</option>
-            <option value="3">৩ ইঞ্চি</option>
-            <option value="4">৪ ইঞ্চি</option>
-            <option value="5">৫ ইঞ্চি</option>
-            <option value="6">৬ ইঞ্চি</option>
-            <option value="7">৭ ইঞ্চি</option>
-            <option value="8">৮ ইঞ্চি</option>
-            <option value="9">৯ ইঞ্চি</option>
-            <option value="10">১০ ইঞ্চি</option>
-            <option value="11">১১ ইঞ্চি</option>
+            <option value="0">০ ইঞ্চি</option><option value="1">১ ইঞ্চি</option><option value="2">২ ইঞ্চি</option>
+            <option value="3">৩ ইঞ্চি</option><option value="4">৪ ইঞ্চি</option><option value="5">৫ ইঞ্চি</option>
+            <option value="6">৬ ইঞ্চি</option><option value="7">৭ ইঞ্চি</option><option value="8">৮ ইঞ্চি</option>
+            <option value="9">৯ ইঞ্চি</option><option value="10">১০ ইঞ্চি</option><option value="11">১১ ইঞ্চি</option>
           </select>
         </div>
         <div class="hcmd" id="hcmd"></div>
@@ -248,12 +259,10 @@ textarea{resize:vertical;min-height:60px}
       </div>
       <input type="hidden" id="height">
     </div>
-
     <div class="fg">
       <label>ওজন (কিলোগ্রাম)<span class="req">*</span></label>
       <input type="number" id="weight" placeholder="যেমন: ৭০" min="30" max="200">
     </div>
-
     <div class="fg">
       <label>লিঙ্গ<span class="req">*</span></label>
       <div class="rg">
@@ -261,18 +270,6 @@ textarea{resize:vertical;min-height:60px}
         <button class="rb" data-group="gender" data-val="female" onclick="selR(this)">মহিলা 👩</button>
       </div>
     </div>
-
-    <!-- MANDATORY: Diet type -->
-    <div class="fg">
-      <label>ডায়েটের ধরন<span class="req">*</span></label>
-      <div class="rg">
-        <button class="rb sel" data-group="foodtype" data-val="rice" onclick="selR(this)">ভাত প্রধান 🍚</button>
-        <button class="rb" data-group="foodtype" data-val="roti" onclick="selR(this)">রুটি প্রধান 🫓</button>
-        <button class="rb" data-group="foodtype" data-val="mixed" onclick="selR(this)">মিশ্র 🍛</button>
-      </div>
-    </div>
-
-    <!-- MANDATORY: Work/Activity type -->
     <div class="fg">
       <label>কাজের ধরন<span class="req">*</span></label>
       <div class="rg" style="margin-bottom:8px">
@@ -281,11 +278,12 @@ textarea{resize:vertical;min-height:60px}
         <button class="rb" data-group="activity" data-val="moderate" onclick="selR(this)">মাঝারি 🏃</button>
         <button class="rb" data-group="activity" data-val="active" onclick="selR(this)">সক্রিয় 💪</button>
       </div>
-      <textarea id="work-desc" placeholder="বিস্তারিত লিখুন: যেমন — সারাদিন বসে অফিস করি, দুপুরে একটু হাঁটি, রাতে ঘুমানোর আগে হাঁটি..."></textarea>
+      <textarea id="work-desc" placeholder="বিস্তারিত লিখুন: যেমন — সারাদিন বসে অফিস করি..."></textarea>
     </div>
   </div>
 
   <!-- OPTIONAL SECTION -->
+
   <div class="ctog" onclick="togCol(this,'opt-sec')">
     ⚙️ উন্নত কাস্টমাইজেশন (ঐচ্ছিক)
     <span class="arr">▼</span>
@@ -294,7 +292,7 @@ textarea{resize:vertical;min-height:60px}
     <div class="card">
       <div class="ctit">🎯 লক্ষ্য ও পরিকল্পনা</div>
       <div class="fg">
-        <label>লক্ষ্য <span style="font-size:.7rem;color:var(--gl)">(BMI দেখে স্বয়ংক্রিয় সাজেশন পাবেন)</span></label>
+        <label>লক্ষ্য</label>
         <div class="rg">
           <button class="rb sel" data-group="goal" data-val="auto" onclick="selR(this)">🤖 স্বয়ংক্রিয়</button>
           <button class="rb" data-group="goal" data-val="maintain" onclick="selR(this)">ধরে রাখা</button>
@@ -311,69 +309,88 @@ textarea{resize:vertical;min-height:60px}
         <label>সময়সীমা (সপ্তাহ)</label>
         <input type="number" id="tframe" placeholder="যেমন: ১২">
       </div>
-      <div class="fg">
-        <label>বাজেট</label>
-        <div class="rg">
-          <button class="rb sel" data-group="budget" data-val="low" onclick="selR(this)">কম 💰</button>
-          <button class="rb" data-group="budget" data-val="medium" onclick="selR(this)">মাঝারি 💰💰</button>
-          <button class="rb" data-group="budget" data-val="high" onclick="selR(this)">বেশি 💰💰💰</button>
-        </div>
-      </div>
-    </div>
 
-    <div class="card">
-      <div class="ctit">🏋️ ব্যায়াম ও অতিরিক্ত পছন্দ</div>
-      <div class="fg">
-        <label>জিম করেন? সপ্তাহে কত দিন</label>
-        <div class="rg">
-          <button class="rb sel" data-group="gym" data-val="0" onclick="selR(this)">না</button>
-          <button class="rb" data-group="gym" data-val="2" onclick="selR(this)">২ দিন</button>
-          <button class="rb" data-group="gym" data-val="3" onclick="selR(this)">৩ দিন</button>
-          <button class="rb" data-group="gym" data-val="5" onclick="selR(this)">৫+ দিন</button>
-        </div>
+```
+  <!-- ডায়েট বাজেট - নতুন -->
+  <div class="fg">
+    <label>ডায়েট বাজেট / খাবারের ধরন</label>
+    <div id="budget-cards">
+      <div class="budget-card sel" data-bval="home" onclick="selBudget(this)">
+        <div class="budget-card-ttl">🏠 ঘরের তৈরি খাবার</div>
+        <div class="budget-card-sub">ঘরে রান্না করা সাধারণ বাংলাদেশি খাবার — সবচেয়ে স্বাস্থ্যকর ও সাশ্রয়ী</div>
       </div>
-      <div class="fg">
-        <label>খাবার সংখ্যা</label>
-        <div class="rg">
-          <button class="rb" data-group="meals" data-val="3" onclick="selR(this)">৩ বেলা</button>
-          <button class="rb sel" data-group="meals" data-val="4" onclick="selR(this)">৪ বেলা</button>
-          <button class="rb" data-group="meals" data-val="5" onclick="selR(this)">৫ বেলা</button>
-          <button class="rb" data-group="meals" data-val="if" onclick="selR(this)">IF ডায়েট</button>
-        </div>
+      <div class="budget-card" data-bval="mess" onclick="selBudget(this)">
+        <div class="budget-card-ttl">🍽️ মেসের / হোটেলের খাবার</div>
+        <div class="budget-card-sub">ডাল, ডিম, মাছ, সবজি বেসড ডায়েট। সপ্তাহে ১ দিন মাংস থাকবে।</div>
       </div>
-      <div class="fg">
-        <label>অপছন্দের খাবার</label>
-        <input type="text" id="disliked" placeholder="যেমন: ইলিশ, বেগুন, দুধ">
+      <div class="budget-card" data-bval="medium" onclick="selBudget(this)">
+        <div class="budget-card-ttl">💰 মিডিয়াম বাজেট</div>
+        <div class="budget-card-sub">বাহিরের কিছু খাবার মিশিয়ে ডায়েট — না বেশি দামি, না একেবারে সস্তা</div>
       </div>
-      <div class="fg">
-        <label>অ্যালার্জি / বিধিনিষেধ</label>
-        <input type="text" id="allergy" placeholder="যেমন: বাদাম, গম, সামুদ্রিক মাছ">
-      </div>
-      <div class="fg">
-        <label>স্বাস্থ্য অবস্থা</label>
-        <div class="rg">
-          <button class="rb sel" data-group="health" data-val="none" onclick="selR(this)">কিছু নেই</button>
-          <button class="rb" data-group="health" data-val="diabetes" onclick="selR(this)">ডায়াবেটিস</button>
-          <button class="rb" data-group="health" data-val="bp" onclick="selR(this)">উচ্চ রক্তচাপ</button>
-        </div>
-      </div>
-      <div class="fg">
-        <label>পরিকল্পনার ধরন</label>
-        <div class="rg">
-          <button class="rb sel" data-group="strict" data-val="flexible" onclick="selR(this)">নমনীয় 😊</button>
-          <button class="rb" data-group="strict" data-val="strict" onclick="selR(this)">কড়া 💪</button>
-        </div>
-      </div>
-      <div class="fg">
-        <label>শরীরের বিশেষ লক্ষ্য</label>
-        <div class="rg">
-          <button class="rb sel" data-group="bodyfocus" data-val="general" onclick="selR(this)">সাধারণ</button>
-          <button class="rb" data-group="bodyfocus" data-val="belly" onclick="selR(this)">পেটের চর্বি</button>
-          <button class="rb" data-group="bodyfocus" data-val="muscle" onclick="selR(this)">মাংসপেশি</button>
-          <button class="rb" data-group="bodyfocus" data-val="lean" onclick="selR(this)">শীর্ণ শরীর</button>
-        </div>
+      <div class="budget-card" data-bval="premium" onclick="selBudget(this)">
+        <div class="budget-card-ttl">👑 প্রিমিয়াম বাজেট</div>
+        <div class="budget-card-sub">সর্বোচ্চ মানের খাবার দিয়ে ডায়েট — প্রোটিন শেক, গ্রিল চিকেন, বাদাম ইত্যাদি</div>
       </div>
     </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="ctit">🏋️ ব্যায়াম ও অতিরিক্ত পছন্দ</div>
+  <div class="fg">
+    <label>জিম করেন? সপ্তাহে কত দিন</label>
+    <div class="rg">
+      <button class="rb sel" data-group="gym" data-val="0" onclick="selR(this)">না</button>
+      <button class="rb" data-group="gym" data-val="2" onclick="selR(this)">২ দিন</button>
+      <button class="rb" data-group="gym" data-val="3" onclick="selR(this)">৩ দিন</button>
+      <button class="rb" data-group="gym" data-val="5" onclick="selR(this)">৫+ দিন</button>
+    </div>
+  </div>
+  <div class="fg">
+    <label>খাবার সংখ্যা</label>
+    <div class="rg">
+      <button class="rb" data-group="meals" data-val="3" onclick="selR(this)">৩ বেলা</button>
+      <button class="rb sel" data-group="meals" data-val="4" onclick="selR(this)">৪ বেলা</button>
+      <button class="rb" data-group="meals" data-val="5" onclick="selR(this)">৫ বেলা</button>
+      <button class="rb" data-group="meals" data-val="if" onclick="selR(this)">IF ডায়েট</button>
+    </div>
+  </div>
+  <div class="fg">
+    <label>অপছন্দের খাবার</label>
+    <input type="text" id="disliked" placeholder="যেমন: ইলিশ, বেগুন, দুধ">
+  </div>
+  <div class="fg">
+    <label>অ্যালার্জি / বিধিনিষেধ</label>
+    <input type="text" id="allergy" placeholder="যেমন: বাদাম, গম, সামুদ্রিক মাছ">
+  </div>
+  <div class="fg">
+    <label>স্বাস্থ্য অবস্থা</label>
+    <div class="rg">
+      <button class="rb sel" data-group="health" data-val="none" onclick="selR(this)">কিছু নেই</button>
+      <button class="rb" data-group="health" data-val="diabetes" onclick="selR(this)">ডায়াবেটিস</button>
+      <button class="rb" data-group="health" data-val="bp" onclick="selR(this)">উচ্চ রক্তচাপ</button>
+    </div>
+  </div>
+  <div class="fg">
+    <label>ফলাফল পেতে চাই</label>
+    <div class="rg">
+      <button class="rb sel" data-group="strict" data-val="flexible" onclick="selR(this)">সময় অনুসারী চাই</button>
+      <button class="rb" data-group="strict" data-val="fast_loss" onclick="selR(this)">দ্রুত ওজন কমাতে চাই</button>
+      <button class="rb" data-group="strict" data-val="fast_gain" onclick="selR(this)">দ্রুত ওজন বাড়াতে চাই</button>
+    </div>
+  </div>
+  <div class="fg">
+    <label>শরীরের বিশেষ লক্ষ্য</label>
+    <div class="rg">
+      <button class="rb sel" data-group="bodyfocus" data-val="general" onclick="selR(this)">সাধারণ</button>
+      <button class="rb" data-group="bodyfocus" data-val="belly" onclick="selR(this)">পেটের চর্বি কমাতে চাই</button>
+      <button class="rb" data-group="bodyfocus" data-val="muscle" onclick="selR(this)">মাংসপেশি গঠন করতে চাই</button>
+      <button class="rb" data-group="bodyfocus" data-val="lean" onclick="selR(this)">শীর্ণ শরীর</button>
+    </div>
+  </div>
+</div>
+```
+
   </div>
 
   <div class="brow">
@@ -382,7 +399,6 @@ textarea{resize:vertical;min-height:60px}
   </div>
   <div class="ldr" id="ldr"><div class="sp"></div>ডায়েট প্ল্যান তৈরি হচ্ছে...</div>
 </div>
-
 <!-- ══ PLAN ══ -->
 <div class="page" id="page-plan">
   <div id="plan-empty" class="card" style="text-align:center;padding:28px">
@@ -394,38 +410,41 @@ textarea{resize:vertical;min-height:60px}
 </div>
 
 <!-- ══ NUTRITION ══ -->
+
 <div class="page" id="page-nutri">
   <div class="card">
     <div class="ctit">🔍 খাবারের পুষ্টিগুণ খুঁজুন</div>
     <div class="nsearch">
-      <input type="text" id="nsq" placeholder="যেমন: তেলাপিয়া, ডিম, আপেল, কলা..." oninput="nutSearch()">
+      <input type="text" id="nsq" placeholder="যেমন: ইলিশ, ডিম, কলা, আলু..." oninput="nutSearch(this.value)">
     </div>
-    <div style="font-size:.77rem;color:var(--muted)">👇 নিচে জনপ্রিয় খাবারে ক্লিক করুন বা নিজে খুঁজুন</div>
+    <div class="tip" style="font-size:.75rem;margin-bottom:0">⚠️ রান্না করা খাবারে তেল, মসলা ও অন্যান্য কারণে পুষ্টি ও ক্যালরির তারতম্য হয়।</div>
   </div>
   <div class="card">
-    <div class="ctit">⭐ জনপ্রিয় খাবার</div>
-    <div class="rg">
-      <button class="rb" onclick="nutShow('tilapia')">তেলাপিয়া 🐟</button>
-      <button class="rb" onclick="nutShow('hilsa')">ইলিশ 🐠</button>
-      <button class="rb" onclick="nutShow('egg')">ডিম 🥚</button>
-      <button class="rb" onclick="nutShow('chicken')">মুরগি 🍗</button>
-      <button class="rb" onclick="nutShow('beef')">গরুর মাংস 🥩</button>
-      <button class="rb" onclick="nutShow('dal')">মসুর ডাল 🫘</button>
-      <button class="rb" onclick="nutShow('rice')">ভাত 🍚</button>
-      <button class="rb" onclick="nutShow('ruti')">রুটি 🫓</button>
-      <button class="rb" onclick="nutShow('banana')">কলা 🍌</button>
-      <button class="rb" onclick="nutShow('apple')">আপেল 🍎</button>
-      <button class="rb" onclick="nutShow('milk')">দুধ 🥛</button>
-      <button class="rb" onclick="nutShow('potato')">আলু 🥔</button>
-      <button class="rb" onclick="nutShow('spinach')">পালং শাক 🥬</button>
-      <button class="rb" onclick="nutShow('oats')">ওটস 🥣</button>
-    </div>
+    <div class="ctit">📂 ক্যাটাগরি বেছে নিন</div>
+    <div class="ncat-tabs" id="ncat-tabs"></div>
+    <div class="nfood-grid" id="nfood-grid"></div>
   </div>
   <div id="nut-result"></div>
 </div>
 
 <!-- ══ TRACKER ══ -->
+
 <div class="page" id="page-tracker">
+  <!-- DAILY SUMMARY -->
+  <div class="card">
+    <div class="ctit">📈 আজকের সারসংক্ষেপ</div>
+    <div class="trk-sum">
+      <div class="tsb"><div class="tv" id="sum-water">০</div><div class="tl">💧 পানি (গ্লাস)</div></div>
+      <div class="tsb"><div class="tv" id="sum-cal">০</div><div class="tl">🔥 ক্যালরি (খাবার)</div></div>
+      <div class="tsb"><div class="tv" id="sum-burned">০</div><div class="tl">⚡ বার্ন (ব্যায়াম)</div></div>
+      <div class="tsb"><div class="tv" id="sum-steps">০</div><div class="tl">👣 পদক্ষেপ</div></div>
+      <div class="tsb"><div class="tv" id="sum-sleep">০ ঘ</div><div class="tl">😴 ঘুম</div></div>
+      <div class="tsb"><div class="tv" id="sum-extime">০</div><div class="tl">⏱ ব্যায়াম (মিনিট)</div></div>
+    </div>
+  </div>
+
+  <!-- WATER -->
+
   <div class="card">
     <div class="ctit">💧 পানি ট্র্যাকার</div>
     <div style="font-size:.82rem;color:var(--muted);margin-bottom:6px">প্রতিদিনের লক্ষ্য: <strong id="wgoal">৮ গ্লাস</strong></div>
@@ -433,6 +452,87 @@ textarea{resize:vertical;min-height:60px}
     <div style="margin-top:8px;font-size:.82rem">পান করেছেন: <strong id="wdone">০</strong> / <strong id="wtot">৮</strong> গ্লাস</div>
     <button class="btn bs mt8" style="width:auto;padding:6px 15px;font-size:.79rem;border-radius:18px" onclick="resetWater()">🔄 রিসেট</button>
   </div>
+
+  <!-- EXERCISE TRACKER -->
+
+  <div class="card">
+    <div class="ctit">🏋️ ব্যায়াম ট্র্যাকার</div>
+    <div class="ex-row">
+      <div>
+        <label>ব্যায়ামের ধরন</label>
+        <select id="ex-type">
+          <option value="running">দৌড়ানো 🏃</option>
+          <option value="walking">হাঁটা 🚶</option>
+          <option value="cycling">সাইকেল 🚴</option>
+          <option value="swimming">সাঁতার 🏊</option>
+          <option value="pushup">পুশআপ 💪</option>
+          <option value="gym">জিম 🏋️</option>
+          <option value="yoga">যোগব্যায়াম 🧘</option>
+          <option value="football">ফুটবল ⚽</option>
+          <option value="cricket">ক্রিকেট 🏏</option>
+          <option value="other">অন্যান্য</option>
+        </select>
+      </div>
+      <div>
+        <label>সময় (মিনিট)</label>
+        <input type="number" id="ex-min" placeholder="৩০" min="1">
+      </div>
+    </div>
+    <button class="btn bp" style="padding:9px" onclick="logEx()">+ যোগ করুন</button>
+    <div class="ex-log mt8" id="ex-log"><div style="text-align:center;padding:12px;font-size:.81rem;color:var(--muted)">কোনো রেকর্ড নেই</div></div>
+    <div style="margin-top:8px;font-size:.83rem">মোট বার্ন: <strong id="ex-total-cal" style="color:var(--green)">০ ক্যালরি</strong></div>
+  </div>
+
+  <!-- CALORIE TRACKER -->
+
+  <div class="card">
+    <div class="ctit">🍽️ ক্যালরি ট্র্যাকার (খাবার লগ)</div>
+    <div style="display:flex;gap:7px;margin-bottom:8px">
+      <input type="text" id="cal-food" placeholder="খাবারের নাম লিখুন..." style="flex:1">
+      <button class="btn bp" style="width:auto;padding:9px 14px" onclick="logCalFood()">+</button>
+    </div>
+    <div class="cal-log" id="cal-log"><div style="text-align:center;padding:12px;font-size:.81rem;color:var(--muted)">কোনো রেকর্ড নেই</div></div>
+    <div style="margin-top:8px;font-size:.83rem">আজকের মোট: <strong id="cal-total" style="color:var(--green)">০ ক্যালরি</strong></div>
+  </div>
+
+  <!-- SLEEP TRACKER -->
+
+  <div class="card">
+    <div class="ctit">😴 ঘুম ট্র্যাকার</div>
+    <div class="sleep-row">
+      <div>
+        <label>ঘুমানোর সময়</label>
+        <input type="time" id="sleep-start" value="22:00">
+      </div>
+      <div>
+        <label>জেগে ওঠার সময়</label>
+        <input type="time" id="sleep-end" value="06:00">
+      </div>
+    </div>
+    <button class="btn bp" style="padding:9px" onclick="calcSleep()">ঘুম হিসাব করুন</button>
+    <div id="sleep-result" style="margin-top:9px;font-size:.85rem;color:var(--green);font-weight:600"></div>
+  </div>
+
+  <!-- STEPS TRACKER -->
+
+  <div class="card">
+    <div class="ctit">👣 পদক্ষেপ ট্র্যাকার</div>
+    <div style="display:flex;gap:7px;margin-bottom:8px;align-items:flex-end">
+      <div style="flex:1">
+        <label>আজকের পদক্ষেপ</label>
+        <input type="number" id="steps-input" placeholder="যেমন: ৮০০০" min="0">
+      </div>
+      <button class="btn bp" style="width:auto;padding:10px 16px" onclick="saveSteps()">সেভ</button>
+    </div>
+    <div class="steps-big" id="steps-display">০</div>
+    <div style="text-align:center;font-size:.79rem;color:var(--muted)">লক্ষ্য: ১০,০০০ পদক্ষেপ/দিন</div>
+    <div class="pw mt8">
+      <div class="pb"><div class="pf" id="steps-pf" style="width:0%"></div></div>
+    </div>
+  </div>
+
+  <!-- WEIGHT LOG -->
+
   <div class="card">
     <div class="ctit">⚖️ ওজন ট্র্যাকার</div>
     <div class="we">
@@ -450,22 +550,165 @@ textarea{resize:vertical;min-height:60px}
     </div>
     <div class="wlog" id="wlog"><div style="text-align:center;padding:16px;font-size:.82rem;color:var(--muted)">এখনো কোনো রেকর্ড নেই</div></div>
   </div>
+
+  <!-- WEEKLY -->
+
   <div class="card">
     <div class="ctit">📅 সাপ্তাহিক অগ্রগতি</div>
     <div class="wkg" id="wkgrid"></div>
     <div style="font-size:.75rem;color:var(--muted);margin-top:7px">যেদিন ডায়েট মেনেছেন সেদিনে ক্লিক করুন ✅</div>
   </div>
+
+  <!-- REMINDER -->
+
   <div class="card">
     <div class="ctit">⏰ খাবারের রিমাইন্ডার</div>
     <div class="ri"><span>🌅 সকালের নাস্তা (৭:৩০)</span><label class="ts"><input type="checkbox" checked><span class="tsl"></span></label></div>
     <div class="ri"><span>☀️ দুপুরের খাবার (১:০০)</span><label class="ts"><input type="checkbox" checked><span class="tsl"></span></label></div>
     <div class="ri"><span>🌆 বিকেলের নাস্তা (৫:০০)</span><label class="ts"><input type="checkbox"><span class="tsl"></span></label></div>
     <div class="ri"><span>🌙 রাতের খাবার (৮:৩০)</span><label class="ts"><input type="checkbox" checked><span class="tsl"></span></label></div>
-    <div class="tip mt8">⚠️ নোটিফিকেশন পেতে ব্রাউজার পারমিশন দিন।</div>
+  </div>
+</div>
+<!-- ══ EXERCISE (ব্যায়াম) ══ -->
+<div class="page" id="page-exercise">
+  <div class="card">
+    <div class="ctit">🏋️ ব্যায়াম ভিডিও লাইব্রেরি</div>
+    <div style="font-size:.82rem;color:var(--muted)">বডি পার্ট অনুযায়ী ব্যায়াম শিখুন ও করুন।</div>
+  </div>
+
+  <div class="ex-card" id="exc-abs" onclick="togExCard('abs')">
+    <div class="ex-card-hdr">
+      <div style="display:flex;align-items:center">
+        <span class="ex-card-ico">🔥</span>
+        <div><div class="ex-card-ttl">Abs Workout</div><div class="ex-card-sub">পেটের ব্যায়াম · চর্বি কমান</div></div>
+      </div>
+      <span class="ex-arrow">▼</span>
+    </div>
+    <div class="ex-vid" id="exv-abs" style="display:none">
+      <iframe width="100%" height="200" src="https://www.youtube.com/embed/du1NrqVkIBo" allowfullscreen loading="lazy"></iframe>
+    </div>
+  </div>
+
+  <div class="ex-card" id="exc-chest" onclick="togExCard('chest')">
+    <div class="ex-card-hdr">
+      <div style="display:flex;align-items:center">
+        <span class="ex-card-ico">💪</span>
+        <div><div class="ex-card-ttl">Chest Workout</div><div class="ex-card-sub">বুকের ব্যায়াম · পেশী গড়ুন</div></div>
+      </div>
+      <span class="ex-arrow">▼</span>
+    </div>
+    <div class="ex-vid" id="exv-chest" style="display:none">
+      <div style="background:#f0faf3;border-radius:10px;padding:20px;text-align:center;color:var(--muted);font-size:.82rem">📹 ভিডিও লিংক শীঘ্রই যোগ হবে</div>
+    </div>
+  </div>
+
+  <div class="ex-card" id="exc-legs" onclick="togExCard('legs')">
+    <div class="ex-card-hdr">
+      <div style="display:flex;align-items:center">
+        <span class="ex-card-ico">🦵</span>
+        <div><div class="ex-card-ttl">Legs Workout</div><div class="ex-card-sub">পায়ের ব্যায়াম · শক্তি বাড়ান</div></div>
+      </div>
+      <span class="ex-arrow">▼</span>
+    </div>
+    <div class="ex-vid" id="exv-legs" style="display:none">
+      <div style="background:#f0faf3;border-radius:10px;padding:20px;text-align:center;color:var(--muted);font-size:.82rem">📹 ভিডিও লিংক শীঘ্রই যোগ হবে</div>
+    </div>
+  </div>
+
+  <div class="ex-card" id="exc-biceps" onclick="togExCard('biceps')">
+    <div class="ex-card-hdr">
+      <div style="display:flex;align-items:center">
+        <span class="ex-card-ico">💪</span>
+        <div><div class="ex-card-ttl">Biceps Workout</div><div class="ex-card-sub">বাইসেপ · বাহু মজবুত করুন</div></div>
+      </div>
+      <span class="ex-arrow">▼</span>
+    </div>
+    <div class="ex-vid" id="exv-biceps" style="display:none">
+      <div style="background:#f0faf3;border-radius:10px;padding:20px;text-align:center;color:var(--muted);font-size:.82rem">📹 ভিডিও লিংক শীঘ্রই যোগ হবে</div>
+    </div>
+  </div>
+
+  <div class="ex-card" id="exc-triceps" onclick="togExCard('triceps')">
+    <div class="ex-card-hdr">
+      <div style="display:flex;align-items:center">
+        <span class="ex-card-ico">🦾</span>
+        <div><div class="ex-card-ttl">Triceps Workout</div><div class="ex-card-sub">ট্রাইসেপ · পিছনের বাহু</div></div>
+      </div>
+      <span class="ex-arrow">▼</span>
+    </div>
+    <div class="ex-vid" id="exv-triceps" style="display:none">
+      <div style="background:#f0faf3;border-radius:10px;padding:20px;text-align:center;color:var(--muted);font-size:.82rem">📹 ভিডিও লিংক শীঘ্রই যোগ হবে</div>
+    </div>
+  </div>
+
+  <div class="ex-card" id="exc-dumbbell" onclick="togExCard('dumbbell')">
+    <div class="ex-card-hdr">
+      <div style="display:flex;align-items:center">
+        <span class="ex-card-ico">🏋️</span>
+        <div><div class="ex-card-ttl">Dumbbell Workout</div><div class="ex-card-sub">ডাম্বেল ব্যায়াম · পূর্ণ শরীর</div></div>
+      </div>
+      <span class="ex-arrow">▼</span>
+    </div>
+    <div class="ex-vid" id="exv-dumbbell" style="display:none">
+      <div style="background:#f0faf3;border-radius:10px;padding:20px;text-align:center;color:var(--muted);font-size:.82rem">📹 ভিডিও লিংক শীঘ্রই যোগ হবে</div>
+    </div>
+  </div>
+
+  <div class="ex-card" id="exc-fullbody" onclick="togExCard('fullbody')">
+    <div class="ex-card-hdr">
+      <div style="display:flex;align-items:center">
+        <span class="ex-card-ico">🌟</span>
+        <div><div class="ex-card-ttl">Full Body Workout</div><div class="ex-card-sub">পুরো শরীর · সর্বোচ্চ ফলাফল</div></div>
+      </div>
+      <span class="ex-arrow">▼</span>
+    </div>
+    <div class="ex-vid" id="exv-fullbody" style="display:none">
+      <div style="background:#f0faf3;border-radius:10px;padding:20px;text-align:center;color:var(--muted);font-size:.82rem">📹 ভিডিও লিংক শীঘ্রই যোগ হবে</div>
+    </div>
   </div>
 </div>
 
+<!-- ══ WORKOUT PLAN ══ -->
+
+<div class="page" id="page-workout">
+  <div class="card">
+    <div class="ctit">📋 সাপ্তাহিক ওয়ার্কআউট প্ল্যান তৈরি করুন</div>
+    <div class="fg">
+      <label>কোথায় ব্যায়াম করবেন?</label>
+      <div class="rg">
+        <button class="rb sel" data-group="wp-place" data-val="gym" onclick="selR(this)">জিম 🏋️</button>
+        <button class="rb" data-group="wp-place" data-val="home" onclick="selR(this)">ঘরে (ডাম্বেল) 🏠</button>
+        <button class="rb" data-group="wp-place" data-val="park" onclick="selR(this)">পার্ক 🌳</button>
+        <button class="rb" data-group="wp-place" data-val="free" onclick="selR(this)">কোনো সরঞ্জাম নেই 🤸</button>
+      </div>
+    </div>
+    <div class="fg">
+      <label>প্রতিদিন কতক্ষণ ব্যায়াম করবেন?</label>
+      <div class="rg">
+        <button class="rb sel" data-group="wp-time" data-val="30" onclick="selR(this)">৩০ মিনিট</button>
+        <button class="rb" data-group="wp-time" data-val="45" onclick="selR(this)">৪৫ মিনিট</button>
+        <button class="rb" data-group="wp-time" data-val="60" onclick="selR(this)">৬০ মিনিট</button>
+      </div>
+    </div>
+    <div class="fg">
+      <label>সপ্তাহে কয়দিন ব্যায়াম করবেন?</label>
+      <div class="rg">
+        <button class="rb sel" data-group="wp-days" data-val="3" onclick="selR(this)">৩ দিন</button>
+        <button class="rb" data-group="wp-days" data-val="4" onclick="selR(this)">৪ দিন</button>
+        <button class="rb" data-group="wp-days" data-val="5" onclick="selR(this)">৫ দিন</button>
+        <button class="rb" data-group="wp-days" data-val="6" onclick="selR(this)">৬ দিন</button>
+      </div>
+    </div>
+    <div class="brow">
+      <button class="btn bs" onclick="resetWP()">🔄 রিসেট</button>
+      <button class="btn bp" onclick="genWP()">✅ প্ল্যান তৈরি করুন</button>
+    </div>
+  </div>
+  <div id="wp-body"></div>
+</div>
+
 <!-- ══ GROCERY ══ -->
+
 <div class="page" id="page-grocery">
   <div id="gr-empty" class="card" style="text-align:center;padding:28px">
     <div style="font-size:2.8rem;margin-bottom:8px">🛒</div>
@@ -482,281 +725,384 @@ textarea{resize:vertical;min-height:60px}
 </div>
 
 <!-- ══ CONTACT ══ -->
+
 <div class="page" id="page-contact">
   <div class="card">
     <div class="ctit">📞 আমাদের সাথে যোগাযোগ করুন</div>
     <div style="font-size:.82rem;color:var(--muted);margin-bottom:13px">ব্যক্তিগত ডায়েট পরামর্শ বা যেকোনো স্বাস্থ্য প্রশ্নের জন্য যোগাযোগ করুন।</div>
-    <a class="cbtn fb" href="https://www.facebook.com/shahintajfokir" target="_blank">
-      <span class="ci">👤</span>
+    <a class="cbtn fb-btn" href="https://www.facebook.com/shahintajfokirfitness/" target="_blank">
+      <span class="ci"><svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></span>
       <div><div style="font-weight:700">Shahin Taj Fokir — Facebook</div><div style="font-size:.72rem;opacity:.85">ফেসবুক পেজ ভিজিট করুন</div></div>
     </a>
-    <a class="cbtn yt" href="https://www.youtube.com/@ShahintajFokir" target="_blank">
-      <span class="ci">▶️</span>
+    <a class="cbtn yt-btn" href="https://www.youtube.com/@shahintajfokirfitness" target="_blank">
+      <span class="ci"><svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg></span>
       <div><div style="font-weight:700">Shahin Taj Fokir — YouTube</div><div style="font-size:.72rem;opacity:.85">ভিডিও দেখুন ও সাবস্ক্রাইব করুন</div></div>
     </a>
-    <a class="cbtn tt" href="https://www.tiktok.com/@shahintajfokir" target="_blank">
-      <span class="ci">🎵</span>
+    <a class="cbtn tt-btn" href="https://www.tiktok.com/@shahintajfokir" target="_blank">
+      <span class="ci"><svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.79 1.53V6.77a4.85 4.85 0 01-1.02-.08z"/></svg></span>
       <div><div style="font-weight:700">Shahin Taj Fokir — TikTok</div><div style="font-size:.72rem;opacity:.85">ফলো করুন</div></div>
+    </a>
+    <a class="cbtn ig-btn" href="https://www.instagram.com/shahintaj.fokir" target="_blank">
+      <span class="ci"><svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></span>
+      <div><div style="font-weight:700">Shahin Taj Fokir — Instagram</div><div style="font-size:.72rem;opacity:.85">ফলো করুন</div></div>
     </a>
   </div>
   <div class="card">
     <div class="ctit">ℹ️ অ্যাপ সম্পর্কে</div>
     <div style="font-size:.82rem;color:var(--muted);line-height:1.75">
-      <p><strong>ফকির ফিটনেস অ্যান্ড ডায়েট</strong> — বাংলাদেশের পূর্ণাঙ্গ অফলাইন ডায়েট প্ল্যানার।</p><br>
-      <p>🇧🇩 বাংলাদেশের খাবার ডাটাবেস।</p>
+      <p><strong>ফকির ফিটনেস অ্যান্ড ডায়েট প্ল্যানার</strong> — বাংলাদেশের পূর্ণাঙ্গ অফলাইন ডায়েট ও ফিটনেস অ্যাপ।</p><br>
+      <p>🇧🇩 বাংলাদেশের বিস্তারিত খাবার ডাটাবেস।</p>
       <p>📵 সম্পূর্ণ অফলাইনে কাজ করে।</p>
       <p>🔬 Mifflin-St Jeor বৈজ্ঞানিক পদ্ধতি।</p>
+      <p>🏋️ ব্যায়াম ও ওয়ার্কআউট প্ল্যান।</p>
+      <p>📊 সম্পূর্ণ ট্র্যাকিং সিস্টেম।</p>
       <p>🆓 সম্পূর্ণ বিনামূল্যে।</p>
     </div>
   </div>
 </div>
 
 <!-- Install Banner -->
+
 <div class="ibnr" id="ibnr">
   <div class="iii">📲</div>
   <div class="itx"><div class="ibt">অ্যাপ ইনস্টল করুন</div><div class="isb">হোম স্ক্রিনে যোগ করুন!</div></div>
   <button class="ibtn2" id="ibtn">ইনস্টল</button>
   <button class="idis" id="idis">✕</button>
 </div>
-
 </div><!-- /wrap -->
-
 <script>
 // ══ STATE ══
 const S={
   gender:'male',activity:'sedentary',gym:'0',goal:'auto',
-  budget:'low',foodtype:'rice',meals:'4',health:'none',
+  budget:'home',meals:'4',health:'none',
   strict:'flexible',bodyfocus:'general',hunit:'ft',
+  'wp-place':'gym','wp-time':'30','wp-days':'3',
   waterDone:0,waterGoal:8,
   weights:JSON.parse(localStorage.getItem('ff_wts')||'[]'),
   weekDays:JSON.parse(localStorage.getItem('ff_wk')||'[false,false,false,false,false,false,false]'),
-  startWeight:null,targetWeight:null
+  exLogs:JSON.parse(localStorage.getItem('ff_ex')||'[]'),
+  calLogs:JSON.parse(localStorage.getItem('ff_cal')||'[]'),
+  steps:parseInt(localStorage.getItem('ff_steps')||'0'),
+  sleepHours:parseFloat(localStorage.getItem('ff_sleep')||'0'),
+  startWeight:null,targetWeight:null,
+  wpPlan:JSON.parse(localStorage.getItem('ff_wp')||'null'),
+  lastExCard:localStorage.getItem('ff_lastex')||null
 };
 
 // ══ NAV ══
 function goPg(id,tab){
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  document.querySelectorAll('.ntab').forEach(t=>t.classList.remove('active'));
-  document.getElementById('page-'+id).classList.add('active');
-  tab.classList.add('active');
-  if(id==='tracker') renderTracker();
+document.querySelectorAll(’.page’).forEach(p=>p.classList.remove(‘active’));
+document.querySelectorAll(’.ntab’).forEach(t=>t.classList.remove(‘active’));
+document.getElementById(‘page-’+id).classList.add(‘active’);
+tab.classList.add(‘active’);
+if(id===‘tracker’)renderTracker();
+if(id===‘nutri’)initNutri();
+if(id===‘workout’&&S.wpPlan)renderWP(S.wpPlan);
 }
 
 // ══ RADIO ══
 function selR(el){
-  const g=el.dataset.group;
-  document.querySelectorAll('[data-group="'+g+'"]').forEach(b=>b.classList.remove('sel'));
-  el.classList.add('sel');
-  S[g]=el.dataset.val;
+const g=el.dataset.group;
+document.querySelectorAll(’[data-group=”’+g+’”]’).forEach(b=>b.classList.remove(‘sel’));
+el.classList.add(‘sel’);
+S[g]=el.dataset.val;
 }
-function togCol(tog,id){tog.classList.toggle('open');document.getElementById(id).classList.toggle('open');}
+function togCol(tog,id){tog.classList.toggle(‘open’);document.getElementById(id).classList.toggle(‘open’);}
+
+// ══ BUDGET CARD SELECT ══
+function selBudget(el){
+document.querySelectorAll(’#budget-cards .budget-card’).forEach(c=>c.classList.remove(‘sel’));
+el.classList.add(‘sel’);
+S.budget=el.dataset.bval;
+}
 
 // ══ HEIGHT ══
 function htog(u){
-  S.hunit=u;
-  document.getElementById('h-ft').style.display=u==='ft'?'flex':'none';
-  document.getElementById('h-cm').style.display=u==='cm'?'block':'none';
-  if(u==='ft')hCalc();
+S.hunit=u;
+document.getElementById(‘h-ft’).style.display=u===‘ft’?‘flex’:‘none’;
+document.getElementById(‘h-cm’).style.display=u===‘cm’?‘block’:‘none’;
+if(u===‘ft’)hCalc();
 }
 function hCalc(){
-  const ft=parseFloat(document.getElementById('hft').value)||0;
-  const inch=parseFloat(document.getElementById('hin').value)||0;
-  if(!ft){document.getElementById('hcmd').textContent='';document.getElementById('height').value='';return;}
-  const cm=Math.round((ft*12+inch)*2.54);
-  document.getElementById('height').value=cm;
-  document.getElementById('hcmd').textContent='= '+cm+' সেমি';
+const ft=parseFloat(document.getElementById(‘hft’).value)||0;
+const inch=parseFloat(document.getElementById(‘hin’).value)||0;
+if(!ft){document.getElementById(‘hcmd’).textContent=’’;document.getElementById(‘height’).value=’’;return;}
+const cm=Math.round((ft*12+inch)*2.54);
+document.getElementById(‘height’).value=cm;
+document.getElementById(‘hcmd’).textContent=’= ‘+cm+’ সেমি’;
 }
 
-// ══ BMI LOGIC (আপনার নিজের স্কেল) ══
+// ══ BMI ══
 function getBMIInfo(bmi){
-  if(bmi<18.5) return {
-    badge:'bd-red',label:'অপুষ্টিজনিত কম ওজন',autoGoal:'gain',
-    advcls:'adv-red',
-    advice:'🔴 আপনার BMI '+bmi.toFixed(1)+' — ওজন বাড়াতে হবে। পুষ্টিকর খাবার বেশি খান এবং ডাক্তারের পরামর্শ নিন।',
-    suggest:'ওজন বাড়াতে হবে ⬆️'
-  };
-  if(bmi<=20.9) return {
-    badge:'bd-blue',label:'ওজন ঠিক আছে (সামান্য কম)',autoGoal:'gain',
-    advcls:'adv-blue',
-    advice:'🔵 আপনার BMI '+bmi.toFixed(1)+' — ওজন ঠিক আছে তবে আরেকটু বাড়াতে পারলে আরও ভালো হয়।',
-    suggest:'ওজন আরেকটু বাড়ানো ভালো'
-  };
-  if(bmi<=23.0) return {
-    badge:'bd-green',label:'আদর্শ ওজন ✨',autoGoal:'maintain',
-    advcls:'adv-green',
-    advice:'🎉 আপনার BMI '+bmi.toFixed(1)+' — আপনার ওজন একদম ঠিক আছে! এটা ধরে রাখুন।',
-    suggest:'ওজন একদম ঠিক আছে ✅'
-  };
-  if(bmi<=25.0) return {
-    badge:'bd-yellow',label:'স্বাভাবিক (সতর্ক থাকুন)',autoGoal:'maintain',
-    advcls:'adv-yellow',
-    advice:'⚠️ আপনার BMI '+bmi.toFixed(1)+' — স্বাভাবিক, তবে আর যেন না বাড়ে সেদিকে লক্ষ রাখুন।',
-    suggest:'স্বাভাবিক, তবে সতর্ক থাকুন ⚠️'
-  };
-  return {
-    badge:'bd-red',label:'অতিরিক্ত ওজন',autoGoal:'loss',
-    advcls:'adv-red',
-    advice:'🔴 আপনার BMI '+bmi.toFixed(1)+' — ওজন কমাতে হবে। নিয়মিত ব্যায়াম ও সঠিক খাদ্যাভ্যাস মানুন।',
-    suggest:'ওজন কমাতে হবে ⬇️'
-  };
+if(bmi<18.5)return{badge:‘bd-red’,label:‘অপুষ্টিজনিত কম ওজন’,autoGoal:‘gain’,advcls:‘adv-red’,advice:‘🔴 আপনার BMI ‘+bmi.toFixed(1)+’ — ওজন বাড়াতে হবে। পুষ্টিকর খাবার বেশি খান।’,suggest:‘ওজন বাড়াতে হবে ⬆️’};
+if(bmi<=20.9)return{badge:‘bd-blue’,label:‘ওজন ঠিক আছে (সামান্য কম)’,autoGoal:‘gain’,advcls:‘adv-blue’,advice:‘🔵 আপনার BMI ‘+bmi.toFixed(1)+’ — ওজন ঠিক আছে তবে আরেকটু বাড়ানো ভালো।’,suggest:‘ওজন আরেকটু বাড়ানো ভালো’};
+if(bmi<=23.0)return{badge:‘bd-green’,label:‘আদর্শ ওজন ✨’,autoGoal:‘maintain’,advcls:‘adv-green’,advice:‘🎉 আপনার BMI ‘+bmi.toFixed(1)+’ — আপনার ওজন একদম ঠিক আছে!’,suggest:‘ওজন একদম ঠিক আছে ✅’};
+if(bmi<=25.0)return{badge:‘bd-yellow’,label:‘স্বাভাবিক (সতর্ক থাকুন)’,autoGoal:‘maintain’,advcls:‘adv-yellow’,advice:‘⚠️ আপনার BMI ‘+bmi.toFixed(1)+’ — স্বাভাবিক, তবে আর না বাড়ে সেদিকে লক্ষ রাখুন।’,suggest:‘স্বাভাবিক, তবে সতর্ক থাকুন ⚠️’};
+return{badge:‘bd-red’,label:‘অতিরিক্ত ওজন’,autoGoal:‘loss’,advcls:‘adv-red’,advice:‘🔴 আপনার BMI ‘+bmi.toFixed(1)+’ — ওজন কমাতে হবে।’,suggest:‘ওজন কমাতে হবে ⬇️’};
 }
-
-// ══ CALORIE ══
-function calcBMR(wt,ht,age,g){
-  return g==='male'?10*wt+6.25*ht-5*age+5:10*wt+6.25*ht-5*age-161;
-}
-function actMult(a,gym){
-  const m={sedentary:1.2,light:1.375,moderate:1.55,active:1.725};
-  let v=m[a]||1.375;
-  const d=parseInt(gym)||0;
-  if(d>=5)v+=0.15;else if(d>=3)v+=0.08;else if(d>=2)v+=0.04;
-  return v;
-}
-function calAdj(goal,health){
-  const a={maintain:0,gain:350,muscle:300,loss:-400};
-  let v=a[goal]||0;
-  if(health==='diabetes')v=Math.min(v,-100);
-  return v;
+function calcBMR(wt,ht,age,g){return g===‘male’?10*wt+6.25*ht-5*age+5:10*wt+6.25*ht-5*age-161;}
+function actMult(a,gym){const m={sedentary:1.2,light:1.375,moderate:1.55,active:1.725};let v=m[a]||1.375;const d=parseInt(gym)||0;if(d>=5)v+=0.15;else if(d>=3)v+=0.08;else if(d>=2)v+=0.04;return v;}
+function calAdj(goal,health,strict){
+const a={maintain:0,gain:350,muscle:300,loss:-400};
+let v=a[goal]||0;
+if(strict===‘fast_loss’)v-=200;
+if(strict===‘fast_gain’)v+=200;
+if(health===‘diabetes’)v=Math.min(v,-100);
+return v;
 }
 function getMacros(cal,goal){
-  if(goal==='muscle'||goal==='gain')return{p:Math.round(cal*.30/4),c:Math.round(cal*.45/4),f:Math.round(cal*.25/9)};
-  if(goal==='loss')return{p:Math.round(cal*.35/4),c:Math.round(cal*.40/4),f:Math.round(cal*.25/9)};
-  return{p:Math.round(cal*.25/4),c:Math.round(cal*.50/4),f:Math.round(cal*.25/9)};
+if(goal===‘muscle’||goal===‘gain’)return{p:Math.round(cal*.30/4),c:Math.round(cal*.45/4),f:Math.round(cal*.25/9)};
+if(goal===‘loss’)return{p:Math.round(cal*.35/4),c:Math.round(cal*.40/4),f:Math.round(cal*.25/9)};
+return{p:Math.round(cal*.25/4),c:Math.round(cal*.50/4),f:Math.round(cal*.25/9)};
 }
 
-// ══ FOOD DATABASE ══
+// ══ FOOD DATABASE (বাজেট অনুযায়ী) ══
 const FDB={
-  breakfast:{
-    low:[
-      {n:"ভাত + মসুর ডাল + ডিম সিদ্ধ + শাক ভাজি",q:"ভাত ১ কাপ (১৮০গ্রা) | মসুর ডাল ১ কাপ রান্না | ডিম ১টি সিদ্ধ | শাক ১ মুঠো",cal:420,p:18,c:62,f:8},
-      {n:"রুটি + ডাল + সবজি ভাজি",q:"গমের রুটি ৩টি (১৫০গ্রা) | মসুর ডাল আধা কাপ | সবজি ভাজি ১ কাপ",cal:380,p:14,c:58,f:7},
-      {n:"চিড়া + কলা + দুধ",q:"চিড়া ১ কাপ (৫০গ্রা) | কলা ১টি মাঝারি | দুধ ১ গ্লাস (২৫০মিলি)",cal:350,p:12,c:60,f:5},
-      {n:"মুড়ি + ডিম ভাজি + চা",q:"মুড়ি ১.৫ কাপ (৫০গ্রা) | ডিম ২টি ভাজি | চা ১ কাপ",cal:320,p:14,c:42,f:10},
-    ],
-    medium:[
-      {n:"পরোটা + ডিম ভাজি + চা",q:"পরোটা ২টি (১৫০গ্রা) | ডিম ২টি ভাজি | চা ১ কাপ",cal:480,p:18,c:58,f:18},
-      {n:"ভাত + মাছের তরকারি + সবজি",q:"ভাত ১.৫ কাপ (২৭০গ্রা) | মাছ ১ পিস (৮০গ্রা) | সবজি ১ কাপ",cal:520,p:28,c:68,f:10},
-      {n:"ব্রেড + অমলেট + দুধ চা",q:"ব্রেড ৩ স্লাইস (৯০গ্রা) | ডিম ২টি অমলেট | দুধ চা ১ কাপ",cal:440,p:20,c:52,f:15},
-    ],
-    high:[
-      {n:"ব্রেড + স্ক্র্যাম্বলড এগ + দুধ + ফল",q:"ব্রেড ২ স্লাইস (৬০গ্রা) | ডিম ৩টি স্ক্র্যাম্বল | দুধ ১ গ্লাস | ফল ১ কাপ",cal:520,p:25,c:60,f:16},
-      {n:"ওটস + বাদাম + মধু + দই",q:"ওটস ৮০গ্রা | মিক্স বাদাম ৩০গ্রা | মধু ১ চামচ | দই ১০০গ্রা",cal:480,p:18,c:65,f:14},
-    ]
-  },
-  lunch:{
-    low:[
-      {n:"ভাত + মসুর ডাল + আলু ভর্তা + শাক ভাজি",q:"ভাত ২ কাপ (৩৬০গ্রা) | মসুর ডাল ১ কাপ | আলু ভর্তা ২ টেবিল চামচ | শাক ১ মুঠো",cal:520,p:16,c:90,f:6},
-      {n:"ভাত + ডিম তরকারি + সবজি ভাজি",q:"ভাত ২ কাপ (৩৬০গ্রা) | ডিম ২টি তরকারি | সবজি ভাজি ১ কাপ",cal:580,p:24,c:88,f:12},
-      {n:"ভাত + রুই/কাতলা মাছের ঝোল + শাক",q:"ভাত ২ কাপ (৩৬০গ্রা) | রুই/কাতলা ১ পিস (১০০গ্রা) | শাক ভাজি ১ কাপ",cal:560,p:30,c:78,f:10},
-      {n:"খিচুড়ি + ডিম ভাজি + আচার",q:"খিচুড়ি ২ কাপ (৩৫০গ্রা) | ডিম ১টি ভাজি | আচার ১ চামচ",cal:540,p:20,c:82,f:14},
-    ],
-    medium:[
-      {n:"ভাত + মুরগির ঝোল + সবজি + ডাল",q:"ভাত ২ কাপ (৩৬০গ্রা) | মুরগি ১৫০গ্রা | সবজি ১ কাপ | ডাল আধা কাপ",cal:680,p:42,c:88,f:16},
-      {n:"ভাত + গরুর মাংস + শাক + ডাল",q:"ভাত ২ কাপ (৩৬০গ্রা) | গরুর মাংস ১০০গ্রা | শাক ১ কাপ | ডাল আধা কাপ",cal:720,p:45,c:82,f:22},
-    ],
-    high:[
-      {n:"ব্রাউন রাইস + চিকেন গ্রিল + সালাদ + দই",q:"ব্রাউন রাইস ১.৫ কাপ (২৪০গ্রা) | চিকেন ব্রেস্ট ১৫০গ্রা গ্রিল | সালাদ ১ বাটি | দই ১০০গ্রা",cal:660,p:50,c:72,f:14},
-      {n:"ভাত + চিকেন গ্রিল + স্টিমড সবজি",q:"ভাত ১.৫ কাপ (২৭০গ্রা) | চিকেন ব্রেস্ট ১৫০গ্রা | স্টিমড সবজি ১ কাপ",cal:620,p:48,c:70,f:12},
-    ]
-  },
-  snack:{
-    low:[
-      {n:"কলা + চা",q:"কলা ১টি মাঝারি (১২০গ্রা) | চা ১ কাপ চিনি ছাড়া",cal:130,p:2,c:30,f:1},
-      {n:"মুড়ি + কাঁচা বাদাম",q:"মুড়ি ১ কাপ (৩৫গ্রা) | কাঁচা বাদাম ২০গ্রা",cal:160,p:5,c:28,f:5},
-      {n:"পেয়ারা + লবণ-মরিচ",q:"পেয়ারা ১টি মাঝারি (১৫০গ্রা) | লবণ ও মরিচ সামান্য",cal:80,p:1,c:18,f:1},
-    ],
-    medium:[
-      {n:"দই + মিক্স ফল",q:"টক দই ১৫০গ্রা | মিক্স ফল (আম/কলা/পেয়ারা) ১০০গ্রা",cal:180,p:8,c:28,f:4},
-      {n:"সিদ্ধ ডিম + ফল",q:"ডিম ২টি সিদ্ধ | ফল ১০০গ্রা",cal:160,p:12,c:12,f:6},
-    ],
-    high:[
-      {n:"প্রোটিন শেক + মিক্স বাদাম",q:"প্রোটিন শেক ১ স্কুপ (৩০গ্রা) পানি/দুধে | মিক্স বাদাম ৩০গ্রা",cal:220,p:25,c:12,f:8},
-      {n:"দই + গ্রানোলা + তাজা ফল",q:"দই ১৫০গ্রা | গ্রানোলা ৪০গ্রা | তাজা ফল ১০০গ্রা",cal:250,p:12,c:35,f:7},
-    ]
-  },
-  dinner:{
-    low:[
-      {n:"ভাত (কম) + মসুর ডাল + সবজি ভাজি",q:"ভাত ১.৫ কাপ (২৭০গ্রা) | মসুর ডাল ১ কাপ | সবজি ভাজি ১ কাপ",cal:420,p:14,c:72,f:6},
-      {n:"রুটি + ডাল + সবজি তরকারি",q:"গমের রুটি ২টি (১০০গ্রা) | মসুর ডাল ১ কাপ | সবজি ১ কাপ",cal:380,p:12,c:60,f:7},
-      {n:"ভাত + ডিম ভুনা + শাক ভাজি",q:"ভাত ১.৫ কাপ (২৭০গ্রা) | ডিম ২টি ভুনা | শাক ভাজি ১ কাপ",cal:460,p:20,c:70,f:12},
-    ],
-    medium:[
-      {n:"ভাত + মাছ + সবজি + ডাল",q:"ভাত ১.৫ কাপ (২৭০গ্রা) | মাছ ১ পিস (১০০গ্রা) | সবজি ১ কাপ | ডাল আধা কাপ",cal:580,p:35,c:78,f:14},
-      {n:"রুটি + মুরগির ঝোল + সালাদ",q:"গমের রুটি ৩টি (১৫০গ্রা) | মুরগি ১৫০গ্রা | সালাদ ১ বাটি",cal:540,p:38,c:62,f:16},
-    ],
-    high:[
-      {n:"ব্রাউন রাইস + গ্রিলড চিকেন + স্টিমড ভেজ",q:"ব্রাউন রাইস ১.৫ কাপ (২৪০গ্রা) | গ্রিলড চিকেন ব্রেস্ট ১৫০গ্রা | স্টিমড সবজি ১ কাপ",cal:560,p:48,c:60,f:14},
-      {n:"রুটি + তন্দুরি চিকেন + সালাদ + দই",q:"রুটি ৩টি (১৫০গ্রা) | তন্দুরি চিকেন ১২০গ্রা | সালাদ ১ বাটি | দই ১০০গ্রা",cal:520,p:40,c:55,f:15},
-    ]
-  }
+// ── ঘরের তৈরি খাবার ──
+home:{
+breakfast:[
+{n:“ভাত + মসুর ডাল + ডিম সিদ্ধ + শাক ভাজি”,q:“ভাত ১ কাপ | মসুর ডাল ১ কাপ রান্না | ডিম ১টি সিদ্ধ | পালং/লাল শাক ভাজি ১ মুঠো”,cal:420,p:18,c:62,f:8},
+{n:“রুটি + ডিম ভুনা + কলা”,q:“লাল আটার রুটি ৩টি | ডিম ২টি ভুনা | কলা ১টি”,cal:380,p:16,c:55,f:9},
+{n:“চিড়া + দুধ + কলা”,q:“চিড়া ১ কাপ ভেজানো | দুধ ১ গ্লাস | কলা ১টি”,cal:350,p:10,c:60,f:5},
+{n:“পান্তা ভাত + পেঁয়াজ + কাঁচামরিচ + ডিম ভাজা”,q:“পান্তা ভাত ১.৫ কাপ | পেঁয়াজ কুচি | ডিম ১টি ভাজা”,cal:330,p:12,c:50,f:8},
+],
+lunch:[
+{n:“ভাত + মসুর ডাল + মাছের ঝোল + আলু ভর্তা + শাক”,q:“ভাত ২ কাপ | মসুর ডাল ১ কাপ | রুই/কাতলা ১ পিস | আলু ভর্তা ২ চামচ | শাক ভাজি”,cal:580,p:32,c:85,f:10},
+{n:“ভাত + ডিম কারি + সবজি ভাজি + ডাল”,q:“ভাত ২ কাপ | ডিম ২টি কারি | মিক্স সবজি ১ কাপ | ডাল আধা কাপ”,cal:560,p:24,c:82,f:12},
+{n:“খিচুড়ি + ডিম ভাজি + আচার”,q:“খিচুড়ি ২ কাপ | ডিম ১টি ভাজি | আচার সামান্য”,cal:520,p:20,c:78,f:12},
+{n:“ভাত + পাঙ্গাস/তেলাপিয়া মাছ + সবজি + ডাল”,q:“ভাত ২ কাপ | মাছ ১ পিস | সবজি ১ কাপ | ডাল ১ কাপ”,cal:560,p:30,c:80,f:10},
+],
+snack:[
+{n:“মুড়ি + পেঁয়াজ + মরিচ + সরিষার তেল”,q:“মুড়ি ১.৫ কাপ | পেঁয়াজ কুচি | কাঁচামরিচ | সরিষার তেল ১ চামচ”,cal:140,p:3,c:28,f:4},
+{n:“চিড়া ভাজা + কলা”,q:“চিড়া ভাজা ১ কাপ | কলা ১টি”,cal:160,p:4,c:32,f:3},
+{n:“পেয়ারা / আমড়া / কুল”,q:“মৌসুমি ফল ১৫০-২০০গ্রা”,cal:80,p:1,c:18,f:1},
+],
+dinner:[
+{n:“রুটি + মাছের তরকারি + সবজি + ডাল”,q:“গমের রুটি ৩টি | মাছ ১ পিস | সবজি ১ কাপ | ডাল আধা কাপ”,cal:420,p:22,c:60,f:9},
+{n:“ভাত (কম) + ডিম ভুনা + শাক ভাজি”,q:“ভাত ১.৫ কাপ | ডিম ২টি ভুনা | শাক ভাজি ১ কাপ”,cal:440,p:20,c:65,f:12},
+{n:“ভাত + ডাল + আলু ভর্তা + বেগুন ভাজি”,q:“ভাত ১.৫ কাপ | মসুর ডাল ১ কাপ | আলু ভর্তা | বেগুন ভাজি”,cal:400,p:14,c:68,f:7},
+],
+// সপ্তাহে ১ দিন মাংস (মেসের জন্য বিশেষ - এখানেও রাখা আছে)
+special:[
+{n:“ভাত + মুরগির তরকারি (সপ্তাহে ১ দিন)”,q:“ভাত ২ কাপ | মুরগি ১৫০গ্রা | সবজি ১ কাপ | ডাল আধা কাপ”,cal:650,p:42,c:85,f:16},
+]
+},
+// ── মেসের/হোটেলের খাবার ──
+mess:{
+breakfast:[
+{n:“রুটি + ডিম ভাজি + চা (মেস সকালের নাস্তা)”,q:“গমের রুটি ৩টি | ডিম ২টি ভাজি | চা ১ কাপ চিনি ছাড়া”,cal:360,p:16,c:50,f:12},
+{n:“ভাত + ডাল + ডিম সিদ্ধ”,q:“ভাত ১ কাপ | মসুর ডাল ১ কাপ | ডিম ১টি সিদ্ধ”,cal:400,p:18,c:60,f:8},
+],
+lunch:[
+{n:“ভাত + মাছের ঝোল + ডাল + সবজি”,q:“ভাত ২ কাপ | মাছ (পাঙ্গাস/তেলাপিয়া) ১ পিস | ডাল ১ কাপ | সবজি ভাজি”,cal:540,p:28,c:80,f:10},
+{n:“ভাত + ডিম কারি + সবজি + ডাল”,q:“ভাত ২ কাপ | ডিম ২টি কারি | সবজি | ডাল”,cal:520,p:22,c:78,f:11},
+{n:“ভাত + শুঁটকি ভর্তা + শাক + ডাল”,q:“ভাত ২ কাপ | শুঁটকি ভর্তা ২ চামচ | শাক ভাজি | মসুর ডাল”,cal:480,p:24,c:72,f:8},
+],
+snack:[
+{n:“কলা + চা”,q:“কলা ১টি | চা ১ কাপ”,cal:120,p:2,c:27,f:1},
+{n:“মুড়ি + ছোলা ভাজা”,q:“মুড়ি ১ কাপ | ছোলা ভাজা ৩০গ্রা”,cal:180,p:7,c:32,f:4},
+],
+dinner:[
+{n:“রুটি + ডিম ভুনা + ডাল + সবজি”,q:“রুটি ৩টি | ডিম ২টি ভুনা | ডাল আধা কাপ | সবজি”,cal:400,p:20,c:56,f:10},
+{n:“ভাত + মাছ ভাজা + ডাল + শাক”,q:“ভাত ১.৫ কাপ | মাছ ভাজা ১ পিস | ডাল | শাক ভাজি”,cal:460,p:26,c:65,f:12},
+],
+// সপ্তাহে ১ দিন মাংস
+special:[
+{n:“ভাত + গরু/মুরগির মাংস (রবিবার বিশেষ)”,q:“ভাত ২ কাপ | মাংস ১০০গ্রা | সবজি | ডাল”,cal:680,p:40,c:82,f:18},
+]
+},
+// ── মিডিয়াম বাজেট ──
+medium:{
+breakfast:[
+{n:“পরোটা + ডিম ভাজি + চা”,q:“পরোটা ২টি | ডিম ২টি ভাজি | চা ১ কাপ”,cal:480,p:18,c:58,f:18},
+{n:“ব্রেড + অমলেট + দুধ”,q:“পাউরুটি ৩ স্লাইস | ডিম ২টি অমলেট | দুধ ১ গ্লাস”,cal:440,p:20,c:52,f:15},
+{n:“নান রুটি + ডিম পোচ + চা”,q:“নান রুটি ২টি | ডিম পোচ ২টি | চা”,cal:460,p:18,c:58,f:14},
+],
+lunch:[
+{n:“ভাত + মুরগির ঝোল + সবজি + ডাল”,q:“ভাত ২ কাপ | মুরগি ১৫০গ্রা | সবজি ১ কাপ | ডাল”,cal:680,p:42,c:88,f:16},
+{n:“বার্গার / স্যান্ডউইচ + সালাদ”,q:“চিকেন বার্গার ১টি | সালাদ ১ বাটি”,cal:520,p:28,c:55,f:20},
+{n:“ভাত + গরুর মাংস + শাক + ডাল”,q:“ভাত ২ কাপ | গরু ১০০গ্রা | শাক | ডাল”,cal:720,p:45,c:82,f:22},
+],
+snack:[
+{n:“দই + মিক্স ফল”,q:“টক দই ১৫০গ্রা | আম/কলা/পেয়ারা ১০০গ্রা”,cal:180,p:8,c:28,f:4},
+{n:“সিঙ্গারা / সমুচা ২টি + চা”,q:“সিঙ্গারা ২টি | চা ১ কাপ”,cal:220,p:5,c:28,f:10},
+{n:“চটপটি / ফুচকা”,q:“চটপটি ১ প্লেট”,cal:200,p:6,c:35,f:5},
+],
+dinner:[
+{n:“ভাত + মাছ + সবজি + ডাল”,q:“ভাত ১.৫ কাপ | মাছ ১ পিস | সবজি | ডাল”,cal:560,p:34,c:75,f:13},
+{n:“রুটি + মুরগির ঝোল + সালাদ”,q:“রুটি ৩টি | মুরগি ১৫০গ্রা | সালাদ”,cal:540,p:38,c:62,f:16},
+{n:“কাবাব + নান + সালাদ”,q:“শিক কাবাব ৩টি | নান ২টি | সালাদ”,cal:580,p:35,c:65,f:18},
+]
+},
+// ── প্রিমিয়াম বাজেট ──
+premium:{
+breakfast:[
+{n:“ওটস + বাদাম + মধু + দই + ফল”,q:“ওটস ৮০গ্রা | মিক্স বাদাম ৩০গ্রা | মধু ১ চামচ | দই ১০০গ্রা | ফল ১ কাপ”,cal:480,p:18,c:65,f:14},
+{n:“স্ক্র্যাম্বলড এগ + ব্রাউন ব্রেড + অ্যাভোকাডো টোস্ট + দুধ”,q:“ডিম ৩টি | ব্রাউন ব্রেড ২ স্লাইস | অ্যাভোকাডো আধা টি | দুধ ১ গ্লাস”,cal:520,p:28,c:48,f:22},
+{n:“গ্রিক ইয়োগার্ট + গ্রানোলা + বেরি + মধু”,q:“গ্রিক দই ২০০গ্রা | গ্রানোলা ৪০গ্রা | বেরি ৫০গ্রা | মধু ১ চামচ”,cal:460,p:22,c:58,f:12},
+],
+lunch:[
+{n:“ব্রাউন রাইস + গ্রিলড চিকেন ব্রেস্ট + স্টিমড ভেজ + দই”,q:“ব্রাউন রাইস ১.৫ কাপ | চিকেন ব্রেস্ট ২০০গ্রা | স্টিমড সবজি | দই ১০০গ্রা”,cal:660,p:55,c:72,f:14},
+{n:“স্যামন ফিশ + কুইনোয়া + ব্রকলি”,q:“স্যামন ফিশ ১৫০গ্রা | কুইনোয়া ১ কাপ | ব্রকলি স্টিমড”,cal:620,p:50,c:58,f:18},
+{n:“তন্দুরি চিকেন + নান + রাইতা + সালাদ”,q:“তন্দুরি চিকেন ২ পিস | নান ২টি | রাইতা | সালাদ”,cal:680,p:48,c:68,f:18},
+],
+snack:[
+{n:“প্রোটিন শেক + মিক্স বাদাম”,q:“প্রোটিন পাউডার ১ স্কুপ | কাজু+বাদাম+পেস্তা ৩০গ্রা”,cal:220,p:25,c:12,f:8},
+{n:“দই + বেরি + ডার্ক চকোলেট”,q:“দই ১৫০গ্রা | মিক্স বেরি | ডার্ক চকোলেট ২০গ্রা”,cal:200,p:10,c:22,f:8},
+{n:“অ্যাভোকাডো টোস্ট + ডিম”,q:“ব্রাউন ব্রেড ২ স্লাইস | অ্যাভোকাডো | ডিম পোচ ১টি”,cal:280,p:12,c:28,f:14},
+],
+dinner:[
+{n:“ব্রাউন রাইস + গ্রিলড চিকেন + স্টিমড ভেজ”,q:“ব্রাউন রাইস ১.৫ কাপ | গ্রিলড চিকেন ব্রেস্ট ১৫০গ্রা | স্টিমড সবজি”,cal:560,p:48,c:60,f:14},
+{n:“পাস্তা + চিকেন + অলিভ অয়েল + সালাদ”,q:“পাস্তা ১.৫ কাপ | চিকেন ১২০গ্রা | অলিভ অয়েল | সালাদ”,cal:580,p:40,c:65,f:16},
+{n:“টুনা / স্যামন + কুইনোয়া + সবজি”,q:“টুনা/স্যামন ১৫০গ্রা | কুইনোয়া ১ কাপ | স্টিমড সবজি”,cal:540,p:50,c:50,f:15},
+]
+}
 };
 
-// ══ NUTRITION DATABASE ══
-const NDB={
-  tilapia:{name:'তেলাপিয়া মাছ',unit:'১০০ গ্রাম (রান্না)',cal:96,p:20.1,c:0,f:1.7,fiber:0,detail:'উচ্চমানের প্রোটিন ও কম চর্বির সেরা উৎস। ওজন কমাতে ও মাংসপেশি গড়তে আদর্শ। ওমেগা-৩ ফ্যাটি অ্যাসিড আছে।'},
-  hilsa:{name:'ইলিশ মাছ',unit:'১০০ গ্রাম (রান্না)',cal:273,p:21.8,c:0,f:19.4,fiber:0,detail:'ওমেগা-৩ ফ্যাটি অ্যাসিডে ভরপুর। হৃদরোগ প্রতিরোধে উপকারী। তবে উচ্চ ক্যালরি, তাই পরিমাণ নিয়ন্ত্রণ করুন।'},
-  egg:{name:'ডিম (মুরগি)',unit:'১টি মাঝারি (৫০গ্রা)',cal:78,p:6.3,c:0.6,f:5.3,fiber:0,detail:'সর্বোচ্চ মানের প্রোটিন উৎস (সম্পূর্ণ অ্যামিনো অ্যাসিড)। ভিটামিন D, B12, কোলিন সমৃদ্ধ।'},
-  chicken:{name:'মুরগির বুকের মাংস',unit:'১০০ গ্রাম (রান্না)',cal:165,p:31,c:0,f:3.6,fiber:0,detail:'কম চর্বি ও উচ্চ প্রোটিন। মাংসপেশি গড়ার জন্য সেরা খাবার। ওজন নিয়ন্ত্রণেও কার্যকর।'},
-  beef:{name:'গরুর মাংস (চর্বি ছাড়া)',unit:'১০০ গ্রাম (রান্না)',cal:250,p:26,c:0,f:15,fiber:0,detail:'আয়রন ও জিংকের চমৎকার উৎস। রক্তস্বল্পতায় উপকারী। সপ্তাহে ২-৩ বার খাওয়া যেতে পারে।'},
-  rice:{name:'রান্না করা ভাত',unit:'১ কাপ (১৮৬গ্রা)',cal:242,p:4.4,c:53,f:0.4,fiber:0.6,detail:'শক্তির প্রধান উৎস (কার্বোহাইড্রেট)। তবে অতিরিক্ত খেলে ওজন বাড়তে পারে।'},
-  ruti:{name:'গমের রুটি',unit:'১টি (৩০গ্রা)',cal:80,p:2.7,c:15.4,f:1,fiber:1.2,detail:'ফাইবার সমৃদ্ধ। ভাতের তুলনায় গ্লাইসেমিক ইনডেক্স কম, তাই ডায়াবেটিসে ভালো।'},
-  dal:{name:'মসুর ডাল (রান্না)',unit:'১ কাপ (১৯৮গ্রা)',cal:230,p:18,c:40,f:0.8,fiber:15.6,detail:'উদ্ভিজ্জ প্রোটিন ও আঁশের অসাধারণ উৎস। ডায়াবেটিস ও কোলেস্টেরল নিয়ন্ত্রণে সাহায্য করে।'},
-  banana:{name:'কলা',unit:'১টি মাঝারি (১১৮গ্রা)',cal:105,p:1.3,c:27,f:0.4,fiber:3.1,detail:'পটাশিয়াম ও ভিটামিন B6 সমৃদ্ধ। ব্যায়ামের আগে বা পরে আদর্শ। তাৎক্ষণিক শক্তি দেয়।'},
-  apple:{name:'আপেল (মাঝারি)',unit:'১টি (১৮২গ্রা)',cal:95,p:0.5,c:25,f:0.3,fiber:4.4,detail:'অ্যান্টিঅক্সিডেন্ট ও ফাইবার সমৃদ্ধ। কোলেস্টেরল কমায়, হজম ভালো করে।'},
-  milk:{name:'দুধ (ফুল ক্রিম)',unit:'১ গ্লাস (২৫০মিলি)',cal:149,p:8,c:11.5,f:8,fiber:0,detail:'ক্যালসিয়াম ও ভিটামিন D সমৃদ্ধ। হাড় ও দাঁত মজবুত করে। শিশু থেকে বৃদ্ধ সবার জন্য উপকারী।'},
-  potato:{name:'সিদ্ধ আলু',unit:'১টি মাঝারি (১৫০গ্রা)',cal:116,p:2.5,c:26,f:0.1,fiber:2.4,detail:'পটাশিয়াম ও ভিটামিন C সমৃদ্ধ। ভাজলে ক্যালরি অনেক বেশি হয়, সিদ্ধ খাওয়া ভালো।'},
-  spinach:{name:'পালং শাক (রান্না)',unit:'১ কাপ (১৮০গ্রা)',cal:41,p:5.3,c:6.8,f:0.5,fiber:4.3,detail:'আয়রন, ক্যালসিয়াম ও ভিটামিন K এর অসাধারণ উৎস। রক্তস্বল্পতায় এবং হাড় মজবুত করতে উপকারী।'},
-  oats:{name:'ওটস (রান্না)',unit:'১ কাপ (২৩৪গ্রা)',cal:166,p:5.9,c:32,f:3.6,fiber:4,detail:'ধীরে হজম হয়, দীর্ঘক্ষণ পেট ভরা থাকে। কোলেস্টেরল কমায়। ডায়াবেটিসে বিশেষ উপকারী।'},
-};
-
-// ══ NUTRITION SHOW ══
-function nutShow(key){
-  const d=NDB[key];if(!d)return;
-  document.getElementById('nut-result').innerHTML=`
-    <div class="card">
-      <div class="ctit">🥗 ${d.name}</div>
-      <div style="font-size:.77rem;color:var(--muted);margin-bottom:9px">📏 পরিমাণ: ${d.unit}</div>
-      <div class="ncal"><div class="cv">${d.cal} kcal</div><div class="cl">মোট ক্যালরি</div></div>
-      <div class="ng">
-        <div class="nb"><div class="nv">${d.p}গ্রা</div><div class="nk">প্রোটিন</div></div>
-        <div class="nb"><div class="nv">${d.c}গ্রা</div><div class="nk">কার্বোহাইড্রেট</div></div>
-        <div class="nb"><div class="nv">${d.f}গ্রা</div><div class="nk">ফ্যাট</div></div>
-      </div>
-      ${d.fiber>0?`<div style="margin-top:7px;padding:7px 10px;background:#f0fdf4;border-radius:8px;font-size:.79rem;color:#166534">🌿 ডায়েটারি ফাইবার: ${d.fiber}গ্রা</div>`:''}
-      <div style="margin-top:8px;padding:9px 11px;background:var(--gbg);border-radius:8px;font-size:.8rem;color:var(--text);line-height:1.65">💡 ${d.detail}</div>
-    </div>`;
-  document.getElementById('nut-result').scrollIntoView({behavior:'smooth'});
-}
-
-function nutSearch(){
-  const q=document.getElementById('nsq').value.trim().toLowerCase();
-  if(q.length<2){document.getElementById('nut-result').innerHTML='';return;}
-  const map={'তেলাপিয়া':'tilapia','ইলিশ':'hilsa','ডিম':'egg','মুরগি':'chicken',
-    'গরু':'beef','গরুর':'beef','ভাত':'rice','রুটি':'ruti','ডাল':'dal',
-    'মসুর':'dal','কলা':'banana','আপেল':'apple','দুধ':'milk','আলু':'potato',
-    'পালং':'spinach','শাক':'spinach','ওটস':'oats','tilapia':'tilapia',
-    'egg':'egg','chicken':'chicken','rice':'rice','banana':'banana',
-    'apple':'apple','milk':'milk','oats':'oats'};
-  for(const[k,v]of Object.entries(map)){if(q.includes(k)){nutShow(v);return;}}
-  document.getElementById('nut-result').innerHTML='<div class="card" style="text-align:center;padding:18px;color:var(--muted);font-size:.83rem">এই খাবারের তথ্য এখনো যোগ হয়নি। উপরের বাটন থেকে খুঁজুন।</div>';
-}
-
-// ══ GROCERY ══
+// ══ GROCERY DB ══
 const GDB={
-  low:["চাল (৫ কেজি)","মসুর ডাল (১ কেজি)","ডিম (১ ডজন)","আলু (২ কেজি)","পেঁয়াজ (১ কেজি)","রসুন (২৫০গ্রা)","টমেটো (৫০০গ্রা)","শাক-সবজি মৌসুমি (২ কেজি)","সরিষার তেল (৫০০মিলি)","কলা (১ ডজন)","পেয়ারা (৫০০গ্রা)","আদা (১০০গ্রা)","মসলাপাতি (হলুদ, মরিচ, জিরা)"],
-  medium:["চাল/আটা (৫ কেজি)","মুরগি (১ কেজি)","মাছ (১ কেজি)","ডিম (২ ডজন)","মিক্স সবজি (২ কেজি)","টক দই (৫০০গ্রা)","দুধ (১ লিটার)","ফলমূল মিক্স (১ কেজি)","বাদাম (২৫০গ্রা)","মসলাপাতি","ভোজ্য তেল (১ লিটার)","পেঁয়াজ + রসুন + আদা"],
-  high:["ব্রাউন রাইস (২ কেজি)","আটা (২ কেজি)","মুরগির বুকের মাংস (৫০০গ্রা)","সামুদ্রিক মাছ (৫০০গ্রা)","ডিম (২ ডজন)","টক দই (১ কেজি)","দুধ (২ লিটার)","মিক্স বাদাম (৫০০গ্রা)","অলিভ ওয়েল (৫০০মিলি)","ফলমূল প্রিমিয়াম (২ কেজি)","ওটস (৫০০গ্রা)"]
+home:[“চাল ৫কেজি”,“মসুর ডাল ১কেজি”,“ডিম ১ ডজন”,“আলু ২কেজি”,“পেঁয়াজ ১কেজি”,“রসুন ২৫০গ্রা”,“টমেটো ৫০০গ্রা”,“মৌসুমি শাক-সবজি ২কেজি”,“সরিষার তেল ৫০০মিলি”,“কলা ১ডজন”,“পেয়ারা ৫০০গ্রা”,“আদা ১০০গ্রা”,“মসলাপাতি”,“চিড়া ৫০০গ্রা”,“মুড়ি ৫০০গ্রা”],
+mess:[“চাল ৫কেজি”,“মসুর ডাল ১কেজি”,“ডিম ২ডজন”,“পাঙ্গাস/তেলাপিয়া ১কেজি”,“সবজি মিক্স ২কেজি”,“আলু ১কেজি”,“শুঁটকি মাছ ২০০গ্রা”,“সরিষার তেল ৫০০মিলি”,“মুরগি ৫০০গ্রা (সপ্তাহে ১বার)”,“কলা ১ডজন”,“চা পাতা”,“চিনি ৫০০গ্রা”],
+medium:[“চাল ৫কেজি”,“আটা ২কেজি”,“মুরগি ১কেজি”,“মাছ মিক্স ১কেজি”,“ডিম ২ডজন”,“দই ৫০০গ্রা”,“দুধ ১লিটার”,“বাদাম ২৫০গ্রা”,“ফলমূল মিক্স ১কেজি”,“সবজি মিক্স ২কেজি”,“মসলাপাতি”,“ভোজ্য তেল ১লিটার”],
+premium:[“ব্রাউন রাইস ২কেজি”,“ওটস ৫০০গ্রা”,“চিকেন ব্রেস্ট ১কেজি”,“স্যামন/টুনা ৫০০গ্রা”,“ডিম ২ডজন”,“গ্রিক ইয়োগার্ট ১কেজি”,“দুধ ২লিটার”,“মিক্স বাদাম ৫০০গ্রা”,“অলিভ অয়েল ৫০০মিলি”,“অ্যাভোকাডো ৪টি”,“বেরি মিক্স ৫০০গ্রা”,“ব্রকলি ৫০০গ্রা”,“কুইনোয়া ৫০০গ্রা”,“প্রোটিন পাউডার”,“ডার্ক চকোলেট”]
 };
 
+// ══ NUTRITION DATABASE (বিস্তারিত) ══
+const NCATS={
+fish:{name:‘🐟 মাছ’,items:[‘ইলিশ’,‘রুই’,‘কাতলা’,‘মৃগেল’,‘পাঙ্গাস’,‘তেলাপিয়া’,‘কৈ মাছ’,‘শিং মাছ’,‘মাগুর মাছ’,‘টাকি মাছ’,‘বোয়াল’,‘পাবদা’,‘চিতল’,‘গজার’,‘কাঁচকি’,‘মলা মাছ’,‘পুটি মাছ’,‘চাপিলা’,‘বেলে মাছ’,‘রূপচাঁদা’,‘সুরমা মাছ’,‘লইট্টা’,‘টুনা’,‘স্যামন’,‘সার্ডিন’,‘ম্যাকেরেল’,‘কড মাছ’,‘সিলভার কার্প’,‘বাটা মাছ’,‘চিংড়ি’,‘গলদা চিংড়ি’,‘বাগদা চিংড়ি’,‘কাঁকড়া’,‘শুঁটকি মাছ’]},
+meat:{name:‘🍗 মাংস ও প্রোটিন’,items:[‘মুরগি (ব্রয়লার)’,‘দেশি মুরগি’,‘চিকেন ব্রেস্ট’,‘গরুর মাংস’,‘খাসির মাংস’,‘ভেড়ার মাংস’,‘হাঁসের মাংস’,‘কবুতর’,‘কোয়েল’,‘টার্কি’,‘ডিম সেদ্ধ’,‘ডিম ভাজি’,‘ডিম ভুনা’,‘হাঁসের ডিম’,‘কোয়েলের ডিম’,‘কলিজা’,‘গিজার্ড’,‘কিডনি’,‘বিফ স্টেক’,‘মিটবল’,‘নাগেটস’,‘সসেজ’]},
+dairy:{name:‘🥛 দুধ ও দুগ্ধজাত’,items:[‘দুধ (গরু)’,‘দই’,‘টক দই’,‘মিষ্টি দই’,‘পনির’,‘চিজ’,‘মাখন’,‘দেশি ঘি’,‘ক্রিম’,‘লাচ্ছি’,‘মিল্কশেক’,‘কাস্টার্ড’,‘আইসক্রিম’,‘ফ্লেভারড দুধ’,‘ছানা’]},
+grains:{name:‘🌾 শস্য ও কার্ব’,items:[‘ভাত (সাদা)’,‘লাল চালের ভাত’,‘পোলাও’,‘বিরিয়ানি’,‘তেহারি’,‘খিচুড়ি’,‘পান্তা ভাত’,‘রুটি’,‘নান’,‘পরোটা’,‘লুচি’,‘পাউরুটি’,‘ব্রাউন ব্রেড’,‘ওটস’,‘কর্নফ্লেক্স’,‘চিড়া’,‘মুড়ি’,‘সুজি’,‘পাস্তা’,‘নুডলস’,‘সেমাই’,‘কুইনোয়া’]},
+vegetables:{name:‘🥦 সবজি’,items:[‘আলু’,‘মিষ্টি আলু’,‘বেগুন’,‘টমেটো’,‘পেঁয়াজ’,‘রসুন’,‘আদা’,‘গাজর’,‘শসা’,‘ফুলকপি’,‘বাঁধাকপি’,‘ব্রকলি’,‘ক্যাপসিকাম’,‘লাউ’,‘মিষ্টি কুমড়া’,‘ঝিঙা’,‘পটল’,‘করলা’,‘ঢেঁড়স’,‘শিম’,‘বরবটি’,‘মটরশুঁটি’,‘কচু’,‘কাঁচা কলা’,‘পেঁপে (কাঁচা)’,‘মুলা’,‘ধনেপাতা’,‘পুদিনা’,‘লেটুস’,‘মাশরুম’,‘কাঁচামরিচ’]},
+greens:{name:‘🌿 শাক’,items:[‘পালং শাক’,‘লাল শাক’,‘পুঁই শাক’,‘কলমি শাক’,‘মুলা শাক’,‘কচু শাক’,‘ডাটা শাক’,‘সরিষা শাক’,‘মেথি শাক’,‘হেলেঞ্চা শাক’,‘লাউ শাক’,‘মিষ্টি কুমড়ার শাক’]},
+fruits:{name:‘🍎 ফল’,items:[‘আম’,‘কলা’,‘আপেল’,‘কমলা’,‘মাল্টা’,‘আঙুর’,‘পেয়ারা’,‘পেঁপে’,‘তরমুজ’,‘বাঙ্গি’,‘ডালিম’,‘আনারস’,‘লিচু’,‘কাঁঠাল’,‘স্ট্রবেরি’,‘ব্লুবেরি’,‘অ্যাভোকাডো’,‘নারকেল’,‘খেজুর’,‘কিশমিশ’,‘জলপাই’,‘আমলকী’,‘বেল’,‘তেঁতুল’]},
+nuts:{name:‘🥜 বাদাম ও বীজ’,items:[‘চিনাবাদাম’,‘কাজুবাদাম’,‘কাঠবাদাম’,‘পেস্তা বাদাম’,‘আখরোট’,‘তিল’,‘চিয়া সিড’,‘ফ্ল্যাক্স সিড’,‘সূর্যমুখী বীজ’,‘কুমড়ার বীজ’,‘হ্যাজেলনাট’,‘ম্যাকাডামিয়া’]},
+dal:{name:‘🫘 ডাল’,items:[‘মসুর ডাল’,‘মুগ ডাল’,‘মাষকলাই ডাল’,‘ছোলা ডাল’,‘অড়হর ডাল’,‘বুটের ডাল’,‘মটর ডাল’,‘ডাল ভুনা’,‘ডাল ফ্রাই’,‘ঘন ডাল’,‘ছোলা সেদ্ধ’]},
+curry:{name:‘🍲 তরকারি’,items:[‘মাছের ঝোল’,‘মাছ ভুনা’,‘মাংস ভুনা’,‘কোর্মা’,‘কালিয়া’,‘দোপেয়াজা’,‘সবজি কারি’,‘ডিম কারি’,‘আলু দম’,‘চিংড়ি মালাইকারি’,‘রেজালা’,‘ভর্তা মিক্স’]},
+bhaji:{name:‘🍳 ভর্তা ও ভাজি’,items:[‘আলু ভর্তা’,‘বেগুন ভর্তা’,‘টমেটো ভর্তা’,‘ডাল ভর্তা’,‘ডিম ভর্তা’,‘শুঁটকি ভর্তা’,‘মরিচ ভর্তা’,‘আলু ভাজি’,‘বেগুন ভাজি’,‘পটল ভাজি’,‘করলা ভাজি’,‘ডিম ভাজি’,‘মাছ ভাজা’]},
+traditional:{name:‘🥘 ঐতিহ্যবাহী খাবার’,items:[‘কাচ্চি বিরিয়ানি’,‘মরগ পোলাও’,‘হালিম’,‘নেহারি’,‘পান্তা-ইলিশ’,‘মেজবানি মাংস’,‘ভাত-ভর্তা’,‘কোরমা পোলাও’]},
+pitha:{name:‘🥟 পিঠা’,items:[‘চিতই পিঠা’,‘ভাপা পিঠা’,‘পাটিসাপটা’,‘দুধ পুলি’,‘তেল পিঠা’,‘মালপোয়া’,‘গোকুল পিঠা’,‘নকশি পিঠা’,‘ভাজা পিঠা’]},
+sweets:{name:‘🍬 মিষ্টি’,items:[‘রসগোল্লা’,‘সন্দেশ’,‘রসমালাই’,‘ক্ষীর’,‘পায়েস’,‘কালোজাম’,‘ল্যাংচা’,‘চমচম’,‘জিলাপি’,‘গাজরের হালুয়া’,‘নারকেলের নাড়ু’,‘তিলের নাড়ু’,‘মুড়ির মোয়া’,‘কেক’,‘পেস্ট্রি’,‘ডোনাট’,‘ব্রাউনি’]},
+snacks:{name:‘🍿 স্ন্যাকস ও ফাস্টফুড’,items:[‘চানাচুর’,‘ঝালমুড়ি’,‘ফুচকা’,‘চটপটি’,‘সমুচা’,‘সিঙ্গারা’,‘পেঁয়াজু’,‘বেগুনি’,‘আলুর চপ’,‘রোল’,‘বার্গার’,‘পিজ্জা’,‘স্যান্ডউইচ’,‘ফ্রেঞ্চ ফ্রাই’,‘চিকেন ফ্রাই’,‘গ্রিল চিকেন’,‘কাবাব’,‘শিক কাবাব’]},
+drinks:{name:‘🥤 পানীয়’,items:[‘পানি’,‘চা’,‘দুধ চা’,‘গ্রিন টি’,‘কফি’,‘লাচ্ছি’,‘ডাবের পানি’,‘বেলের শরবত’,‘লেবুর শরবত’,‘আখের রস’,‘ঘোল’,‘তেঁতুলের শরবত’,‘ডালিমের রস’]},
+oils:{name:‘🫙 তেল ও চর্বি’,items:[‘সয়াবিন তেল’,‘সরিষার তেল’,‘সানফ্লাওয়ার তেল’,‘পাম তেল’,‘রাইস ব্রান তেল’,‘অলিভ অয়েল’,‘এক্সট্রা ভার্জিন অলিভ অয়েল’,‘অ্যাভোকাডো তেল’,‘নারকেল তেল’,‘চিনাবাদাম তেল’,‘তিলের তেল’,‘ক্যানোলা তেল’,‘দেশি ঘি’,‘মাখন (বাটার)’,‘মার্জারিন’]},
+other:{name:‘🍯 অন্যান্য’,items:[‘মধু’,‘গুড়’,‘চিনি’,‘জ্যাম’,‘জেলি’,‘পিনাট বাটার’,‘চকোলেট’,‘ডার্ক চকোলেট’,‘টোফু’,‘সয়া দুধ’,‘প্রোটিন পাউডার’,‘হোয়ে প্রোটিন’,‘কোকো পাউডার’]},
+};
+
+// পুষ্টি তথ্য (প্রতি ১০০গ্রাম বা উল্লিখিত পরিমাণ)
+const NDATA={
+‘ইলিশ’:{cal:273,p:21.8,c:0,f:19.4,fiber:0,unit:‘১০০গ্রা’,note:‘ওমেগা-৩ ফ্যাটি অ্যাসিডে ভরপুর। হৃদরোগ প্রতিরোধে উপকারী।’},
+‘রুই’:{cal:97,p:17,c:0,f:2.7,fiber:0,unit:‘১০০গ্রা’,note:‘উচ্চমানের প্রোটিন। কম চর্বি, ওজন নিয়ন্ত্রণে ভালো।’},
+‘কাতলা’:{cal:111,p:19,c:0,f:3.8,fiber:0,unit:‘১০০গ্রা’,note:‘প্রোটিন ও ওমেগা ফ্যাটি অ্যাসিড সমৃদ্ধ।’},
+‘পাঙ্গাস’:{cal:120,p:16,c:0,f:6,fiber:0,unit:‘১০০গ্রা’,note:‘সহজলভ্য ও সাশ্রয়ী প্রোটিনের উৎস।’},
+‘তেলাপিয়া’:{cal:96,p:20.1,c:0,f:1.7,fiber:0,unit:‘১০০গ্রা’,note:‘কম চর্বি ও উচ্চ প্রোটিন। ওজন কমাতে আদর্শ।’},
+‘শিং মাছ’:{cal:83,p:16,c:0,f:2,fiber:0,unit:‘১০০গ্রা’,note:‘কম চর্বি, উচ্চ প্রোটিন। রোগীদের জন্য ভালো।’},
+‘চিংড়ি’:{cal:84,p:18,c:0.9,f:0.9,fiber:0,unit:‘১০০গ্রা’,note:‘কম ক্যালরি, উচ্চ প্রোটিন। জিংক ও সেলেনিয়াম সমৃদ্ধ।’},
+‘শুঁটকি মাছ’:{cal:279,p:60,c:0,f:3,fiber:0,unit:‘৩০গ্রা (১ চামচ)’,note:‘উচ্চ প্রোটিন, তবে বেশি লবণ থাকে।’},
+‘টুনা’:{cal:116,p:25.5,c:0,f:0.5,fiber:0,unit:‘১০০গ্রা’,note:‘অত্যন্ত উচ্চ প্রোটিন, প্রায় চর্বিহীন।’},
+‘স্যামন’:{cal:208,p:20,c:0,f:13,fiber:0,unit:‘১০০গ্রা’,note:‘ওমেগা-৩ এর সর্বোত্তম উৎস। মস্তিষ্কের জন্য উপকারী।’},
+‘মুরগি (ব্রয়লার)’:{cal:165,p:31,c:0,f:3.6,fiber:0,unit:‘১০০গ্রা (বুকের মাংস)’,note:‘কম চর্বি ও উচ্চ প্রোটিন। মাংসপেশি গড়তে আদর্শ।’},
+‘দেশি মুরগি’:{cal:180,p:27,c:0,f:7,fiber:0,unit:‘১০০গ্রা’,note:‘ব্রয়লারের চেয়ে বেশি পুষ্টিকর।’},
+‘চিকেন ব্রেস্ট’:{cal:165,p:31,c:0,f:3.6,fiber:0,unit:‘১০০গ্রা’,note:‘ওজন কমানো ও মাংসপেশি গড়তে সেরা প্রোটিন উৎস।’},
+‘গরুর মাংস’:{cal:250,p:26,c:0,f:15,fiber:0,unit:‘১০০গ্রা’,note:‘আয়রন ও জিংকের চমৎকার উৎস।’},
+‘খাসির মাংস’:{cal:270,p:25,c:0,f:18,fiber:0,unit:‘১০০গ্রা’,note:‘প্রোটিন ও আয়রন সমৃদ্ধ।’},
+‘ডিম সেদ্ধ’:{cal:68,p:6.3,c:0.6,f:5.3,fiber:0,unit:‘১টি (৫০গ্রা)’,note:‘সর্বোচ্চ মানের প্রোটিন। ভিটামিন D, B12 সমৃদ্ধ।’},
+‘ডিম ভাজি’:{cal:90,p:6,c:0.4,f:7,fiber:0,unit:‘১টি’,note:‘ডিম ভাজলে ক্যালরি বাড়ে। তেল কম ব্যবহার করুন।’},
+‘কলিজা’:{cal:135,p:20,c:3.9,f:3.6,fiber:0,unit:‘১০০গ্রা’,note:‘আয়রন ও ভিটামিন A-এর চমৎকার উৎস।’},
+‘দুধ (গরু)’:{cal:42,p:3.4,c:5,f:1,fiber:0,unit:‘১০০মিলি (প্রায় আধা গ্লাস)’,note:‘ক্যালসিয়াম ও ভিটামিন D সমৃদ্ধ।’},
+‘দই’:{cal:61,p:3.5,c:4.7,f:3.3,fiber:0,unit:‘১০০গ্রা’,note:‘প্রোবায়োটিক সমৃদ্ধ। হজমশক্তি বাড়ায়।’},
+‘ভাত (সাদা)’:{cal:130,p:2.7,c:28,f:0.3,fiber:0.4,unit:‘১০০গ্রা রান্না’,note:‘শক্তির প্রধান উৎস। অতিরিক্ত খেলে ওজন বাড়তে পারে।’},
+‘লাল চালের ভাত’:{cal:111,p:2.5,c:23,f:0.9,fiber:1.8,unit:‘১০০গ্রা রান্না’,note:‘সাদা ভাতের চেয়ে বেশি ফাইবার ও পুষ্টিকর।’},
+‘রুটি’:{cal:80,p:2.7,c:15.4,f:1,fiber:1.2,unit:‘১টি (৩০গ্রা)’,note:‘গমের আঁশ সমৃদ্ধ। ডায়াবেটিসে ভালো।’},
+‘ওটস’:{cal:66,p:2.4,c:12,f:1.4,fiber:1.7,unit:‘১০০গ্রা রান্না’,note:‘ধীরে হজম হয়, দীর্ঘক্ষণ পেট ভরা থাকে।’},
+‘মসুর ডাল’:{cal:230,p:18,c:40,f:0.8,fiber:15.6,unit:‘১ কাপ রান্না (১৯৮গ্রা)’,note:‘উদ্ভিজ্জ প্রোটিন ও আঁশের অসাধারণ উৎস।’},
+‘মুগ ডাল’:{cal:212,p:14,c:38,f:0.8,fiber:15,unit:‘১ কাপ রান্না’,note:‘হজমে সহজ, ডায়াবেটিস রোগীদের জন্য ভালো।’},
+‘ছোলা সেদ্ধ’:{cal:164,p:9,c:27,f:2.6,fiber:7,unit:‘১ কাপ (১০০গ্রা)’,note:‘উচ্চ প্রোটিন ও ফাইবার। দীর্ঘক্ষণ পেট ভরা রাখে।’},
+‘আলু’:{cal:77,p:2,c:17,f:0.1,fiber:2.2,unit:‘১০০গ্রা সিদ্ধ’,note:‘পটাশিয়াম সমৃদ্ধ। ভাজলে ক্যালরি অনেক বেশি হয়।’},
+‘গাজর’:{cal:41,p:0.9,c:10,f:0.2,fiber:2.8,unit:‘১০০গ্রা’,note:‘বেটা-ক্যারোটিন (ভিটামিন A) সমৃদ্ধ। চোখের জন্য ভালো।’},
+‘পালং শাক’:{cal:23,p:2.9,c:3.6,f:0.4,fiber:2.2,unit:‘১০০গ্রা রান্না’,note:‘আয়রন ও ক্যালসিয়ামের অসাধারণ উৎস।’},
+‘ব্রকলি’:{cal:34,p:2.8,c:7,f:0.4,fiber:2.6,unit:‘১০০গ্রা’,note:‘ভিটামিন C ও K সমৃদ্ধ। ক্যান্সার প্রতিরোধক।’},
+‘কলা’:{cal:89,p:1.1,c:23,f:0.3,fiber:2.6,unit:‘১টি মাঝারি (১১৮গ্রা)’,note:‘পটাশিয়াম সমৃদ্ধ। তাৎক্ষণিক শক্তি দেয়।’},
+‘আপেল’:{cal:52,p:0.3,c:14,f:0.2,fiber:2.4,unit:‘১টি মাঝারি (১৮২গ্রা)’,note:‘অ্যান্টিঅক্সিডেন্ট ও ফাইবার সমৃদ্ধ।’},
+‘পেয়ারা’:{cal:68,p:2.6,c:14,f:1,fiber:5.4,unit:‘১টি মাঝারি (১৫০গ্রা)’,note:‘ভিটামিন C-এর অসাধারণ উৎস।’},
+‘আম’:{cal:60,p:0.8,c:15,f:0.4,fiber:1.6,unit:‘১০০গ্রা’,note:‘ভিটামিন A ও C সমৃদ্ধ। পাকা আমে চিনি বেশি।’},
+‘খেজুর’:{cal:282,p:2.5,c:75,f:0.4,fiber:8,unit:‘১০০গ্রা (৫-৬টি)’,note:‘প্রাকৃতিক শর্করা ও আঁশ সমৃদ্ধ। শক্তির উৎস।’},
+‘কাজুবাদাম’:{cal:553,p:18,c:30,f:44,fiber:3,unit:‘১০০গ্রা’,note:‘ম্যাগনেশিয়াম ও স্বাস্থ্যকর চর্বি সমৃদ্ধ।’},
+‘চিনাবাদাম’:{cal:567,p:26,c:16,f:49,fiber:8.5,unit:‘১০০গ্রা’,note:‘সস্তা ও পুষ্টিকর প্রোটিন উৎস।’},
+‘মধু’:{cal:304,p:0.3,c:82,f:0,fiber:0.2,unit:‘১০০গ্রা (৫ চামচ)’,note:‘প্রাকৃতিক অ্যান্টিব্যাকটেরিয়াল। পরিমিত ব্যবহার করুন।’},
+‘সয়াবিন তেল’:{cal:884,p:0,c:0,f:100,fiber:0,unit:‘১০০গ্রা (৭ চামচ)’,note:‘বহু অসম্পৃক্ত চর্বি আছে। বেশি গরমে ক্ষতিকর হতে পারে।’},
+‘সরিষার তেল’:{cal:884,p:0,c:0,f:100,fiber:0,unit:‘১০০গ্রা’,note:‘ইরুসিক অ্যাসিড আছে। পরিমিত ব্যবহারে ভালো।’},
+‘অলিভ অয়েল’:{cal:884,p:0,c:0,f:100,fiber:0,unit:‘১০০গ্রা’,note:‘মনোআনস্যাচুরেটেড ফ্যাট সমৃদ্ধ। হৃদয়ের জন্য সেরা।’},
+‘দেশি ঘি’:{cal:900,p:0.3,c:0,f:99.5,fiber:0,unit:‘১০০গ্রা’,note:‘CLA ও চর্বি-দ্রবণীয় ভিটামিন সমৃদ্ধ।’},
+‘রসগোল্লা’:{cal:186,p:3.4,c:40,f:2.5,fiber:0,unit:‘১টি বড় (৮০গ্রা)’,note:‘উচ্চ চিনি। ডায়াবেটিসে এড়িয়ে চলুন।’},
+‘চটপটি’:{cal:180,p:6,c:30,f:5,fiber:4,unit:‘১ প্লেট (২০০গ্রা)’,note:‘তেল ও মশলা বেশি থাকে। পরিমিত খান।’},
+‘সিঙ্গারা’:{cal:180,p:4,c:22,f:9,fiber:1.5,unit:‘১টি বড়’,note:‘ভাজা খাবার, অতিরিক্ত তেল। সপ্তাহে ১-২টি ঠিক আছে।’},
+‘বার্গার’:{cal:295,p:17,c:24,f:14,fiber:1,unit:‘১টি মাঝারি’,note:‘সোডিয়াম ও স্যাচুরেটেড ফ্যাট বেশি।’},
+‘ডাবের পানি’:{cal:19,p:0.7,c:3.7,f:0.2,fiber:1,unit:‘১০০মিলি (আধা গ্লাস)’,note:‘ইলেক্ট্রোলাইট সমৃদ্ধ। ব্যায়ামের পরে আদর্শ।’},
+‘গ্রিন টি’:{cal:2,p:0,c:0,f:0,fiber:0,unit:‘১ কাপ (২৪০মিলি)’,note:‘অ্যান্টিঅক্সিডেন্ট সমৃদ্ধ। বিপাক ক্রিয়া বাড়ায়।’},
+‘প্রোটিন পাউডার’:{cal:120,p:24,c:3,f:2,fiber:1,unit:‘১ স্কুপ (৩০গ্রা)’,note:‘দ্রুত হজম হওয়া প্রোটিন। ব্যায়ামের পরে সেরা।’},
+};
+
+// ══ NUTRITION PAGE INIT ══
+let currentCat=‘fish’;
+function initNutri(){
+const tabDiv=document.getElementById(‘ncat-tabs’);
+if(tabDiv.children.length>0)return; // already init
+tabDiv.innerHTML=’’;
+Object.entries(NCATS).forEach(([key,cat])=>{
+const btn=document.createElement(‘button’);
+btn.className=‘ncat-tab’+(key===currentCat?’ active’:’’);
+btn.textContent=cat.name;
+btn.onclick=()=>showCat(key);
+tabDiv.appendChild(btn);
+});
+showCat(currentCat);
+}
+function showCat(key){
+currentCat=key;
+document.querySelectorAll(’.ncat-tab’).forEach(t=>t.classList.toggle(‘active’,t.textContent===NCATS[key].name));
+const grid=document.getElementById(‘nfood-grid’);
+grid.innerHTML=’’;
+(NCATS[key]?.items||[]).forEach(food=>{
+const btn=document.createElement(‘button’);
+btn.className=‘nfbtn’;
+btn.textContent=food;
+btn.onclick=()=>nutShow(food);
+grid.appendChild(btn);
+});
+document.getElementById(‘nut-result’).innerHTML=’’;
+}
+function nutSearch(q){
+if(!q||q.length<1){document.getElementById(‘nut-result’).innerHTML=’’;return;}
+const lower=q.toLowerCase();
+const matches=Object.keys(NDATA).filter(k=>k.toLowerCase().includes(lower));
+if(matches.length>0){
+nutShow(matches[0]);
+} else {
+document.getElementById(‘nut-result’).innerHTML=’<div class="card" style="text-align:center;padding:18px;color:var(--muted);font-size:.83rem">এই খাবারের তথ্য পাওয়া যায়নি। অন্য নামে খুঁজুন।</div>’;
+}
+}
+function nutShow(name){
+const d=NDATA[name];
+if(!d){
+document.getElementById(‘nut-result’).innerHTML=`<div class="card"><div class="ctit">${name}</div><div style="font-size:.82rem;color:var(--muted);padding:10px 0">এই খাবারের বিস্তারিত পুষ্টি তথ্য এখনো যোগ হয়নি।</div></div>`;
+document.getElementById(‘nut-result’).scrollIntoView({behavior:‘smooth’});
+return;
+}
+document.getElementById(‘nut-result’).innerHTML=` <div class="card"> <div class="ctit">🥗 ${name}</div> <div style="font-size:.77rem;color:var(--muted);margin-bottom:9px">📏 পরিমাণ: ${d.unit}</div> <div class="ncal"><div class="cv">${d.cal} kcal</div><div class="cl">মোট ক্যালরি</div></div> <div class="ng"> <div class="nb"><div class="nv">${d.p}গ্রা</div><div class="nk">প্রোটিন</div></div> <div class="nb"><div class="nv">${d.c}গ্রা</div><div class="nk">কার্বোহাইড্রেট</div></div> <div class="nb"><div class="nv">${d.f}গ্রা</div><div class="nk">ফ্যাট</div></div> </div> ${d.fiber>0?`<div style="margin-top:7px;padding:7px 10px;background:#f0fdf4;border-radius:8px;font-size:.79rem;color:#166534">🌿 ডায়েটারি ফাইবার: ${d.fiber}গ্রা</div>`:''} <div style="margin-top:8px;padding:9px 11px;background:var(--gbg);border-radius:8px;font-size:.8rem;color:var(--text);line-height:1.65">💡 ${d.note}</div> </div>`;
+document.getElementById(‘nut-result’).scrollIntoView({behavior:‘smooth’});
+}
+</script>
+
+<script>
 // ══ GENERATE PLAN ══
 function rand(arr){return arr[Math.floor(Math.random()*arr.length)];}
-
 function doGen(quick){
   const age=parseInt(document.getElementById('age').value);
   const ht=parseFloat(document.getElementById('height').value);
   const wt=parseFloat(document.getElementById('weight').value);
   if(!age||age<10||age>90){alert('সঠিক বয়স দিন (১০-৯০ বছর)');return;}
-  if(!ht||ht<100||ht>230){alert('সঠিক উচ্চতা দিন — প্রথমে ফুট/ইঞ্চি বেছে নিন');return;}
+  if(!ht||ht<100||ht>230){alert('সঠিক উচ্চতা দিন — ফুট/ইঞ্চি বেছে নিন');return;}
   if(!wt||wt<30||wt>200){alert('সঠিক ওজন দিন (৩০-২০০ কেজি)');return;}
 
   document.getElementById('ldr').style.display='block';
@@ -767,8 +1113,8 @@ function doGen(quick){
     const goal=goalSel==='auto'?bmiI.autoGoal:goalSel;
     const bud=S.budget;
     const bmr=calcBMR(wt,ht,age,S.gender);
-    const tdee=bmr*actMult(S.activity,S.gym);
-    const tCal=Math.max(1200,Math.round(tdee+calAdj(goal,S.health)));
+    const tde=bmr*actMult(S.activity,S.gym);
+    const tCal=Math.max(1200,Math.round(tde+calAdj(goal,S.health,S.strict)));
     const mac=getMacros(tCal,goal);
 
     S.startWeight=wt;
@@ -776,10 +1122,16 @@ function doGen(quick){
     S.waterGoal=Math.max(8,Math.round(wt*0.033*4));
     if(!S.weights.length)S.weights.push({d:td(),w:wt});
 
-    const bf=rand(FDB.breakfast[bud]||FDB.breakfast.low);
-    const lu=rand(FDB.lunch[bud]||FDB.lunch.low);
-    const sn=S.meals!=='3'?rand(FDB.snack[bud]||FDB.snack.low):null;
-    const di=rand(FDB.dinner[bud]||FDB.dinner.low);
+    const db=FDB[bud]||FDB.home;
+    const bf=rand(db.breakfast);
+    const lu=rand(db.lunch);
+    const sn=S.meals!=='3'?rand(db.snack):null;
+    const di=rand(db.dinner);
+
+    // সোমবার মাংস দিবস (মেসের/ঘরের জন্য)
+    const today=new Date().getDay();
+    const isSpecialDay=(today===1)&&(bud==='mess'||bud==='home');
+    const luFinal=isSpecialDay&&db.special?rand(db.special):lu;
 
     const tf=parseInt(document.getElementById('tframe').value)||null;
     let safeNote='';
@@ -789,89 +1141,56 @@ function doGen(quick){
     }
 
     const gL={maintain:'ওজন ধরে রাখা',loss:'ওজন কমানো',gain:'ওজন বাড়ানো',muscle:'মাংসপেশি গড়া'};
-    const bL={low:'কম বাজেট 💰',medium:'মাঝারি 💰💰',high:'বেশি 💰💰💰'};
-    const aL={sedentary:'নিষ্ক্রিয়',light:'হালকা সক্রিয়',moderate:'মাঝারি সক্রিয়',active:'সক্রিয়'};
-    const ftL={rice:'ভাত প্রধান',roti:'রুটি প্রধান',mixed:'মিশ্র'};
+    const bL={home:'ঘরের তৈরি 🏠',mess:'মেসের খাবার 🍽️',medium:'মিডিয়াম 💰',premium:'প্রিমিয়াম 👑'};
+    const aL={sedentary:'নিষ্ক্রিয়',light:'হালকা',moderate:'মাঝারি',active:'সক্রিয়'};
+    const bfL={general:'সাধারণ',belly:'পেটের চর্বি কমানো',muscle:'মাংসপেশি গঠন',lean:'শীর্ণ শরীর'};
+    const strictL={flexible:'সময় অনুসারী',fast_loss:'দ্রুত ওজন কমানো',fast_gain:'দ্রুত ওজন বাড়ানো'};
 
     let htD=ht+' সেমি';
-    if(S.hunit==='ft'){
-      const ti=ht/2.54,fv=Math.floor(ti/12),iv=Math.round(ti%12);
-      htD=fv+' ফুট '+iv+' ইঞ্চি';
-    }
+    if(S.hunit==='ft'){const ti=ht/2.54,fv=Math.floor(ti/12),iv=Math.round(ti%12);htD=fv+' ফুট '+iv+' ইঞ্চি';}
 
     const html=`
       <div class="rh">
         <div class="bn">${tCal}</div>
         <div class="rl">দৈনিক ক্যালরি লক্ষ্য (kcal)</div>
       </div>
-
       <div class="card">
         <div class="ctit">📊 আপনার স্বাস্থ্য তথ্য</div>
         <div class="${bmiI.advcls} bmi-adv">${bmiI.advice}</div>
-        <div style="margin-bottom:8px;font-size:.84rem">
-          BMI অবস্থা: <span class="bmi-badge ${bmiI.badge}">${bmiI.label}</span>
-        </div>
-        <div style="margin-bottom:10px;padding:8px 11px;background:#f0fdf4;border-radius:8px;font-size:.82rem;color:#15803d;font-weight:600">
-          💡 পরামর্শ: ${bmiI.suggest}
-        </div>
+        <div style="margin-bottom:8px;font-size:.84rem">BMI: <span class="bmi-badge ${bmiI.badge}">${bmiI.label}</span></div>
+        <div style="margin-bottom:10px;padding:8px 11px;background:#f0fdf4;border-radius:8px;font-size:.82rem;color:#15803d;font-weight:600">💡 ${bmiI.suggest}</div>
         <div class="sg">
           <div class="sb"><div class="v">${bmi.toFixed(1)}</div><div class="l">BMI মান</div></div>
-          <div class="sb"><div class="v">${Math.round(tdee)}</div><div class="l">TDEE (kcal)</div></div>
+          <div class="sb"><div class="v">${Math.round(tde)}</div><div class="l">TDEE (kcal)</div></div>
           <div class="sb"><div class="v">${wt} কেজি</div><div class="l">বর্তমান ওজন</div></div>
           <div class="sb"><div class="v">${htD}</div><div class="l">উচ্চতা</div></div>
         </div>
-        <div style="font-size:.8rem;color:var(--muted)">🎯 ${gL[goal]} | 🍛 ${ftL[S.foodtype]} | 🏃 ${aL[S.activity]} | ${bL[bud]}</div>
+        <div style="font-size:.78rem;color:var(--muted);line-height:1.7">
+          🎯 ${gL[goal]||goal} | 🍛 ${bL[bud]} | 🏃 ${aL[S.activity]}<br>
+          🎯 লক্ষ্য: ${strictL[S.strict]||''} | 💪 ${bfL[S.bodyfocus]||''}
+        </div>
         ${safeNote}
       </div>
-
       <div class="card">
         <div class="ctit">🥩 দৈনিক পুষ্টির লক্ষ্য</div>
         <div class="mb"><div class="ml"><span>🟢 প্রোটিন</span><span>${mac.p}গ্রাম</span></div><div class="mt2"><div class="mf fp" style="width:${Math.min(100,mac.p*4/tCal*100)}%"></div></div></div>
         <div class="mb"><div class="ml"><span>🟡 কার্বোহাইড্রেট</span><span>${mac.c}গ্রাম</span></div><div class="mt2"><div class="mf fc" style="width:${Math.min(100,mac.c*4/tCal*100)}%"></div></div></div>
         <div class="mb"><div class="ml"><span>🟠 ফ্যাট</span><span>${mac.f}গ্রাম</span></div><div class="mt2"><div class="mf ff" style="width:${Math.min(100,mac.f*9/tCal*100)}%"></div></div></div>
       </div>
-
       <div class="card">
         <div class="ctit">🍱 আজকের ডায়েট প্ল্যান</div>
-
-        <div class="mc">
-          <div class="mh"><div class="mn2">🌅 সকালের নাস্তা</div><div class="mkcal">${bf.cal} kcal</div></div>
-          <div class="mi"><strong>${bf.n}</strong></div>
-          <div class="mqty">📏 ${bf.q}</div>
-          <div class="mm"><span class="mp pp">প্রোটিন: ${bf.p}গ্রা</span><span class="mp cp">কার্ব: ${bf.c}গ্রা</span><span class="mp fp3">ফ্যাট: ${bf.f}গ্রা</span></div>
-        </div>
-
-        <div class="mc">
-          <div class="mh"><div class="mn2">☀️ দুপুরের খাবার</div><div class="mkcal">${lu.cal} kcal</div></div>
-          <div class="mi"><strong>${lu.n}</strong></div>
-          <div class="mqty">📏 ${lu.q}</div>
-          <div class="mm"><span class="mp pp">প্রোটিন: ${lu.p}গ্রা</span><span class="mp cp">কার্ব: ${lu.c}গ্রা</span><span class="mp fp3">ফ্যাট: ${lu.f}গ্রা</span></div>
-        </div>
-
-        ${sn?`
-        <div class="mc">
-          <div class="mh"><div class="mn2">🌆 বিকেলের নাস্তা</div><div class="mkcal">${sn.cal} kcal</div></div>
-          <div class="mi"><strong>${sn.n}</strong></div>
-          <div class="mqty">📏 ${sn.q}</div>
-          <div class="mm"><span class="mp pp">প্রোটিন: ${sn.p}গ্রা</span><span class="mp cp">কার্ব: ${sn.c}গ্রা</span><span class="mp fp3">ফ্যাট: ${sn.f}গ্রা</span></div>
-        </div>`:''}
-
-        <div class="mc">
-          <div class="mh"><div class="mn2">🌙 রাতের খাবার</div><div class="mkcal">${di.cal} kcal</div></div>
-          <div class="mi"><strong>${di.n}</strong></div>
-          <div class="mqty">📏 ${di.q}</div>
-          <div class="mm"><span class="mp pp">প্রোটিন: ${di.p}গ্রা</span><span class="mp cp">কার্ব: ${di.c}গ্রা</span><span class="mp fp3">ফ্যাট: ${di.f}গ্রা</span></div>
-        </div>
-
+        ${mealHtml('🌅 সকালের নাস্তা',bf)}
+        ${isSpecialDay&&db.special?mealHtml('☀️ দুপুরের খাবার (বিশেষ দিন)',luFinal):mealHtml('☀️ দুপুরের খাবার',lu)}
+        ${sn?mealHtml('🌆 বিকেলের নাস্তা',sn):''}
+        ${mealHtml('🌙 রাতের খাবার',di)}
         <div class="brow">
           <button class="btn bs" onclick="doGen(false)">🔄 নতুন মেনু</button>
           <button class="btn bp" onclick="goGr()">🛒 বাজার তালিকা</button>
         </div>
       </div>
-
       <div class="card">
         <div class="ctit">💡 স্বাস্থ্য টিপস</div>
-        ${getTips(goal,bmiI,S.health)}
+        ${getTips(goal,bmiI,S.health,S.bodyfocus)}
       </div>`;
 
     document.getElementById('plan-empty').classList.add('hidden');
@@ -879,32 +1198,42 @@ function doGen(quick){
     document.getElementById('plan-body').innerHTML=html;
     genGr(bud);
     document.getElementById('ldr').style.display='none';
-    // go to plan tab
     document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
     document.querySelectorAll('.ntab').forEach(t=>t.classList.remove('active'));
     document.getElementById('page-plan').classList.add('active');
     document.querySelectorAll('.ntab')[1].classList.add('active');
-  },800);
+  },700);
 }
 
-function getTips(goal,bmiI,health){
+function mealHtml(title,m){
+  return `<div class="mc">
+    <div class="mh"><div class="mn2">${title}</div><div class="mkcal">${m.cal} kcal</div></div>
+    <div class="mi"><strong>${m.n}</strong></div>
+    <div class="mqty">📏 ${m.q}</div>
+    <div class="mm"><span class="mp pp">প্রোটিন: ${m.p}গ্রা</span><span class="mp cp">কার্ব: ${m.c}গ্রা</span><span class="mp fp3">ফ্যাট: ${m.f}গ্রা</span></div>
+  </div>`;
+}
+
+function getTips(goal,bmiI,health,bf){
   const tips=[];
   if(goal==='loss')tips.push('🥗 রাতে ভাত কম খান, সবজি ও প্রোটিন বেশি রাখুন।','🚶 প্রতিদিন কমপক্ষে ৩০ মিনিট হাঁটুন।','🍽️ ছোট প্লেটে খান এবং ধীরে চিবিয়ে খান।');
-  if(goal==='gain')tips.push('🍛 প্রতিটি বেলায় পূর্ণভাবে খান, কোনো বেলা বাদ দেবেন না।','💪 নিয়মিত ব্যায়াম করুন।','🥛 ঘুমানোর আগে দুধ বা দই খান।');
+  if(goal==='gain')tips.push('🍛 প্রতিটি বেলায় পূর্ণভাবে খান।','💪 নিয়মিত ব্যায়াম করুন।','🥛 ঘুমানোর আগে দুধ বা দই খান।');
   if(goal==='muscle')tips.push('🥩 প্রতি কেজি ওজনে ১.৬-২.০ গ্রাম প্রোটিন খান।','💪 ওজন প্রশিক্ষণ করুন সপ্তাহে ৩-৫ দিন।');
-  if(goal==='maintain')tips.push('✅ এখনকার স্বাস্থ্যকর খাদ্যাভ্যাস ধরে রাখুন।','⚖️ মাসে অন্তত একবার ওজন মাপুন।');
+  if(goal==='maintain')tips.push('✅ এখনকার স্বাস্থ্যকর খাদ্যাভ্যাস ধরে রাখুন।');
+  if(bf==='belly')tips.push('🔥 পেটের চর্বি কমাতে: চিনি ও মিষ্টি এড়িয়ে চলুন।','🧘 Plank ও Crunches করুন প্রতিদিন।','🥗 প্রতিটি খাবারে প্রোটিন রাখুন।');
+  if(bf==='muscle')tips.push('💪 প্রতিদিন পর্যাপ্ত প্রোটিন (১.৬-২গ্রা/কেজি) খান।','🏋️ Progressive overload ওয়ার্কআউট করুন।');
   if(health==='diabetes')tips.push('🩺 মিষ্টি ও সাদা ভাত কম খান।','🥗 লো গ্লাইসেমিক খাবার বেছে নিন।');
-  if(health==='bp')tips.push('🧂 লবণ কম খান, পটাশিয়াম সমৃদ্ধ খাবার যেমন কলা খান।');
+  if(health==='bp')tips.push('🧂 লবণ কম খান, কলা বেশি খান।');
   tips.push('💧 দিনে ৮-১০ গ্লাস পানি পান করুন।','😴 রাতে ৭-৮ ঘণ্টা ঘুমান।');
   return tips.map(t=>`<div style="padding:5px 0;font-size:.81rem;border-bottom:1px solid var(--border)">${t}</div>`).join('');
 }
 
 // ══ GROCERY ══
 function genGr(bud){
-  const items=GDB[bud]||GDB.low;
+  const items=GDB[bud]||GDB.home;
   document.getElementById('gr-empty').classList.add('hidden');
   document.getElementById('gr-body').classList.remove('hidden');
-  document.getElementById('gr-list').innerHTML=items.map((item,i)=>`
+  document.getElementById('gr-list').innerHTML=items.map(item=>`
     <div style="display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--border);font-size:.84rem">
       <input type="checkbox" style="width:16px;height:16px;accent-color:var(--green)" onchange="this.parentElement.querySelector('span').style.textDecoration=this.checked?'line-through':'none';this.parentElement.querySelector('span').style.opacity=this.checked?'.4':'1'">
       <span>${item}</span>
@@ -914,13 +1243,9 @@ function goGr(){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.ntab').forEach(t=>t.classList.remove('active'));
   document.getElementById('page-grocery').classList.add('active');
-  document.querySelectorAll('.ntab')[4].classList.add('active');
+  document.querySelectorAll('.ntab')[6].classList.add('active');
 }
-function clearGr(){
-  document.querySelectorAll('#gr-list input[type=checkbox]').forEach(cb=>{
-    cb.checked=true;cb.dispatchEvent(new Event('change'));
-  });
-}
+function clearGr(){document.querySelectorAll('#gr-list input[type=checkbox]').forEach(cb=>{cb.checked=true;cb.dispatchEvent(new Event('change'));});}
 
 // ══ WATER ══
 function renderWater(){
@@ -928,6 +1253,7 @@ function renderWater(){
   document.getElementById('wgoal').textContent=g+' গ্লাস';
   document.getElementById('wtot').textContent=g;
   document.getElementById('wdone').textContent=S.waterDone;
+  document.getElementById('sum-water').textContent=S.waterDone;
   const c=document.getElementById('wcups');c.innerHTML='';
   for(let i=0;i<g;i++){
     const d=document.createElement('div');
@@ -938,6 +1264,87 @@ function renderWater(){
   }
 }
 function resetWater(){S.waterDone=0;renderWater();}
+
+// ══ EXERCISE TRACKER ══
+const EX_CAL={running:9,walking:4,cycling:7,swimming:8,pushup:5,gym:6,yoga:3,football:7,cricket:5,other:4};
+function logEx(){
+  const type=document.getElementById('ex-type').value;
+  const min=parseInt(document.getElementById('ex-min').value)||0;
+  if(!min){alert('সময় দিন');return;}
+  const burned=Math.round(EX_CAL[type]*min);
+  S.exLogs.unshift({type,min,burned,d:td()});
+  if(S.exLogs.length>20)S.exLogs.pop();
+  localStorage.setItem('ff_ex',JSON.stringify(S.exLogs));
+  document.getElementById('ex-min').value='';
+  renderExLog();
+}
+function renderExLog(){
+  const names={running:'দৌড়ানো',walking:'হাঁটা',cycling:'সাইকেল',swimming:'সাঁতার',pushup:'পুশআপ',gym:'জিম',yoga:'যোগব্যায়াম',football:'ফুটবল',cricket:'ক্রিকেট',other:'অন্যান্য'};
+  const log=document.getElementById('ex-log');
+  if(!S.exLogs.length){log.innerHTML='<div style="text-align:center;padding:12px;font-size:.81rem;color:var(--muted)">কোনো রেকর্ড নেই</div>';return;}
+  log.innerHTML=S.exLogs.slice(0,8).map(e=>`<div class="ex-item"><span>${names[e.type]||e.type} · ${e.min}মিনিট</span><span style="color:var(--green);font-weight:600">-${e.burned} kcal</span></div>`).join('');
+  const total=S.exLogs.reduce((a,e)=>a+e.burned,0);
+  const totalMin=S.exLogs.reduce((a,e)=>a+e.min,0);
+  document.getElementById('ex-total-cal').textContent=total+' ক্যালরি';
+  document.getElementById('sum-burned').textContent=total;
+  document.getElementById('sum-extime').textContent=totalMin;
+}
+
+// ══ CALORIE FOOD LOG ══
+function logCalFood(){
+  const name=document.getElementById('cal-food').value.trim();
+  if(!name)return;
+  const d=NDATA[name];
+  const cal=d?d.cal:0;
+  S.calLogs.unshift({name,cal,p:d?d.p:0,c:d?d.c:0,f:d?d.f:0,d:td()});
+  if(S.calLogs.length>30)S.calLogs.pop();
+  localStorage.setItem('ff_cal',JSON.stringify(S.calLogs));
+  document.getElementById('cal-food').value='';
+  renderCalLog();
+}
+function renderCalLog(){
+  const log=document.getElementById('cal-log');
+  if(!S.calLogs.length){log.innerHTML='<div style="text-align:center;padding:12px;font-size:.81rem;color:var(--muted)">কোনো রেকর্ড নেই</div>';return;}
+  log.innerHTML=S.calLogs.slice(0,10).map(e=>`<div class="cal-item"><span>${e.name}</span><span style="color:var(--green);font-weight:600">${e.cal} kcal</span></div>`).join('');
+  const total=S.calLogs.reduce((a,e)=>a+e.cal,0);
+  document.getElementById('cal-total').textContent=total+' ক্যালরি';
+  document.getElementById('sum-cal').textContent=total;
+}
+
+// ══ SLEEP ══
+function calcSleep(){
+  const s=document.getElementById('sleep-start').value;
+  const e=document.getElementById('sleep-end').value;
+  if(!s||!e)return;
+  const [sh,sm]=s.split(':').map(Number);
+  const [eh,em]=e.split(':').map(Number);
+  let mins=(eh*60+em)-(sh*60+sm);
+  if(mins<0)mins+=24*60;
+  const hours=(mins/60).toFixed(1);
+  S.sleepHours=parseFloat(hours);
+  localStorage.setItem('ff_sleep',hours);
+  let msg='',color=var_green;
+  if(S.sleepHours<6){msg='⚠️ ঘুম কম হয়েছে! কমপক্ষে ৭-৮ ঘণ্টা ঘুমান।';color='#dc2626';}
+  else if(S.sleepHours<=9){msg='✅ চমৎকার! আপনার ঘুম পর্যাপ্ত হয়েছে।';color='var(--green)';}
+  else{msg='😴 একটু বেশি ঘুম হয়েছে। নিয়মিত রুটিন রাখুন।';color='#92400e';}
+  document.getElementById('sleep-result').innerHTML=`<span style="color:${color}">${hours} ঘণ্টা ঘুম — ${msg}</span>`;
+  document.getElementById('sum-sleep').textContent=hours+'ঘ';
+}
+const var_green='#2d6a4f';
+
+// ══ STEPS ══
+function saveSteps(){
+  const v=parseInt(document.getElementById('steps-input').value)||0;
+  S.steps=v;
+  localStorage.setItem('ff_steps',v);
+  renderSteps();
+}
+function renderSteps(){
+  document.getElementById('steps-display').textContent=S.steps.toLocaleString();
+  document.getElementById('sum-steps').textContent=S.steps.toLocaleString();
+  const pct=Math.min(100,S.steps/10000*100);
+  document.getElementById('steps-pf').style.width=pct+'%';
+}
 
 // ══ WEIGHT ══
 function td(){const d=new Date();return d.getDate()+'/'+(d.getMonth()+1)+'/'+d.getFullYear();}
@@ -975,12 +1382,151 @@ function renderWeek(){
       <div class="dd${S.weekDays[i]?' done':''}" onclick="togDay(${i})">${S.weekDays[i]?'✅':(i+1)}</div>
     </div>`).join('');
 }
-function togDay(i){
-  S.weekDays[i]=!S.weekDays[i];
-  localStorage.setItem('ff_wk',JSON.stringify(S.weekDays));
-  renderWeek();
+function togDay(i){S.weekDays[i]=!S.weekDays[i];localStorage.setItem('ff_wk',JSON.stringify(S.weekDays));renderWeek();}
+function renderTracker(){renderWater();renderWtLog();renderWeek();renderExLog();renderCalLog();renderSteps();}
+
+// ══ EXERCISE VIDEO ══
+function togExCard(id){
+  const card=document.getElementById('exc-'+id);
+  const vid=document.getElementById('exv-'+id);
+  const isOpen=card.classList.contains('open');
+  document.querySelectorAll('.ex-card').forEach(c=>{c.classList.remove('open');c.querySelector('div[id^=exv-]')||null;});
+  document.querySelectorAll('[id^=exv-]').forEach(v=>v.style.display='none');
+  if(!isOpen){
+    card.classList.add('open');
+    vid.style.display='block';
+    localStorage.setItem('ff_lastex',id);
+  }
 }
-function renderTracker(){renderWater();renderWtLog();renderWeek();}
+
+// ══ WORKOUT PLAN ══
+const WP_DB={
+  gym:{
+    chest:['Bench Press','Incline Dumbbell Press','Cable Flyes','Push-up','Chest Dip'],
+    back:['Deadlift','Lat Pulldown','Seated Row','Bent Over Row','Pull-up'],
+    legs:['Barbell Squat','Leg Press','Leg Curl','Calf Raise','Lunges'],
+    arms:['Barbell Curl','Tricep Pushdown','Hammer Curl','Skull Crusher','Preacher Curl'],
+    shoulder:['Overhead Press','Lateral Raise','Front Raise','Face Pull','Shrug'],
+    core:['Plank','Cable Crunch','Hanging Leg Raise','Russian Twist'],
+    fullbody:['Deadlift','Bench Press','Squat','Overhead Press','Barbell Row'],
+  },
+  home:{
+    chest:['পুশআপ','ওয়াইড পুশআপ','Diamond Push-up','Dumbbell Press','Dumbbell Flyes'],
+    back:['Dumbbell Row','Superman','Resistance Band Pull','Pull-up (যদি বার থাকে)'],
+    legs:['স্কোয়াট','লাঞ্জেস','গ্লুট ব্রিজ','Step-up','Wall Sit'],
+    arms:['Dumbbell Curl','Overhead Extension','Hammer Curl','Tricep Dip'],
+    shoulder:['Dumbbell Press','Lateral Raise','Front Raise','Arnold Press'],
+    core:['Plank','Crunches','Mountain Climber','Bicycle Crunch','Leg Raise'],
+    fullbody:['বার্পি','স্কোয়াট','পুশআপ','লাঞ্জেস','Plank'],
+  },
+  park:{
+    chest:['পুশআপ','ডিপ্স (বেঞ্চ)','Wide Push-up'],
+    back:['Pull-up (যদি থাকে)','Inverted Row','Superman'],
+    legs:['স্কোয়াট','লাঞ্জেস','Box Jump','Step-up'],
+    arms:['Dips','Push-up Variations','Chin-up'],
+    shoulder:['Pike Push-up','Handstand Hold'],
+    core:['Plank','Hanging Leg Raise','Crunches','Mountain Climber'],
+    fullbody:['বার্পি','স্প্রিন্ট','পুশআপ','স্কোয়াট','Plank'],
+  },
+  free:{
+    chest:['পুশআপ','ওয়াইড পুশআপ','Diamond Push-up','Decline Push-up'],
+    back:['Superman','Reverse Snow Angel','Bodyweight Row'],
+    legs:['স্কোয়াট','লাঞ্জেস','গ্লুট ব্রিজ','Calf Raise','Wall Sit'],
+    arms:['Tricep Dip (চেয়ার)','Close-grip Push-up'],
+    shoulder:['Pike Push-up','Shoulder Tap'],
+    core:['Plank','Crunches','Bicycle Crunch','Mountain Climber','Leg Raise'],
+    fullbody:['বার্পি','পুশআপ','স্কোয়াট','Plank','Mountain Climber'],
+  }
+};
+
+function genWP(){
+  const place=S['wp-place'];
+  const time=parseInt(S['wp-time']);
+  const days=parseInt(S['wp-days']);
+  const db=WP_DB[place]||WP_DB.free;
+
+  let splits=[];
+  if(days===3){
+    splits=[
+      {day:'দিন ১',muscle:'Full Body',key:'fullbody'},
+      {day:'দিন ২',muscle:'Full Body + Core',key:'fullbody'},
+      {day:'দিন ৩',muscle:'Full Body (Intense)',key:'fullbody'},
+    ];
+  } else if(days===4){
+    splits=[
+      {day:'দিন ১',muscle:'বুক + বাহু (Upper)',key:'chest'},
+      {day:'দিন ২',muscle:'পা + Core (Lower)',key:'legs'},
+      {day:'দিন ৩',muscle:'পিঠ + কাঁধ (Upper)',key:'back'},
+      {day:'দিন ৪',muscle:'পা + Core (Lower)',key:'legs'},
+    ];
+  } else if(days===5){
+    splits=[
+      {day:'দিন ১',muscle:'বুক 💪',key:'chest'},
+      {day:'দিন ২',muscle:'পিঠ 🔙',key:'back'},
+      {day:'দিন ৩',muscle:'পা 🦵',key:'legs'},
+      {day:'দিন ৪',muscle:'বাহু 💪',key:'arms'},
+      {day:'দিন ৫',muscle:'কাঁধ + Core',key:'shoulder'},
+    ];
+  } else {
+    splits=[
+      {day:'দিন ১',muscle:'বুক + ট্রাইসেপ',key:'chest'},
+      {day:'দিন ২',muscle:'পিঠ + বাইসেপ',key:'back'},
+      {day:'দিন ৩',muscle:'পা + Core',key:'legs'},
+      {day:'দিন ৪',muscle:'কাঁধ + বাহু',key:'shoulder'},
+      {day:'দিন ৫',muscle:'Full Body Burn',key:'fullbody'},
+      {day:'দিন ৬',muscle:'Core + Cardio',key:'core'},
+    ];
+  }
+
+  const sets=time>=60?4:3;
+  const plan=splits.map(s=>{
+    const exList=(db[s.key]||db.fullbody).slice(0,time>=60?6:4);
+    return {...s, exercises:exList.map(ex=>({name:ex,sets,reps:'10-12'}))};
+  });
+
+  S.wpPlan=plan;
+  localStorage.setItem('ff_wp',JSON.stringify(plan));
+  renderWP(plan);
+}
+
+function renderWP(plan){
+  if(!plan||!plan.length){document.getElementById('wp-body').innerHTML='';return;}
+  const place=S['wp-place'];
+  const time=S['wp-time'];
+  document.getElementById('wp-body').innerHTML=`
+    <div class="tip">💡 প্রতিটি ব্যায়ামের আগে ৫ মিনিট ওয়ার্ম-আপ করুন। সেট-এর মাঝে ৬০-৯০ সেকেন্ড বিশ্রাম নিন।</div>
+    ${plan.map((d,di)=>`
+      <div class="wp-day">
+        <div class="wp-day-hdr">
+          <div class="wp-day-ttl">${d.day} — ${d.muscle}</div>
+          <div class="wp-day-time">⏱ ${time} মিনিট</div>
+        </div>
+        <div class="wp-ex">
+          ${d.exercises.map((ex,ei)=>`
+            <div class="wp-ex-row">
+              <div class="wp-ex-name">${ex.name}</div>
+              <div>
+                <div class="wp-ex-info">${ex.sets} সেট × ${ex.reps} রেপ</div>
+                <div class="wp-ex-sel">
+                  <select onchange="changeEx(${di},${ei},this.value)">
+                    <option value="${ex.name}" selected>${ex.name}</option>
+                    ${(WP_DB[place]?.[d.key]||[]).filter(e=>e!==ex.name).map(e=>`<option value="${e}">${e}</option>`).join('')}
+                  </select>
+                </div>
+              </div>
+            </div>`).join('')}
+        </div>
+      </div>`).join('')}
+    <button class="btn bs mt8" onclick="resetWP()">🔄 প্ল্যান রিসেট করুন</button>`;
+}
+
+function changeEx(di,ei,val){
+  if(S.wpPlan){
+    S.wpPlan[di].exercises[ei].name=val;
+    localStorage.setItem('ff_wp',JSON.stringify(S.wpPlan));
+  }
+}
+function resetWP(){S.wpPlan=null;localStorage.removeItem('ff_wp');document.getElementById('wp-body').innerHTML='';}
 
 // ══ PWA ══
 let dPr;
@@ -992,12 +1538,18 @@ document.getElementById('ibtn').addEventListener('click',async()=>{
   if(dPr){dPr.prompt();await dPr.userChoice;dPr=null;document.getElementById('ibnr').style.display='none';}
 });
 document.getElementById('idis').addEventListener('click',()=>{document.getElementById('ibnr').style.display='none';});
-if('serviceWorker'in navigator){
-  window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
-}
+if('serviceWorker'in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}
 
 // ══ INIT ══
 renderTracker();
+if(S.wpPlan){renderWP(S.wpPlan);}
+if(S.lastExCard){
+  const card=document.getElementById('exc-'+S.lastExCard);
+  const vid=document.getElementById('exv-'+S.lastExCard);
+  if(card&&vid){card.classList.add('open');vid.style.display='block';}
+}
 </script>
+
 </body>
 </html>
+
